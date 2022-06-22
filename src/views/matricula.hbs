@@ -1,0 +1,628 @@
+<!-- BEGIN: Content-->
+<style>
+    .block {
+        pointer-events: none;
+        color: #ffcc9a;
+    }
+
+    @keyframes spinner {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .showName>* {
+        pointer-events: none;
+    }
+
+    .spinner:before {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        margin-top: -10px;
+        margin-left: -10px;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+        border-top-color: #333;
+        animation: spinner .6s linear infinite;
+    }
+</style>
+<div class="app-content content email-application">
+
+    <div class="content-wrapper container-xxl p-0">
+        <!-- Header Sección -->
+        <div class="row match-height">
+
+            <div class="col-lg-8 col-12">
+                <div class="card card-statistics">
+                    <div class="card-header border-bottom">
+                        <h4 class="card-title">Matricula</h4>
+                        <button class="dt-button create-new btn btn-primary" tabindex="0" type="button"
+                            data-bs-toggle="modal" data-bs-target="#add-cliente" id="addClienteBtn"><span>
+                                <i data-feather='plus'></i>
+                                Agregar</span></button>
+                        <!-- BTN EDITAR -->
+                        <button class="d-none" tabindex="0" type="button" data-bs-toggle="modal"
+                            data-bs-target="#add-cliente" id="addClienteBtn2"><span>
+                                <i data-feather='plus'></i>
+                                Agregar Cliente</span></button>
+                    </div>
+                    <!-- Buscadores -->
+                    <div class="card-body py-50">
+                        <div class="row align-items-end">
+                            <div class="col-md-6 mb-1">
+                                <label class="form-label" for="fp-default">Buscador</label>
+                                <input type="busqueda" class="form-control" placeholder="Buscar" id="filtroBuscador">
+                            </div>
+                            <div class="col-md-6 mb-1">
+                                <label class="form-label" for="">Roles</label>
+                                <select name="" id="filtroRoles" class="select2">
+                                    <option value="">Todos</option>
+                                    <option value="Representante">Representante</option>
+                                    <option value="Madre">Madre</option>
+                                    <option value="Padre">Padre</option>
+                                    <option value="Estudiante">Estudiante</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Revenue Card -->
+
+            <!-- Habilitados -->
+            <div class="col-xl-2 col-md-4 col-sm-6">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div class="avatar bg-light-success p-50 mb-1">
+                            <div class="avatar-content">
+                                <i data-feather='user-check' style="height: 24px; width: 24px;"></i>
+                            </div>
+                        </div>
+                        <h2 class="fw-bolder text-color-succes" id="count-habilitados">14</h2>
+                        <p class="card-text text-color-succes">Activos</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Deshabilitados -->
+            <div class="col-xl-2 col-md-4 col-sm-6">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div class="avatar bg-light-danger p-50 mb-1">
+                            <div class="avatar-content">
+                                <i data-feather='user-x' style="height: 24px; width: 24px;"></i>
+                            </div>
+                        </div>
+                        <h2 class="fw-bolder text-color-danger" id="count-deshabilitados">06</h2>
+                        <p class="card-text text-color-danger">Inactivos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla -->
+
+        <div class="content-body">
+            <section class="invoice-list-wrapper">
+                <div class="card">
+                    <div class="card-datatable table-responsive">
+                        <div id="clientesTable_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+
+                            <table class="invoice-list-table table dataTable no-footer dtr-column" id="matriculaTable"
+                                role="grid" aria-describedby="clientesTable_info">
+
+                                <!-- Cabezera de la tabla -->
+                                <thead>
+                                    <tr role="row">
+                                        <th>GRADO</th>
+                                        <th>CEDULA</th>
+                                        <th>NOMBRE</th>
+                                        <th>REPRESENTANTE</th>
+                                        <th>CEDULA REP.</th>
+                                        <th>TELEFONOS</th>
+                                        <th>CORREO</th>
+                                        <th>ESTATUS</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                </thead>
+                                <!-- Cabezera de la tabla -->
+
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="modal fade" id="">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bg-transparent">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body px-sm-5 mx-50 pb-5">
+                            <h1 class="text-center mb-1" id="">Enviar correo a <span id=""></span></h1>
+
+                            <!-- form -->
+                            <form id="" class="row gy-1 gx-2 mt-75">
+                                <div class="col-12 p-0">
+                                    <div class="mb-1 row">
+                                        <div class="col-md-4">
+                                            <label class="col-form-label" for="fname-icon">Título del correo</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="input-group input-group-merge">
+                                                <span class="input-group-text">
+                                                    <i class="feather" data-feather="mail"></i>
+                                                </span>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 p-0">
+                                    <textarea name="" id="" cols="3" class="form-control"
+                                        placeholder="Texto del correo"></textarea>
+                                </div>
+
+                                <div class="col-12 text-center">
+                                    <button type="submit"
+                                        class="btn btn-primary me-1 mt-1 waves-effect waves-float waves-light">Enviar</button>
+                                    <button type="reset" class="btn btn-outline-secondary mt-1 waves-effect"
+                                        data-bs-dismiss="modal" aria-label="Close">
+                                        Cancelar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal modal-sticky" id="compose-mail" data-bs-keyboard="false">
+                <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                    <div class="modal-content p-0">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Enviar Email</h5>
+                            <div class="modal-actions">
+                                <a href="#" class="text-body me-75"><svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                        height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        class="feather feather-minus">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg></a>
+                                <a href="#" class="text-body me-75 compose-maximize"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-maximize-2">
+                                        <polyline points="15 3 21 3 21 9"></polyline>
+                                        <polyline points="9 21 3 21 3 15"></polyline>
+                                        <line x1="21" y1="3" x2="14" y2="10"></line>
+                                        <line x1="3" y1="21" x2="10" y2="14"></line>
+                                    </svg></a>
+                                <a class="text-body" href="#" data-bs-dismiss="modal" aria-label="Close"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-x">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg></a>
+                            </div>
+                        </div>
+                        <div class="modal-body flex-grow-1 p-0">
+                            <form class="compose-form">
+                                <div class="compose-mail-form-field">
+                                    <p class="my-1 w-100">Para: <span id="nombreCliente"></span></p>
+                                </div>
+                                <div class="compose-mail-form-field">
+                                    <label for="emailSubject" class="form-label mb-0">Asunto: </label>
+                                    <input type="text" id="emailSubject" class="form-control" placeholder="Asunto"
+                                        name="emailSubject">
+                                </div>
+                                <div id="message-editor">
+                                    <div class="editor ql-container ql-snow" data-placeholder="Type message...">
+                                        <div class="ql-editor ql-blank" data-gramm="false" contenteditable="true"
+                                            data-placeholder="Mensaje">
+                                            <p><br></p>
+                                        </div>
+                                        <div class="ql-clipboard" contenteditable="true" tabindex="-1"></div>
+                                        <div class="ql-tooltip ql-hidden"><a class="ql-preview"
+                                                rel="noopener noreferrer" target="_blank" href="about:blank"></a><input
+                                                type="text" data-formula="e=mc^2" data-link="https://quilljs.com"
+                                                data-video="Embed URL"><a class="ql-action"></a><a
+                                                class="ql-remove"></a></div>
+                                    </div>
+                                    <div class="compose-editor-toolbar ql-toolbar ql-snow">
+
+                                        <span class="ql-formats me-0">
+                                            <button class="ql-bold" type="button"><svg viewBox="0 0 18 18">
+                                                    <path class="ql-stroke"
+                                                        d="M5,4H9.5A2.5,2.5,0,0,1,12,6.5v0A2.5,2.5,0,0,1,9.5,9H5A0,0,0,0,1,5,9V4A0,0,0,0,1,5,4Z">
+                                                    </path>
+                                                    <path class="ql-stroke"
+                                                        d="M5,9h5.5A2.5,2.5,0,0,1,13,11.5v0A2.5,2.5,0,0,1,10.5,14H5a0,0,0,0,1,0,0V9A0,0,0,0,1,5,9Z">
+                                                    </path>
+                                                </svg></button>
+                                            <button class="ql-italic" type="button"><svg viewBox="0 0 18 18">
+                                                    <line class="ql-stroke" x1="7" x2="13" y1="4" y2="4"></line>
+                                                    <line class="ql-stroke" x1="5" x2="11" y1="14" y2="14"></line>
+                                                    <line class="ql-stroke" x1="8" x2="10" y1="14" y2="4"></line>
+                                                </svg></button>
+                                            <button class="ql-underline" type="button"><svg viewBox="0 0 18 18">
+                                                    <path class="ql-stroke"
+                                                        d="M5,3V9a4.012,4.012,0,0,0,4,4H9a4.012,4.012,0,0,0,4-4V3">
+                                                    </path>
+                                                    <rect class="ql-fill" height="1" rx="0.5" ry="0.5" width="12" x="3"
+                                                        y="15"></rect>
+                                                </svg></button>
+                                            <button class="ql-link" type="button"><svg viewBox="0 0 18 18">
+                                                    <line class="ql-stroke" x1="7" x2="11" y1="7" y2="11"></line>
+                                                    <path class="ql-even ql-stroke"
+                                                        d="M8.9,4.577a3.476,3.476,0,0,1,.36,4.679A3.476,3.476,0,0,1,4.577,8.9C3.185,7.5,2.035,6.4,4.217,4.217S7.5,3.185,8.9,4.577Z">
+                                                    </path>
+                                                    <path class="ql-even ql-stroke"
+                                                        d="M13.423,9.1a3.476,3.476,0,0,0-4.679-.36,3.476,3.476,0,0,0,.36,4.679c1.392,1.392,2.5,2.542,4.679.36S14.815,10.5,13.423,9.1Z">
+                                                    </path>
+                                                </svg></button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="compose-footer-wrapper">
+                                    <div class="btn-wrapper d-flex align-items-center">
+                                        <div class="btn-group dropup me-1">
+                                            <button type="button"
+                                                class="btn btn-primary waves-effect waves-float waves-light">Enviar</button>
+                                        </div>
+                                        <!-- add attachment -->
+                                        <div class="email-attachement">
+                                            <label for="file-input" class="form-label">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-paperclip ms-50">
+                                                    <path
+                                                        d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48">
+                                                    </path>
+                                                </svg>
+                                            </label>
+
+                                            <input id="file-input" type="file" class="d-none">
+                                        </div>
+                                    </div>
+                                    <div class="footer-action d-flex align-items-center">
+                                        <div class="dropup d-inline-block">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                class="feather feather-more-vertical font-medium-2 cursor-pointer me-50"
+                                                role="button" id="composeActions" data-bs-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
+                                                <circle cx="12" cy="12" r="1"></circle>
+                                                <circle cx="12" cy="5" r="1"></circle>
+                                                <circle cx="12" cy="19" r="1"></circle>
+                                            </svg>
+                                            <div class="dropdown-menu dropdown-menu-end"
+                                                aria-labelledby="composeActions">
+                                                <a class="dropdown-item" href="#">
+                                                    <span class="align-middle">Add Label</span>
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    <span class="align-middle">Plain text mode</span>
+                                                </a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">
+                                                    <span class="align-middle">Print</span>
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    <span class="align-middle">Check Spelling</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-trash font-medium-2 cursor-pointer"
+                                            data-bs-dismiss="modal">
+                                            <polyline points="3 6 5 6 21 6"></polyline>
+                                            <path
+                                                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="add-cliente" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+
+            <div class="modal-header bg-transparent">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-sm-5 mx-50 pb-5">
+                {{!-- <form id="formClienteInfo2">
+                    <input type="text" name="testing" id="">
+                    <button type="submit">su</button>
+                </form> --}}
+                <form class="clientesForm needs-validation invalid was-validated" id="matirculaForm">
+                    <div class="card-body py-0">
+                        <div class="divider divider-primary">
+                            <div class="divider-text">
+                                <h4 class="card-title mb-0">Datos Personales del Representante</h4>
+                            </div>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-6 col-lg-4">
+                                <input type="text" name="id_representate" class="d-none" id="representate">
+                                <label class="form-label">Nombre del Representante</label>
+                                <div class="input-group mb-2 col-sm-4">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="nombreRepresentante" placeholder="Nombre" name="nombreRepresentante"
+                                        class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Cédula Representante</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="search"></i></span>
+                                    <input type="number" id="cedulaRepresentante" placeholder="Cédula Representante"
+                                        name="cedulaRepresentante" class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Ocupación Representante</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="ocupacionRepresentante" placeholder="Ocupación Representante"
+                                        name="ocupacionRepresentante" class="form-control">
+                                    <!---->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Nombre - Madre</label>
+                                <div class="input-group mb-2 col-sm-4">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="nombreMadre" placeholder="Nombre" name="nombreMadre"
+                                        class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Cédula Madre</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="search"></i></span>
+                                    <input type="number" id="cedulaMadre" placeholder="Cédula Madre"
+                                        name="cedulaMadre" class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Ocupación Madre</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="ocupacionMadre" placeholder="Ocupación Madre"
+                                        name="ocupacionMadre" class="form-control">
+                                    <!---->
+                                </div>
+                            </div>
+                        </div>
+                            <div class="row g-3">
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Nombre - Padre</label>
+                                <div class="input-group mb-2 col-sm-4">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="nombrePadre" placeholder="Nombre" name="nombrePadre"
+                                        class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Cédula Padre</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="search"></i></span>
+                                    <input type="number" id="cedulaPadre" placeholder="Cédula Padre"
+                                        name="cedulaPadre" class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Ocupación Padre</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="ocupacionPadre" placeholder="Ocupación Padre"
+                                        name="ocupacionPadre" class="form-control">
+                                    <!---->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Correo</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="at-sign"></i></span>
+                                    <input type="email" id="correo" placeholder="Correo" name="email"
+                                        class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="divider divider-primary">
+                            <div class="divider-text">
+                                <h4 class="card-title mb-0">Datos del estudiante</h4>
+                            </div>
+                        </div>
+
+                        <div class="row g-3">
+                               <div class="col-6 col-lg-4">
+                                <label class="form-label">Nombre:</label>
+                                <div class="input-group mb-2 col-sm-4">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="nombreEstudiante" placeholder="Nombre" name="nombreEstudiante"
+                                        class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Cédula Estudiante</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="number" id="cedulaEstudiante" placeholder="Cédula Estudiante"
+                                        name="cedulaEstudiante" class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Fecha Nacimiento</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="calendar"></i></span>
+                                    <input type="text" id="fechaNacimiento"
+                                        class="form-control flatpickr-basic flatpickr-input" placeholder="YYYY-MM-DD"
+                                        name="fechaNacimiento" required>
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="row g-3">                                                       
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Edad</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="number" id="edadEstudiante" placeholder="Edad"
+                                        name="edadEstudiante" class="form-control" readonly>
+                                    <!---->
+                                </div>
+                            </div>
+                               <div class="col-6 col-lg-4">
+                                <label class="form-label">Lugar Nacimiento:</label>
+                                <div class="input-group mb-2 col-sm-4">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="nacimientoEstudiante" placeholder="Lugar Nacimiento" name="nacimientoEstudiante"
+                                        class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Dirección:</label>
+                                <div class="input-group mb-2 col-sm-4">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="direccionEstudiante" placeholder="Dirección" name="direccionEstudiante"
+                                        class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div> 
+                        </div>
+
+                        <div class="row g-3">
+                                                      
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Teléfonos</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="telefonosEstudiante" placeholder="Telefonos"
+                                        name="telefonosEstudiante" class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Colegio Procedencia</label>
+                                <div class="input-group  mb-2">
+                                     <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" class="form-control" placeholder="Colegio Procedencia" name="procedenciaEstudiante"
+                                        id="procedenciaEstudiante" />
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label for="" class="form-label">Observaciones del estudiante</label>
+                                <textarea class="form-control" name="observaciones" rows="1" id="observaciones"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-6 col-lg-4">
+                                            <label class="form-label">Género</label>
+                                            <div class="input-group mb-2">
+                                                <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
+                                                <select name="generoEstudiante" id="generoEstudiante" class="form-control">
+                                                    <option value="Masculino">Masculino</option>
+                                                    <option value="Femenino">Femenino</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-lg-4">
+                                            <label class="form-label">Grado a Cursar</label>
+                                            <div class="input-group mb-2">
+                                                <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
+                                                <select name="gradoEstudiante" id="gradoEstudiante" class="form-control">
+                                                    <option value="1">1ero</option>
+                                                    <option value="2">2do</option>
+                                                    <option value="3">3ero</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-lg-4">
+                                            <label class="form-label">Condición</label>
+                                            <div class="input-group mb-2">
+                                                <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
+                                                <select name="condicionEstudiante" id="condicionEstudiante" class="form-control">
+                                                    <option value="Nuevo">Nuevo</option>
+                                                    <option value="Regular">Regular</option>
+                                                    <option value="Becado">Becado</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                        </div>
+
+                        <div class="col-12 mt-50">
+                            <button type="submit"
+                                class="btn btn-primary me-1 waves-effect waves-float waves-light">Agregar</button>
+                            <button data-bs-dismiss="modal" type="button" class="btn btn-outline-secondary waves-effect"
+                                style="width: 101.77px;">Volver</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

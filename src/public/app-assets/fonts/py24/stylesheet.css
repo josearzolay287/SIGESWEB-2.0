@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Qualy';
+    src: url('Qualy-Bold.woff2') format('woff2'),
+        url('Qualy-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('CenturyGothic-Bold.woff2') format('woff2'),
+        url('CenturyGothic-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Conthrax Sb';
+    src: url('ConthraxSb-Regular.woff2') format('woff2'),
+        url('ConthraxSb-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

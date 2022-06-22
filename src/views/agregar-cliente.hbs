@@ -1,0 +1,239 @@
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-start mb-0">Agregar Cliente</h2>
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Inicio</a>
+                                </li>
+                                <li class="breadcrumb-item"><a href="clientes.html">Clientes</a>
+                                </li>
+                                <li class="breadcrumb-item active">Agregar
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- Validation -->
+            
+            <section id="input-group-basic">
+                
+                <div class="row">
+                    
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="divider divider-primary">
+                                    <div class="divider-text"><h4 class="card-title mb-0">Datos Personales</h4></div>
+                                </div>
+                                
+                                <div class="row g-3">
+                                    <div class="col">
+                                        <label class="form-label">Nombre</label>
+                                        <div class="input-group mb-2 col-sm-4">
+                                            <span class="input-group-text" id="basic-addon-search1"><i data-feather="user"></i></span>
+                                            <input type="text" id="Nombre" placeholder="Nombre" name="Nombre" required="" class="form-control ng-pristine ng-valid ng-touched"><!---->
+                                            </div>
+                                    </div>
+                                    <div class="col">
+                                        <label class="form-label">Primer apellido</label>
+                                        <div class="input-group mb-2">
+                                            <span class="input-group-text" id="basic-addon-search1"><i data-feather="user"></i></span>
+                                            <input type="text" id="Nombre" placeholder="Primer apellido" name="Nombre" required="" class="form-control ng-pristine ng-valid ng-touched"><!---->
+                                            </div>
+                                    </div>
+                                    <div class="col">
+                                        <label class="form-label">Segundo apellido</label>
+                                        <div class="input-group mb-2">
+                                            <span class="input-group-text" id="basic-addon-search1"><i data-feather="user"></i></span>
+                                            <input type="text" id="Nombre" placeholder="Segundo apellido" name="Nombre" required="" class="form-control ng-pristine ng-valid ng-touched"><!---->
+                                            </div>
+                                    </div>
+                                    </div>
+                                
+                                    <div class="row g-3">
+                                        <div class="col">
+                                        <label class="form-label">Cédula</label>
+                                        <div class="input-group mb-2">
+                                            <span class="input-group-text" id="basic-addon-search1"><i data-feather="file-text"></i></span>
+                                            <input type="number" id="Nombre" placeholder="Cédula" name="Nombre" required="" class="form-control ng-pristine ng-valid ng-touched"><!---->
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                        <label class="form-label">Tipo Cédula</label>
+                                        <div class="input-group mb-2">
+                                            <span class="input-group-text" id="basic-addon-search1"><i data-feather="file-text"></i></span>
+                                            <select name="status" id="status" class="form-control ng-untouched ng-pristine ng-valid">
+                                                <option>Fisica</option>
+                                                <option>Juridica</option>
+                                                <option>Dimex</option>
+                                                <option>Nite</option>
+                                                </select>
+                                        </div>
+                                        </div>
+                                        <div class="col">
+                                        <label class="form-label">Fecha de Nacimiento</label>
+                                        <div class="input-group mb-2">
+                                            <span class="input-group-text" id="basic-addon-search1"><i data-feather="calendar"></i></span>
+                                            <input type="text" id="fp-default" class="form-control flatpickr-basic flatpickr-input" placeholder="YYYY-MM-DD">
+                                        </div>
+                                        </div>
+                                    </div>
+                                
+                                        <div class="row g-3">
+                                            <div class="col">
+                                            <label class="form-label">Status</label>
+                                            <div class="input-group mb-2">
+                                                <span class="input-group-text" id="basic-addon-search1"><i data-feather='alert-circle'></i></span>
+                                                <select name="status" id="status" class="form-control ng-untouched ng-pristine ng-valid">
+                                                    <option>active</option>
+                                                    <option>inactive</option>
+                                                    <option>pending</option>
+                                                    </select>
+                                            </div>
+                                            </div>
+                                            <div class="col">
+                                            <label class="form-label">Roles</label>
+                                            <div class="input-group mb-2">
+                                                <span class="input-group-text" id="basic-addon-search1"><i data-feather="chevrons-up"></i></span>
+                                                <select name="status" id="status" class="form-control ng-untouched ng-pristine ng-valid">
+                                                    <option>Maintainer</option>
+                                                    <option>Subscriber</option>
+                                                    <option>Author</option>
+                                                    <option>Editor</option>
+                                                    <option>Admin</option>
+                                                    </select>
+                                            </div>
+                                            </div>
+                                            <div class="col">
+                                            <label class="form-label">Sexo</label>
+                                            <div class="input-group mb-2">
+                                                <span class="input-group-text" id="basic-addon-search1"><i data-feather="users"></i></span>
+                                                <select name="status" id="status" class="form-control ng-untouched ng-pristine ng-valid">
+                                                    <option>Mujer</option>
+                                                    <option>Hombre</option>
+                                                    </select>
+                                            </div>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="row g-3">
+                                            <div class="col">
+                                                <label class="form-label">Correo</label>
+                                                <div class="input-group mb-2">
+                                                    <span class="input-group-text" id="basic-addon-search1"><i data-feather="at-sign"></i></span>
+                                                    <input type="email" id="Nombre" placeholder="Correo" name="Nombre" required="" class="form-control ng-pristine ng-valid ng-touched"><!---->
+                                                    </div>
+                                            </div>
+                                            <div class="col">
+                                                <label class="form-label">Grupo(s)</label>
+                                                <div class="input-group mb-2">
+                                                    <span class="input-group-text" id="basic-addon-search1"><i data-feather='user-plus'></i></span>
+                                                    <select name="status" id="status" class="form-control ng-untouched ng-pristine ng-valid">
+                                                        <option>Tarifa Basica</option>
+                                                        <option>Fisioterapia</option>
+                                                        <option>Zumba</option>
+                                                        <option>Premium</option>
+                                                        </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="input-group input-group-merge">
+                                                    <span class="input-group-text">Descripcion</span>
+                                                    <textarea class="form-control" aria-label="With textarea"></textarea>
+                                                </div>
+                                            </div>
+                                            </div>
+
+                                        <br>
+                                <div class="divider divider-primary">
+                                    <div class="divider-text"><h4 class="card-title mb-0">Detalles de pago</h4></div>
+                                </div>
+                                
+                                <div class="row g-3">
+                                    <div class="col">
+                                        <label class="form-label">Próximo Pago</label>
+                                        <div class="input-group mb-2">
+                                            <span class="input-group-text" id="basic-addon-search1"><i data-feather="calendar"></i></span>
+                                            <input type="text" id="fp-default" class="form-control flatpickr-basic flatpickr-input" placeholder="YYYY-MM-DD">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <label class="form-label">Membresia</label>
+                                        <div class="input-group mb-2">
+                                            <span class="input-group-text" id="basic-addon-search1"><i data-feather='user-plus'></i></span>
+                                            <select name="status" id="status" class="form-control ng-untouched ng-pristine ng-valid">
+                                                <option>Mensual</option>
+                                                <option>Trimensual</option>
+                                                <option>Semestral</option>
+                                                <option>Anual</option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                    </div>
+                                
+                                    <div class="row g-3">
+                                        <div class="col">
+                                        <label class="form-label">Precio</label>
+                                        <div class="input-group input-group-merge mb-2">
+                                            <span class="input-group-text">$</span>
+                                            <input type="text" class="form-control" placeholder="100" aria-label="Amount (to the nearest dollar)" />
+                                            <span class="input-group-text">.00</span>
+                                        </div>
+                                        </div>
+                                        <div class="col">
+                                        <label class="form-label">Dias de gracia</label>
+                                        <div class="input-group mb-2">
+                                            <span class="input-group-text" id="basic-addon-search1"><i data-feather='plus'></i></span>
+                                            <input type="text" id="Nombre" placeholder="Dias de gracia" name="Nombre" required="" class="form-control" value="1"><!---->
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="row g-3">
+                                        <div class="col">
+                                            <label class="form-label">Fecha de Ingresos</label>
+                                            <div class="input-group mb-2">
+                                                <span class="input-group-text" id="basic-addon-search1"><i data-feather="calendar"></i></span>
+                                                <input type="text" id="fp-default" class="form-control flatpickr-basic flatpickr-input" placeholder="YYYY-MM-DD">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <label class="form-label">Link de pago</label>
+                                            <div class="input-group mb-2">
+                                                <span class="input-group-text" id="basic-addon-search1"><i data-feather='link-2'></i></span>
+                                                <input type="text" id="Nombre" placeholder="Link de pago" name="Nombre" required="" class="form-control ng-pristine ng-valid ng-touched"><!---->
+                                                </div>
+                                        </div>
+                                        <div class="col">
+                                            <label class="form-label">Clases Semanales</label>
+                                            <div class="input-group mb-2">
+                                                <span class="input-group-text" id="basic-addon-search1"><i data-feather='airplay'></i></span>
+                                                <input type="text" id="Nombre" placeholder="Clases Semanales" name="Nombre" required="" class="form-control" value="6"><!---->
+                                                </div>
+                                        </div>
+                                        </div>
+
+                                        <div class="col-12 mt-50">
+                                        <button type="submit" class="btn btn-primary me-1 waves-effect waves-float waves-light">Agregar</button>
+                                        <button type="reset" class="btn btn-outline-secondary waves-effect">Volver</button>
+                                    </div>
+
+                            </div>
+                        </div>
+
+
+                </div>
+            </section>
+            <!-- /Validation -->
+
+        </div>
+    </div>
+</div>

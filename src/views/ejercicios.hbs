@@ -1,0 +1,449 @@
+<!-- BEGIN: Content-->
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="row match-height">
+
+            <div class="col-lg-10 col-12">
+                <div class="card card-statistics">
+                    <div class="card-header border-bottom ps-2">
+                        <h4 class="card-title">Listado de Ejercicios</h4>
+                        <button class="dt-button create-new btn btn-primary" tabindex="0"
+                            aria-controls="DataTables_Table_0" type="button" data-bs-toggle="modal"
+                            data-bs-target="#create-edit-ejercicio"><span>
+                                <i data-feather='plus'></i>
+                                Agregar Ejercicio</span></button>
+                    </div>
+                    <!-- Buscadores -->
+                    <div class="card-body">
+                        <div class="row align-items-end">
+                            <div class="col-md-6 mt-1">
+                                <label class="form-label" for="fp-default">Buscador</label>
+                                <input type="busqueda" class="form-control" placeholder="Buscar"
+                                    aria-controls="DataTables_Table_0" id="buscador">
+                            </div>
+                            <div class="col-md-6 my-1 my-md-0">
+                                <label class="form-label" for="fp-default">Categorías</label>
+                                <select class="select2 form-select" id="categoriaSlect">
+                                    <option value="0">Todas</option>
+                                    {{#each categorias as |category i|}}
+                                    <option value="{{pkIdCategoria}}">{{categoria}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Revenue Card -->
+
+            <!-- Ingresos -->
+            <div class="col-xl-2 col-md-4 col-sm-6">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div class="avatar bg-primary p-50 mb-1">
+                            <div class="avatar-content">
+                                <i data-feather='check' style="height: 24px; width: 24px;"></i>
+                            </div>
+                        </div>
+                        <h2 class="fw-bolder text-primary" id="counEjercicios">{{counEjercicios}}</h2>
+                        <p class="card-text text-primary">Resultados</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Denegados -->
+        </div>
+        <div class="content-body">
+            <!--List group with tabs Starts-->
+            <section id="list-group-tabs">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row mt-1">
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="h-300">
+                                            <div class="list-group" id="list-tab" role="tablist">
+
+                                                {{#each ejerciciosGym as |ejercicio i|}}
+
+                                                <a class="item list-group-item list-group-item-action {{#classActive i}}{{/classActive}} d-flex justify-content-between"
+                                                    id="list-home-list{{pkIdEjercicio}}" data-bs-toggle="list"
+                                                    href="#ejercicio{{pkIdEjercicio}}" role="tab"
+                                                    aria-controls="{{pkIdEjercicio}}"><span class="nombre">{{nombre}}</span>
+                                                    <div class="box">
+                                                        <span href="#" class="text-primary editEjercicio"  id="{{pkIdEjercicio}}">
+                                                            <i class="feather font-medium-3" data-feather="edit-3"></i>
+                                                        </span>
+
+                                                        <span href="#" class="text-primary ms-50" onclick="deleteEjercicio('{{pkIdEjercicio}}')">
+                                                            <i class="feather font-medium-3" data-feather="trash"></i>
+                                                        </span>
+                                                    </div>
+                                                 </a>
+
+                                                {{/each}}
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-8 col-sm-12 mt-1">
+                                        <div class="tab-content" id="nav-tabContent">
+                                            {{#each ejerciciosGym as |ejercicio i|}}
+                                            <div class="tab-pane fade show {{#classActive i}}{{/classActive}}"
+                                                id="ejercicio{{pkIdEjercicio}}" role="tabpanel"
+                                                aria-labelledby="list-home-list">
+                                                <h4 class="card-title mb-1">{{nombre}}</h4>
+                                                <p class="mb-50">link: {{link}}</p>
+                                                <div class="iframeVid mb-1" id="video{{pkIdEjercicio}}" data-link="{{link}}"></div> 
+
+                                                <p class="card-text">
+                                                    Categoría: {{categoria}}
+                                                    <br>
+                                                <!--<div class="editorVid mb-1" id="editor{{pkIdEjercicio}}">
+                                                    {{link}}
+                                                </div>-->
+                                                <p style="text-align: justify;">Descripción:
+                                                    {{#alterQuill descripcion}}{{/alterQuill}}</p>
+                                                </p>
+                                            </div>
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--List group with tabs Ends-->
+
+            <div class="modal event-sidebar fade" id="create-edit-ejercicio" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header bg-transparent">
+                            <h3 class="modal-title text-primary" id="">Editar Ejercicio</h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row m-0">
+                                <div class="col-12">
+                                    <div class="card mb-50">
+                                        <div class="card-body py-0">
+                                            <!-- Form -->
+                                            <form action="javascript:;" class="mt-2" id="editEjercicioForm">
+                                                <input type="text" id="pkIdEjercicio" name="pkIdEjercicio"
+                                                    class="d-none" />
+                                                <div class="row">
+                                                    <div class="col-lg-4 col-md-6 col-12">
+                                                        <div class="mb-2">
+                                                            <label class="form-label"
+                                                                for="blog-edit-title">Nombre</label>
+                                                            <input type="text" id="nombreEjercicioEdit"
+                                                                name="nombreEjercicio" class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-6 col-12">
+                                                        <div class="mb-2">
+                                                            <label class="form-label" for="">Categorias</label>
+                                                            <select id="categoriaEjercicioEdit"
+                                                                name="categoriaEjercicio" class="select2 form-select">
+                                                                {{#each categorias as |category i|}}
+                                                                <option value="{{pkIdCategoria}}">{{categoria}}</option>
+                                                                {{/each}}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-6 col-12">
+                                                        <div class="mb-2">
+                                                            <label class="form-label"
+                                                                for="linkEjercicioEdit">Link</label>
+                                                            <input type="text" id="linkEjercicioEdit"
+                                                                class="form-control" name="linkEjercicio" placeholder="Solo compatible con vimeo o youtube" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="mb-2">
+                                                            <label class="form-label">Descripcion</label>
+                                                            <div id="editor2">
+                                                                <div class="editor">
+
+                                                                </div>
+                                                            </div>
+                                                            <textarea name="noteContent" style="display:none"
+                                                                id="hiddenAreaedit"></textarea>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 mt-50 mb-1">
+                                                        <button type="submit"
+                                                            class="btn btn-primary me-1">Agregar</button>
+                                                        <button type="reset"
+                                                            class="btn btn-outline-secondary">Cancelar</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <!--/ Form -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--MODAL EDITAR EJERCICIO Ends-->
+
+        </div>
+    </div>
+</div>
+<!-- END: Content-->
+<script src="../../../app-assets/vendors/js/editors/quill/katex.min.js"></script>
+<script src="../../../app-assets/vendors/js/editors/quill/highlight.min.js"></script>
+<script src="../../../app-assets/vendors/js/editors/quill/quill.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+
+    var Font = Quill.import('formats/font');
+    Font.whitelist = ['sofia', 'slabo', 'roboto', 'inconsolata', 'ubuntu'];
+    Quill.register(Font, true);
+
+    var blogEditor = new Quill('#editor1', {
+        modules: {
+            formula: true,
+            syntax: true,
+            toolbar: [
+                [
+                    {
+                        font: []
+                    },
+                    {
+                        size: []
+                    }
+                ],
+                ['bold', 'italic', 'underline', 'strike'],
+                /* [
+                   {
+                     color: []
+                   },
+                   {
+                     background: []
+                   }
+                 ],
+                 [
+                   {
+                     script: 'super'
+                   },
+                   {
+                     script: 'sub'
+                   }
+                 ],
+                 [
+                   {
+                     header: '1'
+                   },
+                   {
+                     header: '2'
+                   },
+                   'blockquote',
+                   'code-block'
+                 ],*/
+                [
+                    {
+                        list: 'ordered'
+                    },
+                    {
+                        list: 'bullet'
+                    },
+                    /* {
+                       indent: '-1'
+                     },
+                     {
+                       indent: '+1'
+                     }
+                   ],
+                   [
+                     'direction',
+                     {
+                       align: []
+                     }*/
+                ],
+                ['link', 'image', 'video', 'formula'],
+                ['clean']
+            ]
+        },
+        theme: 'snow'
+    });
+    var blogEditor2 = new Quill('#editor2', {
+        modules: {
+            formula: true,
+            syntax: true,
+            toolbar: [
+                [
+                    {
+                        font: []
+                    },
+                    {
+                        size: []
+                    }
+                ],
+                ['bold', 'italic', 'underline', 'strike'],
+                /* [
+                   {
+                     color: []
+                   },
+                   {
+                     background: []
+                   }
+                 ],
+                 [
+                   {
+                     script: 'super'
+                   },
+                   {
+                     script: 'sub'
+                   }
+                 ],
+                 [
+                   {
+                     header: '1'
+                   },
+                   {
+                     header: '2'
+                   },
+                   'blockquote',
+                   'code-block'
+                 ],*/
+                [
+                    {
+                        list: 'ordered'
+                    },
+                    {
+                        list: 'bullet'
+                    },
+                    /* {
+                       indent: '-1'
+                     },
+                     {
+                       indent: '+1'
+                     }
+                   ],
+                   [
+                     'direction',
+                     {
+                       align: []
+                     }*/
+                ],
+                ['link', 'image', 'video', 'formula'],
+                ['clean']
+            ]
+        },
+        theme: 'snow'
+    });
+
+    /*$(".editorVid").each(function(index) {
+        let current = $(this).attr('id')
+        setEditor(current)
+    });*/
+
+    $(".iframeVid").each(function(index) {
+        let current = $(this).attr('id');
+        let link = $(this).attr('data-link');
+        let linkFinal = link.replace('watch?v=', 'embed/');
+
+        if (link.includes('vimeo')) {
+            linkFinal = link.replace('vimeo', 'player.vimeo')
+        } 
+        if (link.includes('showcase')) {
+            linkFinal = link.replace('showcase', 'video')
+        } 
+
+        let content = setIframe(current, linkFinal);
+
+        if(linkFinal) {
+            $('#'+current).append(content);
+        }
+    });
+
+    function setIframe (item, link) {
+        return `<iframe width="100%" height="315"
+            src="${link}"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>`;
+    }
+
+    function setEditor (text) {
+        let newEditor = new Quill('#'+text, {
+        modules: {
+            formula: true,
+            syntax: true,
+            toolbar: [
+                [
+                    {
+                        font: []
+                    },
+                    {
+                        size: []
+                    }
+                ],
+                ['bold', 'italic', 'underline', 'strike'],
+                /* [
+                   {
+                     color: []
+                   },
+                   {
+                     background: []
+                   }
+                 ],
+                 [
+                   {
+                     script: 'super'
+                   },
+                   {
+                     script: 'sub'
+                   }
+                 ],
+                 [
+                   {
+                     header: '1'
+                   },
+                   {
+                     header: '2'
+                   },
+                   'blockquote',
+                   'code-block'
+                 ],*/
+                [
+                    {
+                        list: 'ordered'
+                    },
+                    {
+                        list: 'bullet'
+                    },
+                    /* {
+                       indent: '-1'
+                     },
+                     {
+                       indent: '+1'
+                     }
+                   ],
+                   [
+                     'direction',
+                     {
+                       align: []
+                     }*/
+                ],
+                /*['link', 'image', 'video', 'formula'],
+                ['clean']*/
+            ]
+        },
+        theme: 'snow'
+    });
+    }
+</script>

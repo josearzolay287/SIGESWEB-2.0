@@ -1,0 +1,175 @@
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-start mb-0">Agregar Programa</h2>
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Inicio</a>
+                                </li>
+                                <li class="breadcrumb-item"><a href="programas.html">Programas</a>
+                                </li>
+                                <li class="breadcrumb-item active">Agregar</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-8">
+                <div class="blog-edit-wrapper">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="card-header pb-2 align-items-start">
+                                        <div class="col-4 d-flex justify-content-between align-items-center">
+                                            <div class="d-flex flex-row align-items-center">
+                                                <div class="avatar me-1">
+                                                    <img src="app-assets/images/portrait/small/avatar-s-20.jpg" alt="Avatar" width="72" height="72">
+                                                </div>
+                                                <div>
+                                                    <h3 class="mb-0 ">Mittie Evans</h3>
+                                                    <small class="text-muted">Cliente</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Form -->
+                                    <form action="javascript:;" class="mt-2">
+                                        <div class="row align-items-center">
+                                            <div class=" col-lg-5 col-md-6 col-12">
+                                                <div class="mb-2">
+                                                    <label class="form-label" for="blog-edit-title">Titulo</label>
+                                                    <input type="text" id="blog-edit-title" class="form-control" value="Tren inferior" />
+                                                </div>
+                                            </div>
+                                            <div class=" col-lg-5 col-md-6 col-12">
+                                                <div class="mb-2">
+                                                    <label class="form-label" for="blog-edit-category">Categorias</label>
+                                                    <select id="blog-edit-category" class="select2 form-select" multiple>
+                                                        <option value="1" selected>Biceps</option>
+                                                        <option value="3" selected>Cardio</option>
+                                                        <option value="6">Espalda</option>
+                                                        <option value="9">Glúteos</option>
+                                                        <option value="8">Hombro</option>
+                                                        <option value="10">Pantorrilas</option>
+                                                        <option value="7">Pecho</option>
+                                                        <option value="2">Piernas</option>
+                                                        <option value="4">Triceps</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-6 col-12">
+                                                <div class="mb-2 mb-lg-0">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="checked" checked="">
+                                                        <label class="form-check-label" for="inlineCheckbox1">Repetir</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-2">
+                                                    <label class="form-label">Content</label>
+                                                    <div id="blog-editor-wrapper">
+                                                        <div id="blog-editor-container">
+                                                            <div class="editor">
+                                                                <p>
+                                                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/iSSAk4XCsRA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                                                                </p>
+                                                                <p><br /></p>
+                                                                <p>
+                                                                    Categoría: Cardio<br>
+                                                                    Link: https://www.youtube.com/watch?v=iSSAk4XCsRA<br>
+
+                                                                    Descripción: Se trata de dar un salto en el sitio al mismo tiempo que abres las piernas un poco más del ancho de los hombros y elevas los brazos hacia los laterales y hacia arriba hasta dar una palmada.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-2">
+                                                <div class="border rounded p-2">
+                                                    <h4 class="mb-1">Subir Archivo</h4>
+                                                    <div class="d-flex flex-column flex-md-row">
+                                                        <div class="featured-info">
+                                                            <div class="d-inline-block">
+                                                                <input class="form-control" type="file" id="blogCustomFile" accept="image/*" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mt-50">
+                                                <button type="submit" class="btn btn-primary me-1">Guardar</button>
+                                                <button type="reset" class="btn btn-outline-secondary">Cancelar</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!--/ Form -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <section id="dd-with-handle">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Lista de Programas</h4>
+                                </div>
+                                
+                                <div class="card-body">
+                                        <div class="input-group mb-2">
+                                            <span class="input-group-text" id="basic-addon-search1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+                                                    <circle cx="11" cy="11" r="8"></circle>
+                                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                                </svg>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="basic-addon-search1">
+                                            </div>
+                                        <div class="col-sm-12 mb-2">
+                                            <label class="form-label" for="blog-edit-category">Categorias</label>
+                                            <select id="blog-edit-category2" class="select2 form-select" >
+                                                <option value="1" selected>Biceps</option>
+                                                <option value="3" selected>Cardio</option>
+                                                <option value="6">Espalda</option>
+                                                <option value="9">Glúteos</option>
+                                                <option value="8">Hombro</option>
+                                                <option value="10">Pantorrilas</option>
+                                                <option value="7">Pecho</option>
+                                                <option value="2">Piernas</option>
+                                                <option value="4">Triceps</option>
+                                            </select>
+                                        </div>
+                                        
+                                
+                                        <div class="col-sm-12">
+                                            <ul class="list-group" id="handle-list-1">
+                                                <li class="list-group-item"><span class="handle me-50">+</span>Aperturas con TRX</li>
+                                                <li class="list-group-item"><span class="handle me-50">+</span>Jumping jacks</li>
+                                                <li class="list-group-item"><span class="handle me-50">+</span>Pantorrilla maquina (Smith)</li>
+                                                <li class="list-group-item"><span class="handle me-50">+</span>Press militar sentado barra</li>
+                                                <li class="list-group-item"><span class="handle me-50">+</span>Remo vertical mancuernas</li>
+                                            </ul>
+                                        </div>
+                                </div>
+                                    </div>
+                                </div>
+                        </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

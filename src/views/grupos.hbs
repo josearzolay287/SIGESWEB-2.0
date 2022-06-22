@@ -1,0 +1,223 @@
+<style>
+    .dataTables_filter {
+display: none;
+}
+</style>
+<!-- BEGIN: Content-->
+<div class="app-content content">
+
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-body">
+            <!-- Header Sección -->
+            <div class="row match-height">
+
+                <div class="col-lg-10 col-12">
+                    <div class="card card-statistics">
+                        <div class="card-header border-bottom">
+                            <h4 class="card-title">Grupos</h4>
+                            <button type="button" class="btn btn-primary waves-effect waves-float waves-light"
+                                data-bs-toggle="modal" data-bs-target="#addGrupo" id="addGrupoBtn"><span>
+                                    <i data-feather='plus'></i>
+                                    Agregar Grupo</span></button>
+
+                            <button type="button" class="d-none" data-bs-toggle="modal" data-bs-target="#addGrupo"
+                                id="editGrupoBtn"><span>
+                                    <i data-feather='plus'></i>
+                                    Agregar Grupo</span></button>
+                        </div>
+                        <!-- Buscadores -->
+                        <div class="card-body py-50">
+                            <div class="row">
+                                <div class="col-md-6 mb-50">
+                                    <label class="form-label" for="fp-default">Buscador</label>
+                                    <input type="busqueda" class="form-control" id="buscadorGrupos" placeholder=""
+                                        aria-controls="">
+                                </div>
+                                <div class="col-md-6">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Revenue Card -->
+
+                <!-- Deshabilitados -->
+                <div class="col-xl-2 col-md-4 col-sm-6">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="avatar bg-primary p-50 mb-1">
+                                <div class="avatar-content">
+                                    <i data-feather='plus' style="height: 24px; width: 24px;"></i>
+                                </div>
+                            </div>
+                            <h2 class="fw-bolder text-primary" id="total_grupos">03</h2>
+                            <p class="card-text text-primary">Resultados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla -->
+
+            <section class="invoice-list-wrapper">
+                <div class="card">
+                    <div class="card-datatable table-responsive">
+                        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+
+                            <table class="invoice-list-table table dataTable no-footer dtr-column" id="gruposTable"
+                                role="grid" aria-describedby="DataTables_Table_0_info">
+
+                                <!-- Cabezera de la tabla -->
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                            colspan="1" style="width: 50%;"
+                                            aria-label="Client: activate to sort column ascending">Grupo</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                            colspan="1" style="width: 30%;"
+                                            aria-label="Balance: activate to sort column ascending">Fecha Creacion</th>
+                                        <th class="cell-fit sorting_disabled text-center" rowspan="1" colspan="1"
+                                            aria-label="Actions">Opciones</th>
+                                    </tr>
+                                </thead>
+                                <!-- Cabezera de la tabla -->
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="modal fade" id="addGrupo" tabindex="-1" aria-labelledby="addNewCardTitle" aria-modal="true"
+                role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bg-transparent">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body px-sm-5 mx-50 pb-5">
+                            <h1 class="text-center mb-1" id="modalGrupoTitle">Añadir Nuevo Grupo</h1>
+
+                            <!-- form -->
+                            <form id="addEditGrupoForm" class="row gy-1 gx-2 mt-75">
+                                <input id="pkIdGrupoGimnasio" name="pkIdGrupoGimnasio" class="d-none" type="text">
+                                <input id="rowNum" name="rowNum" class="d-none" type="text">
+                                <div class="col-12">
+                                    <label class="form-label" for="modalAddCardNumber">Nombre</label>
+                                    <!-- CAMPO ID PARA ACTUALIZAR -->
+                                    <input type="text" class="d-none" id="idGrupoEdit">
+                                    <div class="input-group input-group-merge">
+                                        <span class="input-group-text" id="">
+                                            <i class="feather" data-feather="file-text"></i>
+                                        </span>
+                                        <input id="nombreGrupo" name="nombreGrupo" class="form-control" type="text"
+                                            placeholder="Nombre" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 text-center">
+                                    <button type="submit"
+                                        class="btn btn-primary me-1 mt-1 waves-effect waves-float waves-light">Agregar</button>
+                                    <button type="reset" class="btn btn-outline-secondary mt-1 waves-effect"
+                                        data-bs-dismiss="modal" aria-label="Close">
+                                        Cancelar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="info-grupo" aria-modal="true" role="dialog">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-transparent">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body px-sm-5 mx-50 pb-5">
+                            <div class="row match-height m-0">
+                                <div class="col-12 col-md-6 col-lg-8 col-xl-9 mb-1 mb-md-0 ps-md-0">
+                                    <div class="card card-body">
+                                        <h1 class="mb-50" id="">Grupo:</h1>
+                                        <h1 id="nombreGrupoDetalles" class="mb-0"></h1>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-4 col-xl-3 pe-md-0">
+                                    <div class="card text-center">
+                                        <div class="card-body">
+                                            <div class="avatar bg-primary">
+                                                <div class="avatar-content">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-plus" style="height: 24px; width: 24px;">
+                                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <h2 class="fw-bolder text-primary" id="resultados_info-grupo">0</h2>
+                                            <p class="card-text text-primary">Resultados</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- form -->
+                            <form id="" class="row gy-1 gx-2 mt-75 align-items-end">
+                                <div class="col-5 mb-1">
+                                    <label for="" class="form-label">Buscar Cliente</label>
+                                    <input type="text" class="form-control" id="buscadorGrupos2">
+                                </div>
+                                <div class="col-5 mb-1">
+                                    <label for="" class="form-label">Seleccionar Cliente</label>
+                                    <select name="" id="fkIdUsuarioInfo" class="select2">
+                                        <option value="">Seleccionar Cliente</option>
+                                        {{#each clientesList as |cliente i|}}
+                                        <option value="{{fkIdUsuarioInfo}}">{{nombre}} {{apellido1}} {{apellido2}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                                <div class="col-2 mb-1">
+                                    <input type="text"  id="fkIdGrupo" hidden>
+                                    <button class="btn btn-primary btn-block w-100" type="button" id="btnAddClienteGrupo"><i class="feather"
+                                            data-feather="plus"></i></button>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="table-responsive">
+                                        <table class="table" id="info-grupoTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Cliente</th>
+                                                    <th>Rol</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="button"
+                                        class="btn btn-primary me-1 mt-1 waves-effect waves-float waves-light d-none">Actualizar</button>
+                                    <button type="reset" class="btn btn-outline-secondary mt-1 waves-effect"
+                                        data-bs-dismiss="modal" aria-label="Close">
+                                        Cancelar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- END: Content-->

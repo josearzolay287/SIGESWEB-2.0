@@ -1,0 +1,187 @@
+<!-- BEGIN: Content-->
+<div class="app-content content">
+
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+
+        <!-- Header Sección -->
+        <div class="row match-height">
+
+            <div class="col-lg-8 col-12">
+                <div class="card card-statistics">
+                    <div class="card-header border-bottom">
+                        <h4 class="card-title">Accesos</h4>
+                    </div>
+                    <!-- Buscadores -->
+                    <div class="card-body" style="padding-top: 10px; padding-bottom: 10px;">
+                        <div class="row">
+                            <div class="col-md-4 mb-1">
+                                <label class="form-label" for="fp-default">Fechas</label>
+                                <input type="text" id="fechaRange"
+                                    class="form-control flatpickr-range flatpickr-input active"
+                                    placeholder="DD-MM-YYYY a DD-MM-YYYY" readonly="readonly">
+                            </div>
+                            <div class="col-md-4 mb-1">
+                                <label class="form-label" for="fp-default">Burcador</label>
+                                <input type="busqueda" class="form-control" placeholder="Buscar" id="buscador">
+                            </div>
+                            <div class="col-md-4 mb-1">
+                                <label class="form-label" for="fp-default">Estados</label>
+
+                                <select class="invoiceto form-select" id="selectEstado">
+                                    <option value="Habilitado" select>Habilitado </option>
+                                    <option value="Deshabilitado">Deshabilitado</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Revenue Card -->
+
+            <!-- Ingresos -->
+            <div class="col-xl-2 col-md-4 col-sm-6">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div class="avatar bg-light-success p-50 mb-1">
+                            <div class="avatar-content">
+                                <i data-feather='check' style="height: 24px; width: 24px;"></i>
+                            </div>
+                        </div>
+                        <h2 class="fw-bolder text-color-succes" id="ingresosCount">0</h2>
+                        <p class="card-text text-color-succes" >Ingresos</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Denegados -->
+            <div class="col-xl-2 col-md-4 col-sm-6">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div class="avatar bg-light-danger p-50 mb-1">
+                            <div class="avatar-content">
+                                <i data-feather='x' style="height: 24px; width: 24px;"></i>
+                            </div>
+                        </div>
+                        <h2 class="fw-bolder text-color-danger" id="fallidosCount">0</h2>
+                        <p class="card-text text-color-danger">Denegados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Tabla -->
+        <div class="content-wrapper container-xxl p-0">
+            <div class="content-header row"></div>
+            <div class="content-body">
+                <section class="invoice-list-wrapper">
+                    <div class="card">
+                        <div class="card-datatable table-responsive">
+                            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+
+                                <table class="invoice-list-table table dataTable no-footer dtr-column"
+                                    id="accesos-Table">
+
+                                    <!-- Cabezera de la tabla -->
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                rowspan="1" colspan="1" style="width: 50%;"
+                                                aria-label="Client: activate to sort column ascending">Cliente</th>
+                                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                rowspan="1" colspan="1" style="width: 20%;"
+                                                aria-label="Total: activate to sort column ascending">Estado</th>
+                                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                rowspan="1" colspan="1" style="width: 30%;"
+                                                aria-label="Balance: activate to sort column ascending">Fecha</th>
+                                        </tr>
+                                    </thead>
+                                    <!-- Cabezera de la tabla -->
+
+                                    <!-- Cuerpo de la tabla-->
+                                    {{!-- <tbody>
+                                        <tr class="odd">
+                                            <td>
+                                                <div class="d-flex justify-content-left align-items-center">
+                                                    <div class="avatar-wrapper">
+                                                        <a href="profile_user">
+                                                            <div class="avatar bg-light-success me-50">
+                                                                <div class="avatar-content">JK</div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="d-flex flex-column">
+                                                        <a href="profile_user">
+                                                            <h6 class="user-name text-truncate mb-0">Jamal Kerrod</h6>
+                                                        </a>
+                                                        <small
+                                                            class="text-truncate text-muted">jamalkerrod@email.com</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge badge-light-success" text-capitalized="">
+                                                    Habilitado </span></td>
+                                            <td><span class="d-none">20190509</span>10/03/2022 12:09PM</td>
+                                        </tr>
+                                        <tr class="odd">
+                                            <td>
+                                                <div class="d-flex justify-content-left align-items-center">
+                                                    <div class="avatar-wrapper">
+                                                        <a href="profile_user">
+                                                            <div class="avatar bg-light-success me-50">
+                                                                <div class="avatar-content">DW</div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="d-flex flex-column">
+                                                        <a href="profile_user">
+                                                            <h6 class="user-name text-truncate mb-0">Devonne Wallbridge
+                                                            </h6>
+                                                        </a>
+                                                        <small
+                                                            class="text-truncate text-muted">devonnewallbridge@email.com</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge badge-light-warning me-1" text-capitalized="">
+                                                    Repetido
+                                                </span></td>
+                                            <td><span class="d-none">20190509</span>10/03/2022 12:09PM</td>
+                                        </tr>
+                                        <tr class="odd">
+                                            <td>
+                                                <div class="d-flex justify-content-left align-items-center">
+                                                    <div class="avatar-wrapper">
+                                                        <a href="profile_user">
+                                                            <div class="avatar bg-light-success me-50">
+                                                                <div class="avatar-content">AF</div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="d-flex flex-column">
+                                                        <a href="profile_user">
+                                                            <h6 class="user-name text-truncate mb-0">Ariella Filippyev
+                                                            </h6>
+                                                        </a>
+                                                        <small
+                                                            class="text-truncate text-muted">ariellafilippyev@email.com</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td style=""><span class="badge badge-light-danger me-1"
+                                                    text-capitalized="">
+                                                    Deshabilitado </span></td>
+                                            <td style=""><span class="d-none">20190509</span>10/03/2022 12:09PM</td>
+                                        </tr>
+                                    </tbody> --}}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: Content-->

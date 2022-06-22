@@ -1,0 +1,676 @@
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+
+            <!-- Estadisticas -->
+            <section class="app-user-list">
+                <div class="row">
+                    <!-- Cantidad de Facturas -->
+                    <div class="col-lg-4 col-12">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h3 class="fw-bolder mb-75">25</h3>
+                                    <span>Facturas</span>
+                                </div>
+                                <div class="avatar bg-light-primary p-50">
+                                    <span class="avatar-content">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Total Facturas -->
+                    <div class="col-lg-4 col-12">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h3 class="fw-bolder mb-75">$ 1.782</h3>
+                                    <span>Total Facturas</span>
+                                </div>
+                                <div class="avatar bg-light-success p-50">
+                                    <span class="avatar-content">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Total de Impuesto -->
+                    <div class="col-lg-4 col-12">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h3 class="fw-bolder mb-75">$ 185</h3>
+                                    <span>Total de Impuesto</span>
+                                </div>
+                                <div class="avatar bg-light-danger p-50">
+                                    <span class="avatar-content">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabla de Reportes -->
+                <div class="card">
+                <div class="card-body border-bottom">
+                    <h4 class="card-title">Reportes</h4>
+                    <!-- Opciones de Filtracion-->
+                    <div class="row">
+                        <div class="col-md-4 user_role"><label class="form-label" for="UserRole">Tipo</label>
+                            <select
+                                id="UserRole" class="form-select text-capitalize mb-md-0 mb-2">
+                                <option value="Facturas" class="text-capitalize">Facturas</option>
+                                <option value="Cierre de Caja" class="text-capitalize">Cierre de Caja</option>
+                                <option value="Aprobaciones" class="text-capitalize">Aprobaciones</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 user_plan">
+                            <label class="form-label" for="fp-default">Fecha</label>
+                            <input type="text" id="fp-range" class="form-control flatpickr-range flatpickr-input active" placeholder="YYYY-MM-DD to YYYY-MM-DD">
+                        </div>
+                        <div class="col-md-4 user_status"><label class="form-label"
+                                for="FilterTransaction">Estado</label><select id="FilterTransaction"
+                                class="form-select text-capitalize mb-md-0 mb-2xx">
+                                <option value="Completada" class="text-capitalize">Completada</option>
+                                <option value="Pendiente" class="text-capitalize">Pendiente</option>
+                                <option value="Rechazada" class="text-capitalize">Rechazada</option>
+                                <option value="Todas" class="text-capitalize">Todas</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-datatable table-responsive pt-0">
+                        <table class="user-list-table table dataTable no-footer dtr-column collapsed"
+                            id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info"
+                            style="width: 1030px;">
+                            <!-- Cabezera de la tabla -->
+                            <thead>
+                                <tr role="row">
+                                    <th class="control sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label=": activate to sort column ascending" style="display: none;"></th>
+                                    <th class="sorting sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 46px;" aria-label="#: activate to sort column ascending" aria-sort="descending">
+                                        # FAC</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 270px;" aria-label="Client: activate to sort column ascending">
+                                        Cliente</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 73px;" aria-label="Total: activate to sort column ascending">
+                                        Total</th>
+                                    <th class="text-truncate sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 130px;" aria-label="Issued Date: activate to sort column ascending">
+                                        Fecha
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 98px;" aria-label="Balance: activate to sort column ascending">
+                                        Impuesto</th>
+                                    <th class="cell-fit sorting_disabled" rowspan="1" colspan="1" style="width: 80px;" aria-label="Actions">
+                                        Opciones</th>
+                                </tr>
+                            </thead>
+                            <!-- Cabezera de la tabla -->
+
+                            <!-- Cuerpo de la tabla-->
+                            <tbody>
+                                <tr class="odd">
+                                    <td class="control" tabindex="0" style="display: none;"></td>
+                                    <td class="sorting_1"><a class="fw-bold" href="#"> #5089</a></td>
+                                    <td>
+                                        <div class="d-flex justify-content-left align-items-center">
+                                            <div class="avatar-wrapper">
+                                                <div class="avatar bg-light-success me-50"><div class="avatar-content">JK</div></div>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <h6 class="user-name text-truncate mb-0">Jamal Kerrod</h6>
+                                                <small class="text-truncate text-muted">jamalkerrod@email.com</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="d-none">307</span>$ 307</td>
+                                    <td style=""><span class="d-none">20190509</span>09 May 2019</td>
+                                    <td style="">$ 30</td>
+                                    <td style="">
+                                        <div class="d-flex align-items-center col-actions">
+                                            <a class="me-1" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Download" aria-label="Download">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="feather feather-download font-small-4 me-50"
+                                                        >
+                                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                            <polyline points="7 10 12 15 17 10"></polyline>
+                                                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                                                        </svg>
+                                            </a>
+                                            <a class="me-25" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Eliminar" aria-label="Eliminar">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="feather feather-trash font-small-4 me-50"
+                                                        >
+                                                            <polyline points="3 6 5 6 21 6"></polyline>
+                                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                                        </svg>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="even">
+                                    <td class="control" tabindex="0" style="display: none;"></td>
+                                    <td class="sorting_1"><a class="fw-bold" href="#"> #5041</a></td>
+                                    <td>
+                                        <div class="d-flex justify-content-left align-items-center">
+                                            <div class="avatar-wrapper">
+                                                <div class="avatar me-50"><img src="../../../app-assets/images/avatars/1-small.png" alt="Avatar" width="32" height="32" /></div>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <h6 class="user-name text-truncate mb-0">Shamus Tuttle</h6>
+                                                <small class="text-truncate text-muted">shamustuttle@email.com</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="d-none">223</span>$ 223</td>
+                                    <td style=""><span class="d-none">20191119</span>19 Nov 2019</td>
+                                    <td style="">$ 22.3</td>
+                                    <td style="">
+                                        <div class="d-flex align-items-center col-actions">
+                                            <a class="me-1" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Download" aria-label="Download">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="feather feather-download font-small-4 me-50"
+                                                        >
+                                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                            <polyline points="7 10 12 15 17 10"></polyline>
+                                                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                                                        </svg>
+                                            </a>
+                                            <a class="me-25" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Eliminar" aria-label="Eliminar">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="feather feather-trash font-small-4 me-50"
+                                                        >
+                                                            <polyline points="3 6 5 6 21 6"></polyline>
+                                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                                        </svg>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td class="control" tabindex="0" style="display: none;"></td>
+                                    <td class="sorting_1"><a class="fw-bold" href="#"> #5027</a></td>
+                                    <td>
+                                        <div class="d-flex justify-content-left align-items-center">
+                                            <div class="avatar-wrapper">
+                                                <div class="avatar me-50"><img src="../../../app-assets/images/avatars/1-small.png" alt="Avatar" width="32" height="32" /></div>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <h6 class="user-name text-truncate mb-0">Devonne Wallbridge</h6>
+                                                <small class="text-truncate text-muted">devonnewallbridge@email.com</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="d-none">278</span>$ 278</td>
+                                    <td style=""><span class="d-none">20190925</span>25 Sep 2019</td>
+                                    <td style="">$ 17</td>
+                                    <td style="">
+                                        <div class="d-flex align-items-center col-actions">
+                                            <a class="me-1" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Download" aria-label="Download">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="feather feather-download font-small-4 me-50"
+                                                        >
+                                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                            <polyline points="7 10 12 15 17 10"></polyline>
+                                                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                                                        </svg>
+                                            </a>
+                                            <a class="me-25" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Eliminar" aria-label="Eliminar">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="feather feather-trash font-small-4 me-50"
+                                                        >
+                                                            <polyline points="3 6 5 6 21 6"></polyline>
+                                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                                        </svg>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="even">
+                                    <td class="control" tabindex="0" style="display: none;"></td>
+                                    <td class="sorting_1"><a class="fw-bold" href="#"> #5024</a></td>
+                                    <td>
+                                        <div class="d-flex justify-content-left align-items-center">
+                                            <div class="avatar-wrapper">
+                                                <div class="avatar me-50"><img src="../../../app-assets/images/avatars/2-small.png" alt="Avatar" width="32" height="32" /></div>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <h6 class="user-name text-truncate mb-0">Ariella Filippyev</h6>
+                                                <small class="text-truncate text-muted">ariellafilippyev@email.com</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="d-none">528</span>$ 528</td>
+                                    <td style=""><span class="d-none">20190802</span>02 Aug 2019</td>
+                                    <td style="">$ 52</td>
+                                    <td style="">
+                                        <div class="d-flex align-items-center col-actions">
+                                            <a class="me-1" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Download" aria-label="Download">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="feather feather-download font-small-4 me-50"
+                                                        >
+                                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                            <polyline points="7 10 12 15 17 10"></polyline>
+                                                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                                                        </svg>
+                                            </a>
+                                            <a class="me-25" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Eliminar" aria-label="Eliminar">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="feather feather-trash font-small-4 me-50"
+                                                        >
+                                                            <polyline points="3 6 5 6 21 6"></polyline>
+                                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                                        </svg>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td class="control" tabindex="0" style="display: none;"></td>
+                                    <td class="sorting_1"><a class="fw-bold" href="#"> #5020</a></td>
+                                    <td>
+                                        <div class="d-flex justify-content-left align-items-center">
+                                            <div class="avatar-wrapper">
+                                                <div class="avatar me-50"><img src="../../../app-assets/images/avatars/10-small.png" alt="Avatar" width="32" height="32" /></div>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <h6 class="user-name text-truncate mb-0">Roy Southerell</h6>
+                                                <small class="text-truncate text-muted">roysoutherell@email.com</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="d-none">521</span>$ 521</td>
+                                    <td style=""><span class="d-none">20191215</span>15 Dec 2019</td>
+                                    <td style="">$ 23</td>
+                                    <td style="">
+                                        <div class="d-flex align-items-center col-actions">
+                                            <a class="me-1" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Download" aria-label="Download">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="feather feather-download font-small-4 me-50"
+                                                        >
+                                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                            <polyline points="7 10 12 15 17 10"></polyline>
+                                                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                                                        </svg>
+                                            </a>
+                                            <a class="me-25" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Eliminar" aria-label="Eliminar">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="feather feather-trash font-small-4 me-50"
+                                                        >
+                                                            <polyline points="3 6 5 6 21 6"></polyline>
+                                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                                        </svg>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="even">
+                                    <td class="control" tabindex="0" style="display: none;"></td>
+                                    <td class="sorting_1"><a class="fw-bold" href="#"> #4995</a></td>
+                                    <td>
+                                        <div class="d-flex justify-content-left align-items-center">
+                                            <div class="avatar-wrapper">
+                                                <div class="avatar me-50"><img src="../../../app-assets/images/avatars/3-small.png" alt="Avatar" width="32" height="32" /></div>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <h6 class="user-name text-truncate mb-0">Raynell Clendennen</h6>
+                                                <small class="text-truncate text-muted">raynellclendennen@email.com</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="d-none">33</span>$ 33</td>
+                                    <td style=""><span class="d-none">20190609</span>09 Jun 2019</td>
+                                    <td style="">$ 3.5</td>
+                                    <td style="">
+                                        <div class="d-flex align-items-center col-actions">
+                                            <a class="me-1" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Download" aria-label="Download">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="feather feather-download font-small-4 me-50"
+                                                        >
+                                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                            <polyline points="7 10 12 15 17 10"></polyline>
+                                                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                                                        </svg>
+                                            </a>
+                                            <a class="me-25" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Eliminar" aria-label="Eliminar">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="24"
+                                                            height="24"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            stroke-width="2"
+                                                            stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="feather feather-trash font-small-4 me-50"
+                                                        >
+                                                            <polyline points="3 6 5 6 21 6"></polyline>
+                                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                                        </svg>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <!-- Cuerpo de la tabla-->
+                        </table>
+                        <div class="d-flex justify-content-between mx-2 row mb-1">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="dataTables_info" id="DataTables_Table_0_info" role="status"
+                                    aria-live="polite">Showing 1 to 10 of 50 entries</div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="dataTables_paginate paging_simple_numbers"
+                                    id="DataTables_Table_0_paginate">
+                                    <ul class="pagination">
+                                        <li class="paginate_button page-item previous disabled"
+                                            id="DataTables_Table_0_previous"><a href="#"
+                                                aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0"
+                                                class="page-link">&nbsp;</a></li>
+                                        <li class="paginate_button page-item active"><a href="#"
+                                                aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0"
+                                                class="page-link">1</a></li>
+                                        <li class="paginate_button page-item "><a href="#"
+                                                aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0"
+                                                class="page-link">2</a></li>
+                                        <li class="paginate_button page-item "><a href="#"
+                                                aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0"
+                                                class="page-link">3</a></li>
+                                        <li class="paginate_button page-item "><a href="#"
+                                                aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0"
+                                                class="page-link">4</a></li>
+                                        <li class="paginate_button page-item "><a href="#"
+                                                aria-controls="DataTables_Table_0" data-dt-idx="5" tabindex="0"
+                                                class="page-link">5</a></li>
+                                        <li class="paginate_button page-item next" id="DataTables_Table_0_next"><a
+                                                href="#" aria-controls="DataTables_Table_0" data-dt-idx="6"
+                                                tabindex="0" class="page-link">&nbsp;</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row justify-content-center m-0">
+                            <div class="col-12">
+                                <div id="chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal to add new user starts-->
+                <div class="modal modal-slide-in new-user-modal fade" id="modals-slide-in">
+                    <div class="modal-dialog">
+                        <form class="add-new-user modal-content pt-0" novalidate="novalidate">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close">×</button>
+                            <div class="modal-header mb-1">
+                                <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+                            </div>
+                            <div class="modal-body flex-grow-1">
+                                <div class="mb-1">
+                                    <label class="form-label" for="basic-icon-default-fullname">Full Name</label>
+                                    <input type="text" class="form-control dt-full-name"
+                                        id="basic-icon-default-fullname" placeholder="John Doe"
+                                        name="user-fullname">
+                                </div>
+                                <div class="mb-1">
+                                    <label class="form-label" for="basic-icon-default-uname">Username</label>
+                                    <input type="text" id="basic-icon-default-uname" class="form-control dt-uname"
+                                        placeholder="Web Developer" name="user-name">
+                                </div>
+                                <div class="mb-1">
+                                    <label class="form-label" for="basic-icon-default-email">Email</label>
+                                    <input type="text" id="basic-icon-default-email" class="form-control dt-email"
+                                        placeholder="john.doe@example.com" name="user-email">
+                                </div>
+                                <div class="mb-1">
+                                    <label class="form-label" for="basic-icon-default-contact">Contact</label>
+                                    <input type="text" id="basic-icon-default-contact"
+                                        class="form-control dt-contact" placeholder="+1 (609) 933-44-22"
+                                        name="user-contact">
+                                </div>
+                                <div class="mb-1">
+                                    <label class="form-label" for="basic-icon-default-company">Company</label>
+                                    <input type="text" id="basic-icon-default-company"
+                                        class="form-control dt-contact" placeholder="PIXINVENT" name="user-company">
+                                </div>
+                                <div class="mb-1">
+                                    <label class="form-label" for="country">Country</label>
+                                    <div class="position-relative"><select id="country"
+                                            class="select2 form-select select2-hidden-accessible"
+                                            data-select2-id="country" tabindex="-1" aria-hidden="true">
+                                            <option value="Australia" data-select2-id="2">USA</option>
+                                            <option value="Bangladesh">Bangladesh</option>
+                                            <option value="Belarus">Belarus</option>
+                                            <option value="Brazil">Brazil</option>
+                                            <option value="Canada">Canada</option>
+                                            <option value="China">China</option>
+                                            <option value="France">France</option>
+                                            <option value="Germany">Germany</option>
+                                            <option value="India">India</option>
+                                            <option value="Indonesia">Indonesia</option>
+                                            <option value="Israel">Israel</option>
+                                            <option value="Italy">Italy</option>
+                                            <option value="Japan">Japan</option>
+                                            <option value="Korea">Korea, Republic of</option>
+                                            <option value="Mexico">Mexico</option>
+                                            <option value="Philippines">Philippines</option>
+                                            <option value="Russia">Russian Federation</option>
+                                            <option value="South Africa">South Africa</option>
+                                            <option value="Thailand">Thailand</option>
+                                            <option value="Turkey">Turkey</option>
+                                            <option value="Ukraine">Ukraine</option>
+                                            <option value="United Arab Emirates">United Arab Emirates</option>
+                                            <option value="United Kingdom">United Kingdom</option>
+                                            <option value="United States">United States</option>
+                                        </select><span class="select2 select2-container select2-container--default"
+                                            dir="ltr" data-select2-id="1" style="width: 100%;"><span
+                                                class="selection"><span
+                                                    class="select2-selection select2-selection--single"
+                                                    role="combobox" aria-haspopup="true" aria-expanded="false"
+                                                    tabindex="0" aria-disabled="false"
+                                                    aria-labelledby="select2-country-container"><span
+                                                        class="select2-selection__rendered"
+                                                        id="select2-country-container" role="textbox"
+                                                        aria-readonly="true" title="USA">USA</span><span
+                                                        class="select2-selection__arrow" role="presentation"><b
+                                                            role="presentation"></b></span></span></span><span
+                                                class="dropdown-wrapper" aria-hidden="true"></span></span></div>
+                                </div>
+                                <div class="mb-1">
+                                    <label class="form-label" for="user-role">User Role</label>
+                                    <div class="position-relative"><select id="user-role"
+                                            class="select2 form-select select2-hidden-accessible"
+                                            data-select2-id="user-role" tabindex="-1" aria-hidden="true">
+                                            <option value="subscriber" data-select2-id="4">Subscriber</option>
+                                            <option value="editor">Editor</option>
+                                            <option value="maintainer">Maintainer</option>
+                                            <option value="author">Author</option>
+                                            <option value="admin">Admin</option>
+                                        </select><span class="select2 select2-container select2-container--default"
+                                            dir="ltr" data-select2-id="3" style="width: 100%;"><span
+                                                class="selection"><span
+                                                    class="select2-selection select2-selection--single"
+                                                    role="combobox" aria-haspopup="true" aria-expanded="false"
+                                                    tabindex="0" aria-disabled="false"
+                                                    aria-labelledby="select2-user-role-container"><span
+                                                        class="select2-selection__rendered"
+                                                        id="select2-user-role-container" role="textbox"
+                                                        aria-readonly="true"
+                                                        title="Subscriber">Subscriber</span><span
+                                                        class="select2-selection__arrow" role="presentation"><b
+                                                            role="presentation"></b></span></span></span><span
+                                                class="dropdown-wrapper" aria-hidden="true"></span></span></div>
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label" for="user-plan">Select Plan</label>
+                                    <div class="position-relative"><select id="user-plan"
+                                            class="select2 form-select select2-hidden-accessible"
+                                            data-select2-id="user-plan" tabindex="-1" aria-hidden="true">
+                                            <option value="basic" data-select2-id="6">Basic</option>
+                                            <option value="enterprise">Enterprise</option>
+                                            <option value="company">Company</option>
+                                            <option value="team">Team</option>
+                                        </select><span class="select2 select2-container select2-container--default"
+                                            dir="ltr" data-select2-id="5" style="width: 100%;"><span
+                                                class="selection"><span
+                                                    class="select2-selection select2-selection--single"
+                                                    role="combobox" aria-haspopup="true" aria-expanded="false"
+                                                    tabindex="0" aria-disabled="false"
+                                                    aria-labelledby="select2-user-plan-container"><span
+                                                        class="select2-selection__rendered"
+                                                        id="select2-user-plan-container" role="textbox"
+                                                        aria-readonly="true" title="Basic">Basic</span><span
+                                                        class="select2-selection__arrow" role="presentation"><b
+                                                            role="presentation"></b></span></span></span><span
+                                                class="dropdown-wrapper" aria-hidden="true"></span></span></div>
+                                </div>
+                                <button type="submit"
+                                    class="btn btn-primary me-1 data-submit waves-effect waves-float waves-light">Submit</button>
+                                <button type="reset" class="btn btn-outline-secondary waves-effect"
+                                    data-bs-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Modal to add new user Ends-->
+            </div>
+            <!-- list and filter end -->
+        </section>
+        <!-- users list ends -->
+
+    </div>
+</div>
+<!-- END: Content-->
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+    let options = {
+        chart: {
+            type: 'line'
+        },
+        series: [{
+            name: 'ventas',
+            data: [700,150,35,350,440,60,800,101,605]
+        }],
+        xaxis: {
+            categories: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+        },
+    }
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+    chart.render();
+</script>

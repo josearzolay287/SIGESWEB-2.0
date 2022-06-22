@@ -19,6 +19,7 @@ const Alumnos = db.define('alumnos', {
 	cedulaEstudiante: {
 		type: DataTypes.INTEGER,
 		allowNull: true,
+		defaultValue: 0
 	},
 	fechaNacimiento: {
 		type: DataTypes.STRING(250),

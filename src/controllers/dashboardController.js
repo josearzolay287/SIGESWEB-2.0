@@ -226,7 +226,7 @@ exports.addFactura = async (req, res) => {
 exports.getRepresentantes_Alumnos_A_Escolar = async (req, res) => {
   console.log('getclientesRegular')
 let a_escolar = '2022-2021';
-let matricula = await DataBasequerys.RepsAlums_A_Escolar(a_escolar);
+let matricula = JSON.parse(await DataBasequerys.RepsAlums_A_Escolar(a_escolar));
 console.log(matricula)
 return res.send({matricula});
 };
@@ -235,21 +235,23 @@ return res.send({matricula});
 exports.createMatricula = async (req, res) => {
   console.log(req.body);
   const {nombreRepresentante, cedulaRepresentante,ocupacionRepresentante, nombreMadre,cedulaMadre, ocupacionMadre,nombrePadre,cedulaPadre, ocupacionPadre, correo,nombreEstudiante, cedulaEstudiante,fechaNacimiento,edadEstudiante, nacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones,  generoEstudiante, gradoEstudiante,condicionEstudiante} = req.body;
-  let a_escolar = '2022-2021';
+  let a_escolar = '2022-2021',regRepre,regAlumno,regMatricula;
+  let matricula=[]
     let verifyRepresentante = JSON.parse(await DataBasequerys.RepresentanteByCedula(cedulaRepresentante));
     console.log(verifyRepresentante)
     if (!verifyRepresentante) {
-      let regRepre = JSON.parse(await DataBasequerys.RegRepresentantes(correo,nombreRepresentante, cedulaRepresentante, ocupacionRepresentante,nombreMadre, cedulaMadre,ocupacionMadre, nombrePadre, cedulaPadre, ocupacionPadre));
+      regRepre = JSON.parse(await DataBasequerys.RegRepresentantes(correo,nombreRepresentante, parseInt(cedulaRepresentante), ocupacionRepresentante,nombreMadre, parseInt(cedulaMadre),ocupacionMadre, nombrePadre, parseInt(cedulaPadre), ocupacionPadre));
       console.log(regRepre)
-      let regAlumno = JSON.parse(await DataBasequerys.RegAlumnos(nombreEstudiante, cedulaEstudiante, fechaNacimiento, edadEstudiante, nacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones, generoEstudiante, gradoEstudiante, condicionEstudiante,regRepre['id']));
-      console.log(regRepre)
-      let regMatricula = JSON.parse(await DataBasequerys.regRepsAlums_A_Escolar(a_escolar,regRepre['id'],regAlumno['id']))
-      console.log(regRepre)
+      let regAlumno = JSON.parse(await DataBasequerys.RegAlumnos(nombreEstudiante, parseInt(cedulaEstudiante), fechaNacimiento, edadEstudiante, nacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones, generoEstudiante, gradoEstudiante, condicionEstudiante,regRepre['id']));
+      console.log(regAlumno)
+      regMatricula = JSON.parse(await DataBasequerys.regRepsAlums_A_Escolar(a_escolar,regRepre['id'],regAlumno['id']))
+      console.log(regMatricula)
     } else {
       console.log(verifyRepresentante)
     }
-
- return res.send({newEvent});
+    matricula.push({representante:regRepre,alumno:regAlumno,regMatricula})
+    
+ return res.send({matricula});
 };
 /**UPDATE EVENTO GIMNASIO */
 exports.updateCalendarEvent = async (req, res) => {

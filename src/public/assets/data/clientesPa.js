@@ -23,13 +23,18 @@ var assetPath = '../../../app-assets/';
 
 
 async function getmatricula (){
- matricula=await fetch("/getmatriculaRegular")
+ matricula=await fetch("/getRepresentantes_Alumnos_A_Escolar")
       .then((response) => response.json())
       .then((data) => {
         return data.matricula;
       });
-      $('#count-habilitados').text(habilitados);
-      $('#count-deshabilitados').text(deshabilitados);
+      console.log(matricula)
+      let nuevos = matricula.filter(x => x.alumno.condicionEstudiante =='Nuevo');
+      let regulares = matricula.filter(x => x.alumno.condicionEstudiante =='Regular');
+      let Becado = matricula.filter(x => x.alumno.condicionEstudiante =='Becado');
+      $('#count-nuevos').text(nuevos.length)
+$('#count-regulares').text(regulares.length)
+$('#count-becados').text(Becado.length)
       createTable();
 }
 
@@ -46,21 +51,23 @@ if (dtmatriculaTable.length) {
     data: matricula,
     columns: [
       // columns according to JSON
-      { data: 'pkIdUsuario' },
-      { data: 'pkIdUsuario' },
-      { data: 'estado' },
-      { data: 'rol' },
-      { data: '' }
+      { data: 'alumno.gradoEstudiante' },
+      { data: 'alumno.cedulaEstudiante' },
+      { data: 'alumno.nombreEstudiante' },
+      { data: 'representante.nombreRepresentante' },
+      { data: 'representante.cedulaRepresentante' },
+      { data: 'alumno.telefonosEstudiante' },
+      { data: 'representante.email' },
+      { data: 'alumno.condicionEstudiante' },
+      { data: 'id' }
     ],
-    columnDefs: [
-      {// User Status target 3
-        targets: 0,visible:false
-      },      
+    columnDefs: [    
       {// User full name and username- Target 1
-        targets: 1,
+        targets: 2,
         render: function (data, type, full, meta) {
-          var name = full['nombre']+ " "+full['apellido1'] + " "+full['apellido2'],
-            email = full['correo'], image='';
+
+          var name = data,
+            email = full['email'], image='';
 
             // For Avatar badge
             var stateNum = Math.floor(Math.random() * 6) + 1;
@@ -68,7 +75,7 @@ if (dtmatriculaTable.length) {
             var state = states[stateNum],
               initials = name.match(/\b\w/g) || [];
             initials = ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
-            output = `<a href="/profile_user/${full['fkIdUsuario']}"><span class="avatar-content">${initials}</span></a>`;
+            output = `<a href="/profile_user/${full['id']}"><span class="avatar-content">${initials}</span></a>`;
           var colorClass = image === '' ? ' bg-light-' + state + ' ' : '';
           // Creates full output for row
           var row_output =`<div class="d-flex justify-content-left align-items-center">
@@ -78,34 +85,11 @@ if (dtmatriculaTable.length) {
             </div>
           </div>
           <div class="d-flex flex-column">                                                    
-            <a href="/profile_user/${full['fkIdUsuario']}"><span class="fw-bolder">${name} </span></a>
+            <a href="/profile_user/${full['id']}"><span class="fw-bolder">${name} </span></a>
             <small class="emp_post text-muted">${email}</small>
           </div>
         </div>`;
           return row_output;
-        }
-      },
-      {// User Status target 3
-        targets: 2,className:'status',
-        render: function (data, type, full, meta) {          
-          var status = parseInt(data);          
-          if (status == "undefined" || status == null || status > 3) {    
-            console.log(status)       
-            status=0;
-          }
-          return (`<span class="badge rounded-pill ${statusObj[status].class} text-capitalize" >${statusObj[status].title}</span>`
-          );
-        }
-      },
-      {// User TOTP target 4
-        targets: 3,
-        render: function (data, type, full, meta) {
-          let text = full.rol;
-          if (full.rol == "regular") {
-            text = "Cliente"
-          }
-          return (`<span class="badge bg-info text-capitalize">${text}</span>`
-          );
         }
       },
       {// Actions
@@ -118,7 +102,7 @@ if (dtmatriculaTable.length) {
           full.estado == 1 ? labelEstado = 'Deshabilitar' : labelEstado = 'Habilitar';
           return (
             ` <div class="d-flex align-items-center col-actions">
-            <a class="me-1" onclick="editCliente(${full.fkIdUsuario})" href="#" data-bs-toggle="tooltip"
+            <a class="me-1" onclick="editCliente(${data})" href="#" data-bs-toggle="tooltip"
                 data-bs-placement="top" title="" data-bs-original-title="Editar"
                 aria-label="Editar">
                 ${feather.icons['edit-3'].toSvg()}
@@ -126,7 +110,7 @@ if (dtmatriculaTable.length) {
             <a class="me-1" href="#" data-bs-toggle="tooltip"
                 data-bs-placement="top"
                 data-bs-original-title="Enviar correo" aria-label="Enviar correo">
-                <span class="showName" data-name="${full.correo}" data-bs-toggle="modal" data-bs-target="#compose-mail">
+                <span class="showName" data-name="${data}" data-bs-toggle="modal" data-bs-target="#compose-mail">
                   ${feather.icons['mail'].toSvg()}
                 </span>
             </a>
@@ -171,53 +155,10 @@ if (dtmatriculaTable.length) {
 
     ],
     initComplete: function () {
-      // Adding status filter once table initialized
-      this.api()
-        .columns(2)
-        .every(function () {
-          var column = this;
-          var label = $('<label class="form-label" for="FilterTransaction">Status</label>').appendTo('.user_status');
-          var select = $(
-            '<select id="FilterTransaction" class="form-select text-capitalize mb-md-0 mb-2xx"><option value=""> Select Status </option></select>'
-          )
-            .appendTo('.user_status')
-            .on('change', function () {
-              var val = $.fn.dataTable.util.escapeRegex($(this).val());
-              column.search(val ? '^' + val + '$' : '', true, false).draw();
-            });
 
-          column
-            .data()
-            .unique()
-            .sort()
-            .each(function (d, j) {
-              select.append(
-                '<option value="' +
-                  statusObj[d].title +
-                  '" class="text-capitalize">' +
-                  statusObj[d].title +
-                  '</option>'
-              );
-            });
-        });
     },
     drawCallback: function () {
-      $(document).find('[data-bs-toggle="tooltip"]').tooltip();
-      var info = dtmatriculaTable.DataTable().page.info();
-      var currentP = parseInt(info.page)+1;
-      var LastP = parseInt(info.pages);
-      let nextPagetoCharge = paginacion.next;
-      console.log(nextPagetoCharge);
-      if (!nextPagetoCharge) {
-        return;
-      }
-        if (currentP == LastP) {
-           $("#matriculaTable .pagination").append(
-            `<div class="spinner"></div>`
-          );        
-          ///nextPage(nextPagetoCharge,currentP)
-         
-        }
+     
     },
   });
   $('#matriculaTable_filter').addClass('d-none')
@@ -375,8 +316,10 @@ if (matirculaForm.length) {
           if (data.error) {
             swal.fire('Correo duplicado',data.error,'error');
           }
-          if (data.newUser[0] > 0) {
-            swal.fire('Éxito','Cliente creado con éxito','success');
+          if (data.matricula) {
+            swal.fire('Éxito','Alumno creado con éxito','success').then(()=>{
+              location.reload()
+            });
           }
         },
         error: function (jqXHR, textStatus) {

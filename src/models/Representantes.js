@@ -24,6 +24,7 @@ const Representantes = db.define('representantes', {
 	cedulaRepresentante: {
 		type: DataTypes.INTEGER,
 		allowNull: true,
+		defaultValue: 0
 	},
 	ocupacionRepresentante: {
 		type: DataTypes.STRING(250),
@@ -36,6 +37,7 @@ const Representantes = db.define('representantes', {
 	cedulaMadre: {
 		type: DataTypes.INTEGER,
 		allowNull: true,
+		defaultValue: 0
 	},
 	ocupacionMadre: {
 		type: DataTypes.STRING(250),
@@ -48,6 +50,7 @@ const Representantes = db.define('representantes', {
 	cedulaPadre: {
 		type: DataTypes.INTEGER,
 		allowNull: true,
+		defaultValue: 0
 	},
 	ocupacionPadre: {
 		type: DataTypes.STRING(250),

@@ -115,7 +115,7 @@ module.exports = {
           //console.log(planes);
         })
         .catch((err) => {
-          reject(err)
+          console.log(err)
         });
     });
   },
@@ -129,7 +129,8 @@ module.exports = {
           //console.log(planes);
         })
         .catch((err) => {
-          reject(err)
+          console.log(err)
+        //  reject(err)
         });
     });
   },

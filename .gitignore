@@ -6,8 +6,8 @@
 # Node artifact files
 node_modules/
 dist/
-src/index.js
-src/config/db.js
+#src/index.js
+#src/config/db.js
 
 # Compiled Java class files
 *.class

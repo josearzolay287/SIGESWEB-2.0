@@ -1,427 +1,309 @@
-
-   
-    <!-- BEGIN: Content -->
-    <div class="app-content content">
-        <div class="content-overlay"></div>
-        <div class="header-navbar-shadow"></div>
-        <div class="content-wrapper container-xxl p-0">
-            <div class="content-header row"></div>
-            <div class="content-body">
-                <section class="invoice-list-wrapper">
-                    <div class="card">
-                        <div class="card-header border-bottom">
-                            <h4 class="card-title">Facturas</h4>
-                            <div class="dt-buttons d-inline-flex"> 
-                                <a class="dt-button create-new btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#add-factura"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus me-50 font-small-4"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>Nueva Factura</span></a>
-                            </div>
-                        </div>
-                        <div class="card-datatable table-responsive">
-                            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
-                                <div class="row d-flex justify-content-between align-items-center m-1">
-                                    <div class="col-lg-6 d-flex align-items-center">
-                                        <div id="DataTables_Table_0_filter" class="dataTables_filter">
-                                            <input type="busqueda" class="form-control" placeholder="Buscar" aria-controls="DataTables_Table_0" />
-                                        </div>
-                                        <div class="invoice_status ms-sm-2">
-                                            <select id="UserRole" class="form-select ms-50 text-capitalize">
-                                                <option value=""> Estado</option>
-                                                <option value="Rechazado" class="text-capitalize">Rechazado</option>
-                                                <option value="Pendiente" class="text-capitalize">Pendiente</option>
-                                                <option value="Pagado" class="text-capitalize">Pagado</option>
-                                            </select>
-                                        </div> 
-                                    </div>
-                                </div>
-                                <table class="invoice-list-table table dataTable no-footer dtr-column" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
-                                    
-                                    <!-- Cabezera de la tabla -->
-                                    <thead>
-                                        <tr role="row">
-                                            <th class="control sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label=": activate to sort column ascending" style="display: none;"></th>
-                                            <th class="sorting sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 46px;" aria-label="#: activate to sort column ascending" aria-sort="descending">
-                                                #
-                                            </th>
-                                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 270px;" aria-label="Client: activate to sort column ascending">Cliente</th>
-                                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 73px;" aria-label="Total: activate to sort column ascending">Total</th>
-                                            <th class="text-truncate sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 130px;" aria-label="Issued Date: activate to sort column ascending">
-                                                Fecha
-                                            </th>
-                                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 98px;" aria-label="Balance: activate to sort column ascending">Estado</th>
-                                            <th class="cell-fit sorting_disabled" rowspan="1" colspan="1" style="width: 80px;" aria-label="Actions">Opciones</th>
-                                        </tr>
-                                    </thead>
-                                    <!-- Cabezera de la tabla -->
-
-                                    <!-- Cuerpo de la tabla-->
-                                    <tbody>
-                                        <tr class="odd">
-                                            <td class="control" tabindex="0" style="display: none;"></td>
-                                            <td class="sorting_1"><a class="fw-bold" href="#"> #5089</a></td>
-                                            <td>
-                                                <div class="d-flex justify-content-left align-items-center">
-                                                    <div class="avatar-wrapper">
-                                                        <div class="avatar bg-light-success me-50"><div class="avatar-content">JK</div></div>
-                                                    </div>
-                                                    <div class="d-flex flex-column">
-                                                        <h6 class="user-name text-truncate mb-0">Jamal Kerrod</h6>
-                                                        <small class="text-truncate text-muted">jamalkerrod@email.com</small>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><span class="d-none">3077</span>$3077</td>
-                                            <td style=""><span class="d-none">20190509</span>09 May 2019</td>
-                                            <td style=""><span class="badge badge-light-success" text-capitalized=""> Pagado </span></td>
-                                            <td style="">
-                                                <div class="d-flex align-items-center col-actions">
-                                                    <a class="me-1" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Download" aria-label="Download">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="feather feather-download font-small-4 me-50"
-                                                                >
-                                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                                                    <polyline points="7 10 12 15 17 10"></polyline>
-                                                                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                                                                </svg>
-                                                    </a>
-                                                    <a class="me-25" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Eliminar" aria-label="Eliminar">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="feather feather-trash font-small-4 me-50"
-                                                                >
-                                                                    <polyline points="3 6 5 6 21 6"></polyline>
-                                                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                                                </svg>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="even">
-                                            <td class="control" tabindex="0" style="display: none;"></td>
-                                            <td class="sorting_1"><a class="fw-bold" href="#"> #5041</a></td>
-                                            <td>
-                                                <div class="d-flex justify-content-left align-items-center">
-                                                    <div class="avatar-wrapper">
-                                                        <div class="avatar me-50"><img src="../../../app-assets/images/avatars/1-small.png" alt="Avatar" width="32" height="32" /></div>
-                                                    </div>
-                                                    <div class="d-flex flex-column">
-                                                        <h6 class="user-name text-truncate mb-0">Shamus Tuttle</h6>
-                                                        <small class="text-truncate text-muted">shamustuttle@email.com</small>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><span class="d-none">2230</span>$2230</td>
-                                            <td style=""><span class="d-none">20191119</span>19 Nov 2019</td>
-                                            <td style=""><span class="badge badge-light-success" text-capitalized=""> Pagado </span></td>
-                                            <td style="">
-                                                <div class="d-flex align-items-center col-actions">
-                                                    <a class="me-1" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Download" aria-label="Download">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="feather feather-download font-small-4 me-50"
-                                                                >
-                                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                                                    <polyline points="7 10 12 15 17 10"></polyline>
-                                                                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                                                                </svg>
-                                                    </a>
-                                                    <a class="me-25" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Eliminar" aria-label="Eliminar">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="feather feather-trash font-small-4 me-50"
-                                                                >
-                                                                    <polyline points="3 6 5 6 21 6"></polyline>
-                                                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                                                </svg>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="odd">
-                                            <td class="control" tabindex="0" style="display: none;"></td>
-                                            <td class="sorting_1"><a class="fw-bold" href="#"> #5027</a></td>
-                                            <td>
-                                                <div class="d-flex justify-content-left align-items-center">
-                                                    <div class="avatar-wrapper">
-                                                        <div class="avatar me-50"><img src="../../../app-assets/images/avatars/1-small.png" alt="Avatar" width="32" height="32" /></div>
-                                                    </div>
-                                                    <div class="d-flex flex-column">
-                                                        <h6 class="user-name text-truncate mb-0">Devonne Wallbridge</h6>
-                                                        <small class="text-truncate text-muted">devonnewallbridge@email.com</small>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><span class="d-none">2787</span>$2787</td>
-                                            <td style=""><span class="d-none">20190925</span>25 Sep 2019</td>
-                                            <td style=""><span class="badge badge-light-success" text-capitalized=""> Pagado </span></td>
-                                            <td style="">
-                                                <div class="d-flex align-items-center col-actions">
-                                                    <a class="me-1" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Download" aria-label="Download">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="feather feather-download font-small-4 me-50"
-                                                                >
-                                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                                                    <polyline points="7 10 12 15 17 10"></polyline>
-                                                                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                                                                </svg>
-                                                    </a>
-                                                    <a class="me-25" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Eliminar" aria-label="Eliminar">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="feather feather-trash font-small-4 me-50"
-                                                                >
-                                                                    <polyline points="3 6 5 6 21 6"></polyline>
-                                                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                                                </svg>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="even">
-                                            <td class="control" tabindex="0" style="display: none;"></td>
-                                            <td class="sorting_1"><a class="fw-bold" href="#"> #5024</a></td>
-                                            <td>
-                                                <div class="d-flex justify-content-left align-items-center">
-                                                    <div class="avatar-wrapper">
-                                                        <div class="avatar me-50"><img src="../../../app-assets/images/avatars/2-small.png" alt="Avatar" width="32" height="32" /></div>
-                                                    </div>
-                                                    <div class="d-flex flex-column">
-                                                        <h6 class="user-name text-truncate mb-0">Ariella Filippyev</h6>
-                                                        <small class="text-truncate text-muted">ariellafilippyev@email.com</small>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><span class="d-none">5285</span>$5285</td>
-                                            <td style=""><span class="d-none">20190802</span>02 Aug 2019</td>
-                                            <td style=""><span class="d-none">-$202</span>-$202</td>
-                                            <td style="">
-                                                <div class="d-flex align-items-center col-actions">
-                                                    <a class="me-1" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Download" aria-label="Download">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="feather feather-download font-small-4 me-50"
-                                                                >
-                                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                                                    <polyline points="7 10 12 15 17 10"></polyline>
-                                                                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                                                                </svg>
-                                                    </a>
-                                                    <a class="me-25" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Eliminar" aria-label="Eliminar">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="feather feather-trash font-small-4 me-50"
-                                                                >
-                                                                    <polyline points="3 6 5 6 21 6"></polyline>
-                                                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                                                </svg>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="odd">
-                                            <td class="control" tabindex="0" style="display: none;"></td>
-                                            <td class="sorting_1"><a class="fw-bold" href="#"> #5020</a></td>
-                                            <td>
-                                                <div class="d-flex justify-content-left align-items-center">
-                                                    <div class="avatar-wrapper">
-                                                        <div class="avatar me-50"><img src="../../../app-assets/images/avatars/10-small.png" alt="Avatar" width="32" height="32" /></div>
-                                                    </div>
-                                                    <div class="d-flex flex-column">
-                                                        <h6 class="user-name text-truncate mb-0">Roy Southerell</h6>
-                                                        <small class="text-truncate text-muted">roysoutherell@email.com</small>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><span class="d-none">5219</span>$5219</td>
-                                            <td style=""><span class="d-none">20191215</span>15 Dec 2019</td>
-                                            <td style=""><span class="badge badge-light-success" text-capitalized=""> Pagado </span></td>
-                                            <td style="">
-                                                <div class="d-flex align-items-center col-actions">
-                                                    <a class="me-1" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Download" aria-label="Download">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="feather feather-download font-small-4 me-50"
-                                                                >
-                                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                                                    <polyline points="7 10 12 15 17 10"></polyline>
-                                                                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                                                                </svg>
-                                                    </a>
-                                                    <a class="me-25" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Eliminar" aria-label="Eliminar">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="feather feather-trash font-small-4 me-50"
-                                                                >
-                                                                    <polyline points="3 6 5 6 21 6"></polyline>
-                                                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                                                </svg>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="even">
-                                            <td class="control" tabindex="0" style="display: none;"></td>
-                                            <td class="sorting_1"><a class="fw-bold" href="#"> #4995</a></td>
-                                            <td>
-                                                <div class="d-flex justify-content-left align-items-center">
-                                                    <div class="avatar-wrapper">
-                                                        <div class="avatar me-50"><img src="../../../app-assets/images/avatars/3-small.png" alt="Avatar" width="32" height="32" /></div>
-                                                    </div>
-                                                    <div class="d-flex flex-column">
-                                                        <h6 class="user-name text-truncate mb-0">Raynell Clendennen</h6>
-                                                        <small class="text-truncate text-muted">raynellclendennen@email.com</small>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><span class="d-none">3313</span>$3313</td>
-                                            <td style=""><span class="d-none">20190609</span>09 Jun 2019</td>
-                                            <td style=""><span class="badge badge-light-success" text-capitalized=""> Pagado </span></td>
-                                            <td style="">
-                                                <div class="d-flex align-items-center col-actions">
-                                                    <a class="me-1" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Download" aria-label="Download">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="feather feather-download font-small-4 me-50"
-                                                                >
-                                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                                                    <polyline points="7 10 12 15 17 10"></polyline>
-                                                                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                                                                </svg>
-                                                    </a>
-                                                    <a class="me-25" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Eliminar" aria-label="Eliminar">
-                                                                <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    fill="none"
-                                                                    stroke="currentColor"
-                                                                    stroke-width="2"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                    class="feather feather-trash font-small-4 me-50"
-                                                                >
-                                                                    <polyline points="3 6 5 6 21 6"></polyline>
-                                                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                                                </svg>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <!-- Cuerpo de la tabla-->
-                                </table>
-                                <!-- Paginacion de la tabla -->
-                                <div class="d-flex justify-content-between mx-2 row">
-                                    <div class="col-sm-12 col-md-6"><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Mostrando de 1 a 10 entradas</div></div>
-                                    <div class="col-sm-12 col-md-6">
-                                        <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
-                                            <ul class="pagination">
-                                                <li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous">
-                                                    <a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" class="page-link">&nbsp;</a>
-                                                </li>
-                                                <li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                                <li class="paginate_button page-item next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="6" tabindex="0" class="page-link">&nbsp;</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Paginacion de la tabla -->
-                            </div>
+<!-- BEGIN: Content -->
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row"></div>
+        <div class="content-body">
+            <section class="invoice-list-wrapper">
+                <div class="card">
+                    <div class="card-header border-bottom">
+                        <h4 class="card-title">Facturas</h4>
+                        <div class="dt-buttons d-inline-flex">
+                            <a class="dt-button create-new btn btn-primary" href="#" data-bs-toggle="modal"
+                                data-bs-target="#add-factura"><span><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        class="feather feather-plus me-50 font-small-4">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>Nueva Factura</span></a>
                         </div>
                     </div>
+                    <div class="card-datatable table-responsive">
+                        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                            <div class="row d-flex justify-content-between align-items-center m-1">
+                                <div class="col-lg-6 d-flex align-items-center">
+                                    <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                        <input type="busqueda" class="form-control" placeholder="Buscar"
+                                            aria-controls="DataTables_Table_0" />
+                                    </div>
+                                    <div class="invoice_status ms-sm-2">
+                                        <select id="UserRole" class="form-select ms-50 text-capitalize">
+                                            <option value=""> Estado</option>
+                                            <option value="Rechazado" class="text-capitalize">Rechazado</option>
+                                            <option value="Pendiente" class="text-capitalize">Pendiente</option>
+                                            <option value="Pagado" class="text-capitalize">Pagado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="invoice-list-table table dataTable no-footer dtr-column"
+                                id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
 
-                    
-                </section>
-            </div>
+                                <!-- Cabezera de la tabla -->
+                                <thead>
+                                    <tr role="row">
+                                        <th></th>
+                                        <th>
+                                            #
+                                        </th>
+                                        <th>Alumno</th>
+                                        <th>Total</th>
+                                        <th>
+                                            Fecha
+                                        </th>
+                                        <th>Estado</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                </thead>
+                                <!-- Cabezera de la tabla -->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+            </section>
         </div>
-    </div>  
-    <!-- END: Content-->
+    </div>
+</div>
+<div class="modal fade" id="add-factura" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+
+            <div class="modal-header bg-transparent">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-sm-5 mx-50 pb-5">
+                {{!-- <form id="formFacturaInfo2">
+                    <input type="text" name="testing" id="">
+                    <button type="submit">su</button>
+                </form> --}}
+                <form class="FacturasForm" id="matirculaForm">
+                    <div class="card-body py-0">
+                        <div class="divider divider-primary">
+                            <div class="divider-text">
+                                <h4 class="card-title mb-0">Datos Personales</h4>
+                            </div>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-6 col-lg-4">
+
+                                <label class="form-label">Cédula Representante</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="search"></i></span>
+                                    <input type="number" id="cedulaRepresentante" placeholder="Cédula Representante"
+                                        name="cedulaRepresentante" class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                            <input type="text" name="id_representate" class="d-none" id="representate">
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Nombre del Representante</label>
+                                <div class="input-group mb-2 col-sm-4">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="nombreRepresentante" placeholder="Nombre"
+                                        name="nombreRepresentante" class="form-control" readonly>
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Cédula Estudiante</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="number" id="cedulaEstudiante" placeholder="Cédula Estudiante"
+                                        name="cedulaEstudiante" class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Dirección:</label>
+                                <div class="input-group mb-2 col-sm-4">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="direccionEstudiante" placeholder="Dirección"
+                                        name="direccionEstudiante" class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Teléfonos</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="telefonosEstudiante" placeholder="Telefonos"
+                                        name="telefonosEstudiante" class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Grado</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
+                                    <select name="gradoEstudiante" id="gradoEstudiante" class="form-control">
+                                        <option value="1">1ero</option>
+                                        <option value="2">2do</option>
+                                        <option value="3">3ero</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divider divider-primary">
+                            <div class="divider-text">
+                                <h4 class="card-title mb-0">Datos factura</h4>
+                            </div>
+                        </div>
+
+                        <div class="row g-3">
+                             <div class="col-6 col-lg-4">
+                                <label class="form-label">Tipo</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
+                                    <select name="tipoFactura" id="tipoFactura" class="form-control">
+                                        <option value="Factura">Factura</option>
+                                        <option value="Nota Debito">Nota Debito</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Concepto</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
+                                    <select name="concetoFactura" id="concetoFactura" class="form-control">
+                                        <option value="Mensualidad">Mensualidad</option>
+                                        <option value="Incripcion">Incripcion</option>
+                                        <option value="Abono">Abono</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Mes a cancelar</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="mesCancelarFactura" placeholder="Mes a cancelar"
+                                        name="mesCancelarFactura" class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Número Factura</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="number" id="numeroFactura" name="numeroFactura"
+                                        class="form-control" readonly>
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Tipo de pago</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
+                                    <select name="tipoPagoFactura" id="tipoPagoFactura" class="form-control">
+                                        <option value="Efectivo">Efectivo</option>
+                                        <option value="Transferencia">Transferencia</option>
+                                        <option value="Debito">Debito</option>
+                                        <option value="Deposito">Deposito</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Referencia:</label>
+                                <div class="input-group mb-2 col-sm-4">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="referenciaFactura" placeholder="Referencia"
+                                        name="referenciaFactura" class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-3">
+
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Banco:</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="BancoFactura" placeholder="Banco"
+                                        name="BancoFactura" class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Fecha transacción:</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="calendar"></i></span>
+                                    <input type="text" id="fechaTransFactura"
+                                        class="form-control flatpickr-basic flatpickr-input" placeholder="YYYY-MM-DD"
+                                        name="fechaTransFactura" required>
+                                </div>
+                            </div> 
+                            <div class="col-6 col-lg-4">
+                                <label for="" class="form-label">Observaciones</label>
+                                <textarea class="form-control" name="observaciones" rows="1"
+                                    id="observaciones"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Monto $</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="montoDFactura" placeholder="Monto $"
+                                        name="montoDFactura" class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Monto Bs</label>
+                                 <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="montoBFactura" placeholder="Monto Bs"
+                                        name="montoBFactura" class="form-control" required>
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Condición</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
+                                    <select name="condicionEstudiante" id="condicionEstudiante" class="form-control">
+                                        <option value="Nuevo">Nuevo</option>
+                                        <option value="Regular">Regular</option>
+                                        <option value="Becado">Becado</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-12 mt-50">
+                            <button type="submit"
+                                class="btn btn-primary me-1 waves-effect waves-float waves-light">Agregar</button>
+                            <button data-bs-dismiss="modal" type="button" class="btn btn-outline-secondary waves-effect"
+                                style="width: 101.77px;">Volver</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- END: Content-->

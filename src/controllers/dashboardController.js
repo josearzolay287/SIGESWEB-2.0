@@ -230,6 +230,22 @@ let matricula = JSON.parse(await DataBasequerys.RepsAlums_A_Escolar(a_escolar));
 console.log(matricula)
 return res.send({matricula});
 };
+exports.getRepresentantes_Alumnos_A_EscolarbyCedula = async (req, res) => {
+  console.log('getclientesRegular')
+let a_escolar = '2022-2021';
+let tipo = req.params.tipo;
+let cedula = req.params.cedula;
+
+let matricula
+if (tipo == 'representante') {
+  matricula = JSON.parse(await DataBasequerys.Reps_A_EscolarCedula(a_escolar,cedula));
+}
+if (tipo == 'alumno') {
+  matricula = JSON.parse(await DataBasequerys.Alu_A_EscolarCedula(a_escolar,cedula));
+}
+console.log(matricula)
+return res.send({matricula});
+};
 
 /**CREATE MATRICULA */
 exports.createMatricula = async (req, res) => {

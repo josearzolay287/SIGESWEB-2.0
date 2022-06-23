@@ -88,6 +88,32 @@ module.exports = {
         });
     });
   },
+  Reps_A_EscolarCedula(a_escolar,cedula){
+    return new Promise((resolve, reject) => {
+      A_Escolar.findOne({where: {a_escolar:a_escolar}, include:[{association: A_Escolar.Alumnos},{association: A_Escolar.Representantes, where: { cedulaRepresentante: cedula }}]})
+        .then((data) => {
+          let data_p = JSON.stringify(data);
+          resolve(data_p);
+          ////console.log(id_usuario);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  },
+  Alu_A_EscolarCedula(a_escolar,cedula){
+    return new Promise((resolve, reject) => {
+      A_Escolar.findOne({where: {a_escolar:a_escolar}, include:[{association: A_Escolar.Alumnos, where: { cedulaEstudiante: cedula }},{association: A_Escolar.Representantes}]})
+        .then((data) => {
+          let data_p = JSON.stringify(data);
+          resolve(data_p);
+          ////console.log(id_usuario);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  },
   RepresentanteByCedula(cedulaRepresentante){
     return new Promise((resolve, reject) => {
       Representantes.findOne({where:{cedulaRepresentante:cedulaRepresentante}},{order: [

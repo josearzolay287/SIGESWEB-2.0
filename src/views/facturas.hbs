@@ -93,14 +93,14 @@
 
                                 <label class="form-label">Cédula Representante</label>
                                 <div class="input-group mb-2">
-                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                    <span class="input-group-text cursor-pointer" id="buscaRepresentante" onclick="buscaRepresentante('representante')"><i
                                             data-feather="search"></i></span>
                                     <input type="number" id="cedulaRepresentante" placeholder="Cédula Representante"
                                         name="cedulaRepresentante" class="form-control" required>
                                     <!---->
                                 </div>
                             </div>
-                            <input type="text" name="id_representate" class="d-none" id="representate">
+                            <input type="text" name="id_representate" class="d-none" id="id_representate">
                             <div class="col-6 col-lg-4">
                                 <label class="form-label">Nombre del Representante</label>
                                 <div class="input-group mb-2 col-sm-4">
@@ -112,10 +112,11 @@
                                 </div>
                             </div>
                             <div class="col-6 col-lg-4">
+                                <input type="text" name="id_alumno" class="d-none" id="id_alumno">
                                 <label class="form-label">Cédula Estudiante</label>
                                 <div class="input-group mb-2">
-                                    <span class="input-group-text" id="basic-addon-search1"><i
-                                            data-feather="user"></i></span>
+                                    <span class="input-group-text cursor-pointer" id="basic-addon-search1" onclick="buscaRepresentante('alumno')"><i
+                                            data-feather="search"></i></span>
                                     <input type="number" id="cedulaEstudiante" placeholder="Cédula Estudiante"
                                         name="cedulaEstudiante" class="form-control" required>
                                     <!---->

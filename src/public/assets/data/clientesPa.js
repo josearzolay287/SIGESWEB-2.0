@@ -29,9 +29,9 @@ async function getmatricula (){
         return data.matricula;
       });
       console.log(matricula)
-      let nuevos = matricula.alumnos.filter(x => x.condicionEstudiante =='Nuevo');
-      let regulares = matricula.alumnos.filter(x => x.condicionEstudiante =='Regular');
-      let Becado = matricula.alumnos.filter(x => x.condicionEstudiante =='Becado');
+      let nuevos = matricula.filter(x => x.condicionEstudiante =='Nuevo');
+      let regulares = matricula.filter(x => x.condicionEstudiante =='Regular');
+      let Becado = matricula.filter(x => x.condicionEstudiante =='Becado');
       $('#count-nuevos').text(nuevos.length)
 $('#count-regulares').text(regulares.length)
 $('#count-becados').text(Becado.length)
@@ -48,16 +48,16 @@ if (dtmatriculaTable.length) {
     dataTablematricula.column(3).search(this.value).draw();   
   });
   let dataTablematricula = dtmatriculaTable.DataTable({
-    data: matricula.alumnos,
+    data: matricula,
     columns: [
       // columns according to JSON
       { data: 'gradoEstudiante' },
       { data: 'cedulaEstudiante' },
       { data: 'nombreEstudiante' },
-      { data: 'representanteIdRep' },
-      { data: 'representanteIdRep' },
+      { data: 'id_rep' },
+      { data: 'id_rep' },
       { data: 'telefonosEstudiante' },
-      { data: 'representanteIdRep' },
+      { data: 'id_rep' },
       { data: 'condicionEstudiante' },
       { data: 'id' }
     ],
@@ -95,25 +95,23 @@ if (dtmatriculaTable.length) {
             {// User full name and username- Target 1
               targets: 3,
               render: function (data, type, full, meta) {
-      let filtro = matricula.representantes.filter(x => x.id_rep == data);
-      console.log(filtro)
-                var name = filtro[0].nombreRepresentante;
+                var name = full.Representantes[0].nombreRepresentante;
                 return name;
               }
             },
             {// User full name and username- Target 1
               targets: 4,
               render: function (data, type, full, meta) {
-      let filtro = matricula.representantes.filter(x => x.id_rep == data);
-                var cedula = filtro[0].cedulaRepresentante;
+                
+                var cedula = full.Representantes[0].cedulaRepresentante;
                 return cedula;
               }
             },
             {// User full name and username- Target 1
               targets: 6,
               render: function (data, type, full, meta) {
-      let filtro = matricula.representantes.filter(x => x.id_rep == data);
-                var email = filtro[0].email;
+                
+                var email = full.Representantes[0].email;
                 return email;
               }
             },
@@ -355,4 +353,37 @@ if (matirculaForm.length) {
     }
     
   });
+}
+async function buscaRepresentante (tipo) {
+  let cedula
+  switch (tipo) {
+    case 'representante':
+      cedula = $('#cedulaRepresentante').val()
+      break;
+    case 'alumno':
+      cedula = $('#cedulaEstudiante').val()
+      break;
+  }
+  
+  let datos =await fetch("/getRepresentantes_Alumnos_A_Escolar/"+cedula+'/'+tipo)
+  .then((response) => response.json())
+  .then((data) => {
+    return data.matricula;
+  });
+  console.log(datos)
+  $('#nombreRepresentante').val(datos.nombreRepresentante);
+  $('#cedulaRepresentante').val(datos.cedulaRepresentante);
+  $('#id_representate').val(datos.id_rep);
+  $('#ocupacionRepresentante').val(datos.ocupacionRepresentante);
+  $('#cedulaMadre').val(datos.cedulaMadre);
+  $('#cedulaPadre').val(datos.cedulaPadre);
+  $('#nombreMadre').val(datos.nombreMadre);
+  $('#nombrePadre').val(datos.nombrePadre);
+  $('#ocupacionMadre').val(datos.ocupacionMadre);
+  $('#ocupacionPadre').val(datos.ocupacionPadre);
+  $('#correo').val(datos.email);
+  
+  // ! TIPO DNI PENDIENTE
+  datos.gradoEstudiante !=='' ? $('#gradoEstudiante').val(datos.gradoEstudiante).trigger('change'): null
+  
 }

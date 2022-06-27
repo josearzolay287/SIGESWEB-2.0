@@ -9,7 +9,7 @@ const Representantes = db.define('representantes', {
 		primaryKey: true,
 		autoIncrement: true
 	},
-	photo: {
+	photoRep: {
 		type: DataTypes.TEXT,
 		allowNull: true,
 	},

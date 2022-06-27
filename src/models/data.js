@@ -78,7 +78,7 @@ module.exports = {
   /**REPRESENTATES ALUMNOS*/
   RepsAlums_A_Escolar(a_escolar){
     return new Promise((resolve, reject) => {
-      A_Escolar.findOne({where: {id:a_escolar}, include:[{association: A_Escolar.Alumnos},{association: A_Escolar.Representantes}]})
+      Alumnos.findAll({where: {aEscolarId:a_escolar}, include:[{association: Representantes.Alumnos}]})
         .then((data) => {
           let data_p = JSON.stringify(data);
           resolve(data_p);
@@ -91,7 +91,7 @@ module.exports = {
   },
   Reps_A_EscolarCedula(a_escolar,cedula){
     return new Promise((resolve, reject) => {
-      Representantes.findOne({where: {aEscolarId:a_escolar, cedulaRepresentante: cedula}, include:[{association: Representantes.Alumnos}]})
+      Representantes.findOne({where: {aEscolarId:a_escolar, cedulaRepresentante: cedula}})
         .then((data) => {
           let data_p = JSON.stringify(data);
           resolve(data_p);

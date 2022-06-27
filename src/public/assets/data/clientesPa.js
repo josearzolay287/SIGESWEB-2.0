@@ -29,9 +29,9 @@ async function getmatricula (){
         return data.matricula;
       });
       console.log(matricula)
-      let nuevos = matricula.filter(x => x.alumno.condicionEstudiante =='Nuevo');
-      let regulares = matricula.filter(x => x.alumno.condicionEstudiante =='Regular');
-      let Becado = matricula.filter(x => x.alumno.condicionEstudiante =='Becado');
+      let nuevos = matricula.alumnos.filter(x => x.condicionEstudiante =='Nuevo');
+      let regulares = matricula.alumnos.filter(x => x.condicionEstudiante =='Regular');
+      let Becado = matricula.alumnos.filter(x => x.condicionEstudiante =='Becado');
       $('#count-nuevos').text(nuevos.length)
 $('#count-regulares').text(regulares.length)
 $('#count-becados').text(Becado.length)
@@ -48,17 +48,17 @@ if (dtmatriculaTable.length) {
     dataTablematricula.column(3).search(this.value).draw();   
   });
   let dataTablematricula = dtmatriculaTable.DataTable({
-    data: matricula,
+    data: matricula.alumnos,
     columns: [
       // columns according to JSON
-      { data: 'alumno.gradoEstudiante' },
-      { data: 'alumno.cedulaEstudiante' },
-      { data: 'alumno.nombreEstudiante' },
-      { data: 'representante.nombreRepresentante' },
-      { data: 'representante.cedulaRepresentante' },
-      { data: 'alumno.telefonosEstudiante' },
-      { data: 'representante.email' },
-      { data: 'alumno.condicionEstudiante' },
+      { data: 'gradoEstudiante' },
+      { data: 'cedulaEstudiante' },
+      { data: 'nombreEstudiante' },
+      { data: 'representanteIdRep' },
+      { data: 'representanteIdRep' },
+      { data: 'telefonosEstudiante' },
+      { data: 'representanteIdRep' },
+      { data: 'condicionEstudiante' },
       { data: 'id' }
     ],
     columnDefs: [    
@@ -92,6 +92,31 @@ if (dtmatriculaTable.length) {
           return row_output;
         }
       },
+            {// User full name and username- Target 1
+              targets: 3,
+              render: function (data, type, full, meta) {
+      let filtro = matricula.representantes.filter(x => x.id_rep == data);
+      console.log(filtro)
+                var name = filtro[0].nombreRepresentante;
+                return name;
+              }
+            },
+            {// User full name and username- Target 1
+              targets: 4,
+              render: function (data, type, full, meta) {
+      let filtro = matricula.representantes.filter(x => x.id_rep == data);
+                var cedula = filtro[0].cedulaRepresentante;
+                return cedula;
+              }
+            },
+            {// User full name and username- Target 1
+              targets: 6,
+              render: function (data, type, full, meta) {
+      let filtro = matricula.representantes.filter(x => x.id_rep == data);
+                var email = filtro[0].email;
+                return email;
+              }
+            },
       {// Actions
         targets: -1,
         title: 'Actions',

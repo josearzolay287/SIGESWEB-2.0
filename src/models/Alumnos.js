@@ -1,9 +1,9 @@
 const { DataTypes } = require('sequelize');
 const db = require('../config/db');
 const bcrypt = require('bcrypt-nodejs');
-//const Sucursales = require("../../models/PYT4/Sucursales");
+const Representantes = require("../models/Representantes");
 const Alumnos = db.define('alumnos', {
-	id: {
+	id_al: {
 		type: DataTypes.INTEGER,
 		primaryKey: true,
 		autoIncrement: true
@@ -63,6 +63,7 @@ const Alumnos = db.define('alumnos', {
 	},
 }, 
 );
+	//Alumnos.Representantes= Alumnos.belongsTo(Representantes);
 
 module.exports = Alumnos;
 

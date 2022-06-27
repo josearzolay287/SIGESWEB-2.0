@@ -42,7 +42,9 @@ router.get('/agregar-programa', dashboardController.addPrograma);
 /**Gets or Post info from mysql */
 router.get('/getRepresentantes_Alumnos_A_Escolar', dashboardController.getRepresentantes_Alumnos_A_Escolar);
 router.get('/getRepresentantes_Alumnos_A_Escolar/:cedula/:tipo', dashboardController.getRepresentantes_Alumnos_A_EscolarbyCedula);
+router.get('/getFacturas_A_Escolar', dashboardController.getFacturas_A_Escolar);
 router.post('/createMatricula', dashboardController.createMatricula);
+router.post('/createFactura', dashboardController.createFactura);
 
 
 module.exports = router;

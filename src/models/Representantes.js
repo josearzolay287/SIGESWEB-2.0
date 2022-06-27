@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt-nodejs');
 const Alumnos = require("../models/Alumnos");
 
 const Representantes = db.define('representantes', {
-	id: {
+	id_rep: {
 		type: DataTypes.INTEGER,
 		primaryKey: true,
 		autoIncrement: true
@@ -59,7 +59,7 @@ const Representantes = db.define('representantes', {
 }, 
 );
 
-Representantes.Alumnos= Representantes.hasMany(Alumnos);
+Representantes.Alumnos= Representantes.hasMany(Alumnos, {as : 'Representantes', foreignKey : 'id_rep'});
 
 
 module.exports = Representantes;

@@ -4,12 +4,12 @@
     --------------------------------------------------------------------------------------
 
 ==========================================================================================*/
-var matricula, activematricula = 0,Inactivematricula=0, paginacion = [], grupos;
+var facturas, activematricula = 0,Inactivematricula=0, paginacion = [], grupos;
 var roles;
-var dtmatriculaTable = $('#matriculaTable'),
+var dtfacturasTable = $('#facturasTable'),
   newmatriculaidebar = $('.new-user-modal'),
-  matirculaForm = $('#matirculaForm'),
-  matirculaForm2 = $('#formClienteInfo2'),
+  facturaForm = $('#facturaForm'),
+  facturaForm2 = $('#formClienteInfo2'),
   select = $('.select2'),
   dtContact = $('.dt-contact'),
   statusObj = {
@@ -22,76 +22,32 @@ var dtmatriculaTable = $('#matriculaTable'),
 var assetPath = '../../../app-assets/';
 
 
-async function getmatricula (){
- matricula=await fetch("/getRepresentantes_Alumnos_A_Escolar")
+async function getFacturas (){
+ facturas=await fetch("/getFacturas_A_Escolar")
       .then((response) => response.json())
       .then((data) => {
-        return data.matricula;
+        return data.facturas;
       });
-      console.log(matricula)
-      let nuevos = matricula.filter(x => x.alumno.condicionEstudiante =='Nuevo');
-      let regulares = matricula.filter(x => x.alumno.condicionEstudiante =='Regular');
-      let Becado = matricula.filter(x => x.alumno.condicionEstudiante =='Becado');
-      $('#count-nuevos').text(nuevos.length)
-$('#count-regulares').text(regulares.length)
-$('#count-becados').text(Becado.length)
+      console.log(facturas)
+
       createTable();
 }
 
 function createTable() {
 // matricula List datatable
-if (dtmatriculaTable.length) {
-  $('#filtroBuscador').on('keyup change', function(){
-    dataTablematricula.search(this.value).draw();   
-  });
-  $('#filtroRoles').on('change', function(){
-    dataTablematricula.column(3).search(this.value).draw();   
-  });
-  let dataTablematricula = dtmatriculaTable.DataTable({
-    data: matricula,
+if (dtfacturasTable.length) {
+  let dataTablematricula = dtfacturasTable.DataTable({
+    data: facturas,
     columns: [
       // columns according to JSON
-      { data: 'alumno.gradoEstudiante' },
+      { data: 'nFactura' },
       { data: 'alumno.cedulaEstudiante' },
-      { data: 'alumno.nombreEstudiante' },
-      { data: 'representante.nombreRepresentante' },
-      { data: 'representante.cedulaRepresentante' },
-      { data: 'alumno.telefonosEstudiante' },
-      { data: 'representante.email' },
-      { data: 'alumno.condicionEstudiante' },
+      { data: 'monto1' },
+      { data: 'createdAt' },
+      { data: 'id' },
       { data: 'id' }
     ],
     columnDefs: [    
-      {// User full name and username- Target 1
-        targets: 2,
-        render: function (data, type, full, meta) {
-
-          var name = data,
-            email = full['email'], image='';
-
-            // For Avatar badge
-            var stateNum = Math.floor(Math.random() * 6) + 1;
-            var states = ['success', 'danger', 'warning', 'info', 'dark', 'primary', 'secondary'];
-            var state = states[stateNum],
-              initials = name.match(/\b\w/g) || [];
-            initials = ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
-            output = `<a href="/profile_user/${full['id']}"><span class="avatar-content">${initials}</span></a>`;
-          var colorClass = image === '' ? ' bg-light-' + state + ' ' : '';
-          // Creates full output for row
-          var row_output =`<div class="d-flex justify-content-left align-items-center">
-          <div class="avatar-wrapper">
-            <div class="avatar ${colorClass} me-1">
-            ${output} 
-            </div>
-          </div>
-          <div class="d-flex flex-column">                                                    
-            <a href="/profile_user/${full['id']}"><span class="fw-bolder">${name} </span></a>
-            <small class="emp_post text-muted">${email}</small>
-          </div>
-        </div>`;
-          return row_output;
-        }
-      },
       {// Actions
         targets: -1,
         title: 'Actions',
@@ -161,7 +117,7 @@ if (dtmatriculaTable.length) {
      
     },
   });
-  $('#matriculaTable_filter').addClass('d-none')
+  $('#facturasTable_filter').addClass('d-none')
   $('.showName').click(function (e) {
     let item = e.target.getAttribute('data-name')
     $('#nombreCliente').text(item)
@@ -172,9 +128,9 @@ if (dtmatriculaTable.length) {
 }
 $(function () {
   ('use strict');
-getmatricula();
+getFacturas();
 $('#btnAddCliente').click(()=>{
-  matirculaForm.submit()
+  facturaForm.submit()
 })
 // Form Validation
 });
@@ -230,11 +186,11 @@ matricula.forEach(element => {
 });
 $('#count-habilitados').text(habilitados);
 $('#count-deshabilitados').text(deshabilitados);
-dtmatriculaTable.DataTable().clear();
+dtfacturasTable.DataTable().clear();
   for (let i = 0; i < matricula.length; i++) {
-    dtmatriculaTable.DataTable().row.add(matricula[i]);          
+    dtfacturasTable.DataTable().row.add(matricula[i]);          
   }
-  dtmatriculaTable.DataTable().draw()
+  dtfacturasTable.DataTable().draw()
       $('#add-cliente').modal('hide');
       return
     },
@@ -268,49 +224,48 @@ async function buscaRepresentante (tipo) {
     return data.matricula;
   });
   console.log(datos)
-  $('#nombreRepresentante').val(datos.representante.nombreRepresentante);
-  $('#cedulaRepresentante').val(datos.representante.cedulaRepresentante);
-  $('#id_representate').val(datos.representante.id);
-  $('#cedulaEstudiante').val(datos.alumno.cedulaEstudiante);
-  $('#id_alumno').val(datos.alumno.id);
-  $('#direccionEstudiante').val(datos.alumno.direccionEstudiante);
-  $('#telefonosEstudiante').val(datos.alumno.telefonosEstudiante);
+  $('#nombreRepresentante').val(datos.Representantes[0].nombreRepresentante);
+  $('#cedulaRepresentante').val(datos.Representantes[0].cedulaRepresentante);
+  $('#id_representate').val(datos.Representantes[0].id_rep);
+  $('#cedulaEstudiante').val(datos.cedulaEstudiante);
+  $('#id_alumno').val(datos.id_al);
+  $('#direccionEstudiante').val(datos.direccionEstudiante);
+  $('#telefonosEstudiante').val(datos.telefonosEstudiante);
   
   // ! TIPO DNI PENDIENTE
-  datos.alumno.telefonosEstudiante !=='' ? $('#gradoEstudiante').val(datos.alumno.gradoEstudiante).trigger('change'): null
+  datos.gradoEstudiante !=='' ? $('#gradoEstudiante').val(datos.gradoEstudiante).trigger('change'): null
   
 }
 
-if (matirculaForm.length) {
-  matirculaForm.validate({
+if (facturaForm.length) {
+  facturaForm.validate({
     errorClass: 'error',
     rules: {
-      'nombreRepresentante': {
+      'cedulaRepresentante': {
         required: true
       },
-      'cedulaRepresentante': {
+      'cedulaEstudiante': {
         required: true
       },
     }
   });
 
-  matirculaForm.on('submit', function (e) {
-    var isValid = matirculaForm.valid();        
-    e.preventDefault();    
-    let formArray = matirculaForm.serializeArray();
-    console.log(formArray)
+  facturaForm.on('submit', function (e) {
+    var isValid = facturaForm.valid();        
+    e.preventDefault();   
+    
     if (isValid) {
       $.ajax({
-        url: `/createMatricula`,
+        url: `/createFactura`,
         type: 'POST',
-        data: matirculaForm.serialize() ,
+        data: facturaForm.serialize() ,
         success: async function (data, textStatus, jqXHR) {
           console.log(data)
           if (data.error) {
-            swal.fire('Correo duplicado',data.error,'error');
+            swal.fire('Error',data.error,'error');
           }
           if (data.matricula) {
-            swal.fire('Éxito','Alumno creado con éxito','success').then(()=>{
+            swal.fire('Éxito','Factura creada con éxito','success').then(()=>{
               location.reload()
             });
           }

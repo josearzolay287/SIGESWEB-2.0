@@ -39,12 +39,11 @@
                                 </div>
                             </div>
                             <table class="invoice-list-table table dataTable no-footer dtr-column"
-                                id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                                id="facturasTable" role="grid" aria-describedby="DataTables_Table_0_info">
 
                                 <!-- Cabezera de la tabla -->
                                 <thead>
                                     <tr role="row">
-                                        <th></th>
                                         <th>
                                             #
                                         </th>
@@ -80,7 +79,9 @@
                     <input type="text" name="testing" id="">
                     <button type="submit">su</button>
                 </form> --}}
-                <form class="FacturasForm" id="matirculaForm">
+                <form class="FacturasForm" id="facturaForm">
+                    <input type="text" name="id_a_escolar" class="d-none" id="id_a_escolar">
+
                     <div class="card-body py-0">
                         <div class="divider divider-primary">
                             <div class="divider-text">
@@ -93,10 +94,11 @@
 
                                 <label class="form-label">Cédula Representante</label>
                                 <div class="input-group mb-2">
-                                    <span class="input-group-text cursor-pointer" id="buscaRepresentante" onclick="buscaRepresentante('representante')"><i
-                                            data-feather="search"></i></span>
+                                    <span class="input-group-text cursor-pointer" id="buscaRepresentante"
+                                        onclick="buscaRepresentante('representante')"><i
+                                            data-feather="user"></i></span>
                                     <input type="number" id="cedulaRepresentante" placeholder="Cédula Representante"
-                                        name="cedulaRepresentante" class="form-control" required>
+                                        name="cedulaRepresentante" class="form-control" readonly>
                                     <!---->
                                 </div>
                             </div>
@@ -115,10 +117,10 @@
                                 <input type="text" name="id_alumno" class="d-none" id="id_alumno">
                                 <label class="form-label">Cédula Estudiante</label>
                                 <div class="input-group mb-2">
-                                    <span class="input-group-text cursor-pointer" id="basic-addon-search1" onclick="buscaRepresentante('alumno')"><i
-                                            data-feather="search"></i></span>
+                                    <span class="input-group-text cursor-pointer" id="basic-addon-search1"
+                                        onclick="buscaRepresentante('alumno')"><i data-feather="search"></i></span>
                                     <input type="number" id="cedulaEstudiante" placeholder="Cédula Estudiante"
-                                        name="cedulaEstudiante" class="form-control" required>
+                                        name="cedulaEstudiante" class="form-control" >
                                     <!---->
                                 </div>
                             </div>
@@ -130,7 +132,7 @@
                                     <span class="input-group-text" id="basic-addon-search1"><i
                                             data-feather="user"></i></span>
                                     <input type="text" id="direccionEstudiante" placeholder="Dirección"
-                                        name="direccionEstudiante" class="form-control" required>
+                                        name="direccionEstudiante" class="form-control" readonly>
                                     <!---->
                                 </div>
                             </div>
@@ -140,7 +142,7 @@
                                     <span class="input-group-text" id="basic-addon-search1"><i
                                             data-feather="user"></i></span>
                                     <input type="text" id="telefonosEstudiante" placeholder="Telefonos"
-                                        name="telefonosEstudiante" class="form-control" required>
+                                        name="telefonosEstudiante" class="form-control" readonly>
                                     <!---->
                                 </div>
                             </div>
@@ -148,7 +150,7 @@
                                 <label class="form-label">Grado</label>
                                 <div class="input-group mb-2">
                                     <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
-                                    <select name="gradoEstudiante" id="gradoEstudiante" class="form-control">
+                                    <select name="gradoEstudiante" id="gradoEstudiante" class="form-control" readonly>
                                         <option value="1">1ero</option>
                                         <option value="2">2do</option>
                                         <option value="3">3ero</option>
@@ -163,7 +165,7 @@
                         </div>
 
                         <div class="row g-3">
-                             <div class="col-6 col-lg-4">
+                            <div class="col-6 col-lg-4">
                                 <label class="form-label">Tipo</label>
                                 <div class="input-group mb-2">
                                     <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
@@ -190,7 +192,7 @@
                                     <span class="input-group-text" id="basic-addon-search1"><i
                                             data-feather="user"></i></span>
                                     <input type="text" id="mesCancelarFactura" placeholder="Mes a cancelar"
-                                        name="mesCancelarFactura" class="form-control" required>
+                                        name="mesCancelarFactura" class="form-control" >
                                     <!---->
                                 </div>
                             </div>
@@ -201,8 +203,8 @@
                                 <div class="input-group mb-2">
                                     <span class="input-group-text" id="basic-addon-search1"><i
                                             data-feather="user"></i></span>
-                                    <input type="number" id="numeroFactura" name="numeroFactura"
-                                        class="form-control" readonly>
+                                    <input type="number" id="numeroFactura" name="numeroFactura" class="form-control"
+                                        >
                                     <!---->
                                 </div>
                             </div>
@@ -224,7 +226,7 @@
                                     <span class="input-group-text" id="basic-addon-search1"><i
                                             data-feather="user"></i></span>
                                     <input type="text" id="referenciaFactura" placeholder="Referencia"
-                                        name="referenciaFactura" class="form-control" required>
+                                        name="referenciaFactura" class="form-control" >
                                     <!---->
                                 </div>
                             </div>
@@ -237,8 +239,8 @@
                                 <div class="input-group mb-2">
                                     <span class="input-group-text" id="basic-addon-search1"><i
                                             data-feather="user"></i></span>
-                                    <input type="text" id="BancoFactura" placeholder="Banco"
-                                        name="BancoFactura" class="form-control" required>
+                                    <input type="text" id="BancoFactura" placeholder="Banco" name="BancoFactura"
+                                        class="form-control" >
                                     <!---->
                                 </div>
                             </div>
@@ -249,9 +251,9 @@
                                             data-feather="calendar"></i></span>
                                     <input type="text" id="fechaTransFactura"
                                         class="form-control flatpickr-basic flatpickr-input" placeholder="YYYY-MM-DD"
-                                        name="fechaTransFactura" required>
+                                        name="fechaTransFactura" >
                                 </div>
-                            </div> 
+                            </div>
                             <div class="col-6 col-lg-4">
                                 <label for="" class="form-label">Observaciones</label>
                                 <textarea class="form-control" name="observaciones" rows="1"
@@ -265,30 +267,19 @@
                                 <div class="input-group mb-2">
                                     <span class="input-group-text" id="basic-addon-search1"><i
                                             data-feather="user"></i></span>
-                                    <input type="text" id="montoDFactura" placeholder="Monto $"
-                                        name="montoDFactura" class="form-control" required>
+                                    <input type="text" id="montoDFactura" placeholder="Monto $" name="montoDFactura"
+                                        class="form-control" >
                                     <!---->
                                 </div>
                             </div>
                             <div class="col-6 col-lg-4">
                                 <label class="form-label">Monto Bs</label>
-                                 <div class="input-group mb-2">
+                                <div class="input-group mb-2">
                                     <span class="input-group-text" id="basic-addon-search1"><i
                                             data-feather="user"></i></span>
-                                    <input type="text" id="montoBFactura" placeholder="Monto Bs"
-                                        name="montoBFactura" class="form-control" required>
+                                    <input type="text" id="montoBFactura" placeholder="Monto Bs" name="montoBFactura"
+                                        class="form-control" >
                                     <!---->
-                                </div>
-                            </div>
-                            <div class="col-6 col-lg-4">
-                                <label class="form-label">Condición</label>
-                                <div class="input-group mb-2">
-                                    <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
-                                    <select name="condicionEstudiante" id="condicionEstudiante" class="form-control">
-                                        <option value="Nuevo">Nuevo</option>
-                                        <option value="Regular">Regular</option>
-                                        <option value="Becado">Becado</option>
-                                    </select>
                                 </div>
                             </div>
 

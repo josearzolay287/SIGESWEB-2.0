@@ -225,14 +225,14 @@ exports.addFactura = async (req, res) => {
 /**getRepresentantes_Alumnos_A_Escolar */
 exports.getRepresentantes_Alumnos_A_Escolar = async (req, res) => {
   console.log('getclientesRegular')
-let a_escolar = '2022-2021';
+let a_escolar = 1;
 let matricula = JSON.parse(await DataBasequerys.RepsAlums_A_Escolar(a_escolar));
-console.log(matricula)
+console.log(matricula.representantes)
 return res.send({matricula});
 };
 exports.getRepresentantes_Alumnos_A_EscolarbyCedula = async (req, res) => {
   console.log('getclientesRegular')
-let a_escolar = '2022-2021';
+let a_escolar = 1;
 let tipo = req.params.tipo;
 let cedula = req.params.cedula;
 
@@ -248,26 +248,42 @@ return res.send({matricula});
 };
 
 /**CREATE MATRICULA */
+exports.createFactura = async (req, res) => {
+  console.log(req.body);
+  const {id_a_escolar,  id_representate,  id_alumno,  tipoFactura,  concetoFactura,  mesCancelarFactura,  numeroFactura,  tipoPagoFactura,  referenciaFactura, BancoFactura, fechaTransFactura,  observaciones,  montoDFactura,  montoBFactura } = req.body;
+  const a_escolar = 1;
+  let matricula=[]
+    let factura = JSON.parse(await DataBasequerys.RegFacturas_A_Escolar(tipoFactura,concetoFactura,mesCancelarFactura,numeroFactura,tipoPagoFactura,referenciaFactura,BancoFactura,fechaTransFactura,observaciones,montoDFactura,montoBFactura,a_escolar,id_alumno,id_representate))
+    console.log(factura)
+ return res.send({factura});
+};
 exports.createMatricula = async (req, res) => {
   console.log(req.body);
   const {nombreRepresentante, cedulaRepresentante,ocupacionRepresentante, nombreMadre,cedulaMadre, ocupacionMadre,nombrePadre,cedulaPadre, ocupacionPadre, correo,nombreEstudiante, cedulaEstudiante,fechaNacimiento,edadEstudiante, nacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones,  generoEstudiante, gradoEstudiante,condicionEstudiante} = req.body;
-  let a_escolar = '2022-2021',regRepre,regAlumno,regMatricula;
+  let a_escolar = 1,regRepre,regAlumno,regMatricula;
   let matricula=[]
     let verifyRepresentante = JSON.parse(await DataBasequerys.RepresentanteByCedula(cedulaRepresentante));
     console.log(verifyRepresentante)
     if (!verifyRepresentante) {
-      regRepre = JSON.parse(await DataBasequerys.RegRepresentantes(correo,nombreRepresentante, parseInt(cedulaRepresentante), ocupacionRepresentante,nombreMadre, parseInt(cedulaMadre),ocupacionMadre, nombrePadre, parseInt(cedulaPadre), ocupacionPadre));
+      regRepre = JSON.parse(await DataBasequerys.RegRepresentantes(correo,nombreRepresentante, parseInt(cedulaRepresentante), ocupacionRepresentante,nombreMadre, parseInt(cedulaMadre),ocupacionMadre, nombrePadre, parseInt(cedulaPadre), ocupacionPadre,a_escolar));
       console.log(regRepre)
-      let regAlumno = JSON.parse(await DataBasequerys.RegAlumnos(nombreEstudiante, parseInt(cedulaEstudiante), fechaNacimiento, edadEstudiante, nacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones, generoEstudiante, gradoEstudiante, condicionEstudiante,regRepre['id']));
+      let regAlumno = JSON.parse(await DataBasequerys.RegAlumnos(nombreEstudiante, parseInt(cedulaEstudiante), fechaNacimiento, edadEstudiante, nacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones, generoEstudiante, gradoEstudiante, condicionEstudiante,regRepre['id_rep'],a_escolar));
       console.log(regAlumno)
-      regMatricula = JSON.parse(await DataBasequerys.regRepsAlums_A_Escolar(a_escolar,regRepre['id'],regAlumno['id']))
-      console.log(regMatricula)
     } else {
       console.log(verifyRepresentante)
     }
-    matricula.push({representante:regRepre,alumno:regAlumno,regMatricula})
+    matricula.push({representante:regRepre,alumno:regAlumno})
     
  return res.send({matricula});
+};
+
+
+exports.getFacturas_A_Escolar = async (req, res) => {
+  console.log('getFacturas_A_Escolar')
+let a_escolar = 1;
+let facturas = JSON.parse(await DataBasequerys.Facturas_A_Escolar(a_escolar));
+console.log(facturas)
+return res.send({facturas});
 };
 /**UPDATE EVENTO GIMNASIO */
 exports.updateCalendarEvent = async (req, res) => {

@@ -59,7 +59,7 @@ if (dtmatriculaTable.length) {
       { data: 'telefonosEstudiante' },
       { data: 'id_rep' },
       { data: 'condicionEstudiante' },
-      { data: 'id' }
+      { data: 'id_al' }
     ],
     columnDefs: [    
       {// User full name and username- Target 1
@@ -130,16 +130,16 @@ if (dtmatriculaTable.length) {
                 aria-label="Editar">
                 ${feather.icons['edit-3'].toSvg()}
             </a>
-            <a class="me-1" href="#" data-bs-toggle="tooltip"
+            <a class="me-1 d-none" href="#" data-bs-toggle="tooltip"
                 data-bs-placement="top"
                 data-bs-original-title="Enviar correo" aria-label="Enviar correo">
                 <span class="showName" data-name="${data}" data-bs-toggle="modal" data-bs-target="#compose-mail">
                   ${feather.icons['mail'].toSvg()}
                 </span>
             </a>
-            <a class="me-1" href="/facturas" data-bs-toggle="tooltip"
-                data-bs-placement="top" title="" data-bs-original-title="Facturar"
-                aria-label="Facturar">
+            <a class="me-1" href="/estadoCuenta/${full['cedulaEstudiante']}" data-bs-toggle="tooltip"
+                data-bs-placement="top" title="" data-bs-original-title="Estado Cuenta"
+                aria-label="Estado Cuenta" >
                 ${feather.icons['file-text'].toSvg()}
             </a>
             <a class="" href="#" data-bs-toggle="tooltip"
@@ -275,39 +275,36 @@ dtmatriculaTable.DataTable().clear();
 
 // * EDITAR CLIENTE
 function editCliente (id) {
-  $('#nombre').removeClass('is-invalid');
-  $('#apellido1').removeClass('is-invalid');
-  $('#correo').removeClass('is-invalid');
-  $('#proximoPagoFecha').removeClass('is-invalid');
-  $('#fechaIngresos').removeClass('is-invalid');
-  let filterClient = matricula.filter(item => item.fkIdUsuario == id)
+
+  let filterClient = matricula.filter(item => item.id_al == id)
   console.log(filterClient)
-  $('#idEditCliente').val(filterClient[0].fkIdUsuario)
-  $('#nombre').val(filterClient[0].nombre)
-  $('#apellido1').val(filterClient[0].apellido1)
-  $('#apellido2').val(filterClient[0].apellido2)
-  $('#dni').val(filterClient[0].cedula)
-  // ! TIPO DNI PENDIENTE
-  filterClient[0].tipoId !=='' ? $('#type_dni').val(filterClient[0].tipoId).trigger('change'): null
-  // ! FECHA NACIMIENTO PENDIENTE
-  $('#nacimiento').val(moment(filterClient[0].nacimiento).format('YYYY-MM-DD'))
-  $('#status').val(filterClient[0].estado)
-  $('#rol').val(filterClient[0].rol)
-  // ! GENERO PENDIENTE
-  filterClient[0].sexo !== '' ? $('#genero').val(filterClient[0].sexo): null
-  $('#correo').val(filterClient[0].correo)
-  // ! GRUPOS PENDIENTE
-  filterClient[0].grupo !== null ? $('#grupos').val(filterClient[0].grupo): null
+  $('#id_al').val(filterClient[0].id_al);
+  $('#nombreRepresentante').val(filterClient[0].Representantes[0].nombreRepresentante);
+  $('#cedulaRepresentante').val(filterClient[0].Representantes[0].cedulaRepresentante);
+  $('#representate').val(filterClient[0].id_rep);
+  $('#ocupacionRepresentante').val(filterClient[0].Representantes[0].ocupacionRepresentante);
+  $('#cedulaMadre').val(filterClient[0].Representantes[0].cedulaMadre);
+  $('#cedulaPadre').val(filterClient[0].Representantes[0].cedulaPadre);
+  $('#nombreMadre').val(filterClient[0].Representantes[0].nombreMadre);
+  $('#nombrePadre').val(filterClient[0].Representantes[0].nombrePadre);
+  $('#ocupacionMadre').val(filterClient[0].Representantes[0].ocupacionMadre);
+  $('#ocupacionPadre').val(filterClient[0].Representantes[0].ocupacionPadre);
+  $('#correo').val(filterClient[0].Representantes[0].email);
 
-  // ! APARTADO DETALLES DE PAGO PENDIENTE
-  filterClient[0].proximoPago !== '' ? $('#proximoPagoFecha').val(moment(filterClient[0].proximoPago).format('YYYY-MM-DD')): ''
-  $('#membresia').val(filterClient[0].membresia).trigger('change')
-  $('#montoMembresia').val(filterClient[0].precio)
-  $('#diasGracia').val(filterClient[0].gracia)
-  $('#fechaIngresos').val(moment(filterClient[0].fechaIngreso).format('YYYY-MM-DD'))
-  $('#linkPago').val(filterClient[0].linkPago)
-  $('#clasesSemanales').val(filterClient[0].clasesPermitidas)
-
+  $('#nombreEstudiante').val(filterClient[0].nombreEstudiante);
+  $('#cedulaEstudiante').val(filterClient[0].cedulaEstudiante);
+  $('#fechaNacimiento').val(filterClient[0].fechaNacimiento);
+  $('#edadEstudiante').val(filterClient[0].edadEstudiante);
+  $('#nacimientoEstudiante').val(filterClient[0].lugarnacimientoEstudiante);
+  $('#direccionEstudiante').val(filterClient[0].direccionEstudiante);
+  $('#telefonosEstudiante').val(filterClient[0].telefonosEstudiante);
+  $('#procedenciaEstudiante').val(filterClient[0].procedenciaEstudiante);
+  $('#observaciones').val(filterClient[0].observaciones);
+  $('#generoEstudiante').val(filterClient[0].generoEstudiante).trigger('change');
+  $('#gradoEstudiante').val(filterClient[0].gradoEstudiante).trigger('change');
+  $('#condicionEstudiante').val(filterClient[0].condicionEstudiante).trigger('change');
+  
+  $('#buttonSubt').text('Actualizar');
   $('#addClienteBtn2').click();
 }
 
@@ -387,3 +384,12 @@ async function buscaRepresentante (tipo) {
   datos.gradoEstudiante !=='' ? $('#gradoEstudiante').val(datos.gradoEstudiante).trigger('change'): null
   
 }
+
+$('#fechaNacimiento').change(function () {
+  console.log(this.value);
+let now = moment();
+let fechaNac = moment(this.value);
+let edad = now.diff(fechaNac, 'y');
+console.log(edad);
+$('#edadEstudiante').val(edad);  
+})

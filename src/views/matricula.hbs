@@ -58,7 +58,7 @@
                                 <label class="form-label" for="fp-default">Buscador</label>
                                 <input type="busqueda" class="form-control" placeholder="Buscar" id="filtroBuscador">
                             </div>
-                            <div class="col-md-6 mb-1">
+                            <div class="col-md-6 mb-1 d-none">
                                 <label class="form-label" for="">Roles</label>
                                 <select name="" id="filtroRoles" class="select2">
                                     <option value="">Todos</option>
@@ -103,7 +103,7 @@
                     </div>
                 </div>
             </div>
-                        <div class="col-xl-2 col-md-4 col-sm-6">
+            <div class="col-xl-2 col-md-4 col-sm-6">
                 <div class="card text-center">
                     <div class="card-body">
                         <div class="avatar bg-light-danger p-50 mb-1">
@@ -383,20 +383,22 @@
 
                         <div class="row g-3">
                             <div class="col-6 col-lg-4">
-                                <input type="text" name="id_representate" class="d-none" id="representate">
+                                <input type="text" name="representate" class="d-none" id="representate">
+                                <input type="text" name="id_al" class="d-none" id="id_al">
                                 <label class="form-label">Nombre del Representante</label>
                                 <div class="input-group mb-2 col-sm-4">
                                     <span class="input-group-text" id="basic-addon-search1"><i
                                             data-feather="user"></i></span>
-                                    <input type="text" id="nombreRepresentante" placeholder="Nombre" name="nombreRepresentante"
-                                        class="form-control" required>
+                                    <input type="text" id="nombreRepresentante" placeholder="Nombre"
+                                        name="nombreRepresentante" class="form-control" required>
                                     <!---->
                                 </div>
                             </div>
                             <div class="col-6 col-lg-4">
                                 <label class="form-label">Cédula Representante</label>
                                 <div class="input-group mb-2">
-                                    <span class="input-group-text" id="basic-addon-search1" onclick="buscaRepresentante('representante')"><i
+                                    <span class="input-group-text" id="basic-addon-search1"
+                                        onclick="buscaRepresentante('representante')"><i
                                             data-feather="search"></i></span>
                                     <input type="number" id="cedulaRepresentante" placeholder="Cédula Representante"
                                         name="cedulaRepresentante" class="form-control" required>
@@ -429,9 +431,9 @@
                                 <label class="form-label">Cédula Madre</label>
                                 <div class="input-group mb-2">
                                     <span class="input-group-text" id="basic-addon-search1"><i
-                                            data-feather="search"></i></span>
-                                    <input type="number" id="cedulaMadre" placeholder="Cédula Madre"
-                                        name="cedulaMadre" class="form-control" required>
+                                            data-feather="user"></i></span>
+                                    <input type="number" id="cedulaMadre" placeholder="Cédula Madre" name="cedulaMadre"
+                                        class="form-control" required>
                                     <!---->
                                 </div>
                             </div>
@@ -446,7 +448,7 @@
                                 </div>
                             </div>
                         </div>
-                            <div class="row g-3">
+                        <div class="row g-3">
                             <div class="col-6 col-lg-4">
                                 <label class="form-label">Nombre - Padre</label>
                                 <div class="input-group mb-2 col-sm-4">
@@ -461,9 +463,9 @@
                                 <label class="form-label">Cédula Padre</label>
                                 <div class="input-group mb-2">
                                     <span class="input-group-text" id="basic-addon-search1"><i
-                                            data-feather="search"></i></span>
-                                    <input type="number" id="cedulaPadre" placeholder="Cédula Padre"
-                                        name="cedulaPadre" class="form-control" required>
+                                            data-feather="user"></i></span>
+                                    <input type="number" id="cedulaPadre" placeholder="Cédula Padre" name="cedulaPadre"
+                                        class="form-control" required>
                                     <!---->
                                 </div>
                             </div>
@@ -499,13 +501,13 @@
                         </div>
 
                         <div class="row g-3">
-                               <div class="col-6 col-lg-4">
+                            <div class="col-6 col-lg-4">
                                 <label class="form-label">Nombre:</label>
                                 <div class="input-group mb-2 col-sm-4">
                                     <span class="input-group-text" id="basic-addon-search1"><i
                                             data-feather="user"></i></span>
-                                    <input type="text" id="nombreEstudiante" placeholder="Nombre" name="nombreEstudiante"
-                                        class="form-control" required>
+                                    <input type="text" id="nombreEstudiante" placeholder="Nombre"
+                                        name="nombreEstudiante" class="form-control" required>
                                     <!---->
                                 </div>
                             </div>
@@ -528,26 +530,26 @@
                                         class="form-control flatpickr-basic flatpickr-input" placeholder="YYYY-MM-DD"
                                         name="fechaNacimiento" required>
                                 </div>
-                            </div> 
+                            </div>
                         </div>
-                        <div class="row g-3">                                                       
+                        <div class="row g-3">
                             <div class="col-6 col-lg-4">
                                 <label class="form-label">Edad</label>
                                 <div class="input-group mb-2">
                                     <span class="input-group-text" id="basic-addon-search1"><i
                                             data-feather="user"></i></span>
-                                    <input type="number" id="edadEstudiante" placeholder="Edad"
-                                        name="edadEstudiante" class="form-control" readonly>
+                                    <input type="number" id="edadEstudiante" placeholder="Edad" name="edadEstudiante"
+                                        class="form-control" readonly>
                                     <!---->
                                 </div>
                             </div>
-                               <div class="col-6 col-lg-4">
+                            <div class="col-6 col-lg-4">
                                 <label class="form-label">Lugar Nacimiento:</label>
                                 <div class="input-group mb-2 col-sm-4">
                                     <span class="input-group-text" id="basic-addon-search1"><i
                                             data-feather="user"></i></span>
-                                    <input type="text" id="nacimientoEstudiante" placeholder="Lugar Nacimiento" name="nacimientoEstudiante"
-                                        class="form-control" required>
+                                    <input type="text" id="nacimientoEstudiante" placeholder="Lugar Nacimiento"
+                                        name="nacimientoEstudiante" class="form-control" required>
                                     <!---->
                                 </div>
                             </div>
@@ -556,15 +558,15 @@
                                 <div class="input-group mb-2 col-sm-4">
                                     <span class="input-group-text" id="basic-addon-search1"><i
                                             data-feather="user"></i></span>
-                                    <input type="text" id="direccionEstudiante" placeholder="Dirección" name="direccionEstudiante"
-                                        class="form-control" required>
+                                    <input type="text" id="direccionEstudiante" placeholder="Dirección"
+                                        name="direccionEstudiante" class="form-control" required>
                                     <!---->
                                 </div>
-                            </div> 
+                            </div>
                         </div>
 
                         <div class="row g-3">
-                                                      
+
                             <div class="col-6 col-lg-4">
                                 <label class="form-label">Teléfonos</label>
                                 <div class="input-group mb-2">
@@ -578,57 +580,70 @@
                             <div class="col-6 col-lg-4">
                                 <label class="form-label">Colegio Procedencia</label>
                                 <div class="input-group  mb-2">
-                                     <span class="input-group-text" id="basic-addon-search1"><i
+                                    <span class="input-group-text" id="basic-addon-search1"><i
                                             data-feather="user"></i></span>
-                                    <input type="text" class="form-control" placeholder="Colegio Procedencia" name="procedenciaEstudiante"
-                                        id="procedenciaEstudiante" />
+                                    <input type="text" class="form-control" placeholder="Colegio Procedencia"
+                                        name="procedenciaEstudiante" id="procedenciaEstudiante" />
                                 </div>
                             </div>
                             <div class="col-6 col-lg-4">
                                 <label for="" class="form-label">Observaciones del estudiante</label>
-                                <textarea class="form-control" name="observaciones" rows="1" id="observaciones"></textarea>
+                                <textarea class="form-control" name="observaciones" rows="1"
+                                    id="observaciones"></textarea>
                             </div>
                         </div>
 
                         <div class="row g-3">
                             <div class="col-6 col-lg-4">
-                                            <label class="form-label">Género</label>
-                                            <div class="input-group mb-2">
-                                                <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
-                                                <select name="generoEstudiante" id="generoEstudiante" class="form-control">
-                                                    <option value="Masculino">Masculino</option>
-                                                    <option value="Femenino">Femenino</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 col-lg-4">
-                                            <label class="form-label">Grado a Cursar</label>
-                                            <div class="input-group mb-2">
-                                                <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
-                                                <select name="gradoEstudiante" id="gradoEstudiante" class="form-control">
-                                                    <option value="1">1ero</option>
-                                                    <option value="2">2do</option>
-                                                    <option value="3">3ero</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 col-lg-4">
-                                            <label class="form-label">Condición</label>
-                                            <div class="input-group mb-2">
-                                                <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
-                                                <select name="condicionEstudiante" id="condicionEstudiante" class="form-control">
-                                                    <option value="Nuevo">Nuevo</option>
-                                                    <option value="Regular">Regular</option>
-                                                    <option value="Becado">Becado</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        
+                                <label class="form-label">Género</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
+                                    <select name="generoEstudiante" id="generoEstudiante" class="form-control">
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Femenino</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Grado a Cursar</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
+                                    <select name="gradoEstudiante" id="gradoEstudiante" class="form-control">
+                                        <optgroup label="Primaria">
+                                            <option value="1">1ero</option>
+                                            <option value="2">2do</option>
+                                            <option value="3">3ero</option>
+                                            <option value="4">4to</option>
+                                            <option value="5">5to</option>
+                                            <option value="6">6to</option>
+                                        </optgroup>
+                                        <optgroup label="Bachillerato">
+                                            <option value="7">1er año</option>
+                                            <option value="8">2do año</option>
+                                            <option value="9">3er año</option>
+                                            <option value="10">4to año</option>
+                                            <option value="11">5to año</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Condición</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
+                                    <select name="condicionEstudiante" id="condicionEstudiante" class="form-control">
+                                        <option value="Nuevo">Nuevo</option>
+                                        <option value="Regular">Regular</option>
+                                        <option value="Becado">Becado</option>
+                                    </select>
+                                </div>
+                            </div>
+
                         </div>
 
                         <div class="col-12 mt-50">
                             <button type="submit"
-                                class="btn btn-primary me-1 waves-effect waves-float waves-light">Agregar</button>
+                                class="btn btn-primary me-1 waves-effect waves-float waves-light" id="buttonSubt">Agregar</button>
                             <button data-bs-dismiss="modal" type="button" class="btn btn-outline-secondary waves-effect"
                                 style="width: 101.77px;">Volver</button>
                         </div>

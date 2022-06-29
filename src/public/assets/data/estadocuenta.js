@@ -4,7 +4,7 @@
     --------------------------------------------------------------------------------------
 
 ==========================================================================================*/
-var facturas, activematricula = 0,Inactivematricula=0, paginacion = [], grupos;
+var facturas, activematricula = 0,id_rep = $('#id_al').text();
 var roles;
 var dtfacturasTable = $('#facturasTable'),
   newmatriculaidebar = $('.new-user-modal'),
@@ -23,7 +23,7 @@ var assetPath = '../../../app-assets/';
 
 
 async function getFacturas (){
- facturas=await fetch("/getFacturas_A_Escolar")
+ facturas=await fetch("/getFacturas_alumno/"+id_rep)
       .then((response) => response.json())
       .then((data) => {
         return data.facturas;
@@ -45,6 +45,8 @@ if (dtfacturasTable.length) {
       { data: 'monto1' },
       { data: 'createdAt' },
       { data: 'concepto' },
+      { data: 'mesCancelar' },
+      { data: 'observaciones' },
       { data: 'id' }
     ],
     columnDefs: [    
@@ -58,7 +60,7 @@ if (dtfacturasTable.length) {
           full.estado == 1 ? labelEstado = 'Deshabilitar' : labelEstado = 'Habilitar';
           return (
             ` <div class="d-flex align-items-center col-actions">
-            <a class="me-1" onclick="editCliente(${data})" href="#" data-bs-toggle="tooltip"
+            <a class="me-1" onclick="verFactura(${full['id']})" href="#" data-bs-toggle="tooltip"
                 data-bs-placement="top" title="" data-bs-original-title="Editar"
                 aria-label="Editar">
                 ${feather.icons['edit-3'].toSvg()}
@@ -236,46 +238,25 @@ async function buscaRepresentante (tipo) {
   datos.gradoEstudiante !=='' ? $('#gradoEstudiante').val(datos.gradoEstudiante).trigger('change'): null
   
 }
+function verFactura (id) {
 
-if (facturaForm.length) {
-  facturaForm.validate({
-    errorClass: 'error',
-    rules: {
-      'cedulaRepresentante': {
-        required: true
-      },
-      'cedulaEstudiante': {
-        required: true
-      },
-    }
-  });
+  let filterF = facturas.filter(item => item.id == id)
+  console.log(filterF)
+  $('#id_al').val(filterF[0].id_al);
+  $('#nombreEstudiante').val(filterF[0].alumno.nombreEstudiante);
+  $('#gradoEstudiante').val(filterF[0].alumno.gradoEstudiante);
+  $('#tipoFactura').val(filterF[0].tipo);
+  $('#concetoFactura').val(filterF[0].concepto);
+  $('#mesCancelarFactura').val(filterF[0].mesCancelar);
+  $('#numeroFactura').val(filterF[0].nFactura);
+  $('#tipoPagoFactura').val(filterF[0].tipoPago).trigger('change');
+  $('#referenciaFactura').val(filterF[0].referencia);
+  $('#BancoFactura').val(filterF[0].banco);
+  $('#fechaTransFactura').val(moment(filterF[0].fechaTransaccion).format('YYYY-MM-DD'));
+  $('#observaciones').val(filterF[0].observaciones);
 
-  facturaForm.on('submit', function (e) {
-    var isValid = facturaForm.valid();        
-    e.preventDefault();   
-    
-    if (isValid) {
-      $.ajax({
-        url: `/createFactura`,
-        type: 'POST',
-        data: facturaForm.serialize() ,
-        success: async function (data, textStatus, jqXHR) {
-          console.log(data)
-          if (data.error) {
-            swal.fire('Error',data.error,'error');
-          }
-          if (data.matricula) {
-            swal.fire('Éxito','Factura creada con éxito','success').then(()=>{
-              location.reload()
-            });
-          }
-        },
-        error: function (jqXHR, textStatus) {
-          console.log('error:' + jqXHR)
-        }
-      });
-      
-    }
-    
-  });
+  $('#montoDFactura').val(filterF[0].monto0);
+  $('#montoBFactura').val(filterF[0].monto1);
+
+  $('#add-factura').modal('show');
 }

@@ -16,12 +16,17 @@ exports.dashboard = async (req, res) => {
 };
 
 /**ACCESSO PAGE */
-exports.accesospage = async (req, res) => {
+exports.estadoCuenta = async (req, res) => {
+  let a_escolar = 1
+  let id_al = req.params.cedulaEstudiante
+  let alumno = JSON.parse(await DataBasequerys.Alu_A_EscolarCedula(a_escolar,id_al));
+  console.log(alumno)
   //HERE RENDER PAGE AND INTRO INFO
-  res.render("accesos", {
-    pageName: "Accesos",
-    accesos: true,
+  res.render("estadocuenta", {
+    pageName: "Estado Cuenta",
+    estadoCuenta: true,
     menu: true,
+    alumno  
   });
 };
 
@@ -35,119 +40,12 @@ exports.matriculaPage = async (req, res) => {
   });
 };
 
-/**GRUPOS PAGE */
-exports.grupospage = async (req, res) => {
-
-  let clientes = await DataBasequerys.getRegularClientes();
-  console.log(clientes.length)
-  let clientesList = clientes.filter(element => element.rol == 'regular');
-  //HERE RENDER PAGE AND INTRO INFO
-  res.render("grupos", {
-    pageName: "Grupos",
-    grupos: true,
-    menu: true,clientesList
-  });
-};
-
-/**EJECICIOS PAGE */
-exports.ejerciciospage = async (req, res) => {
-  let categorias = await DataBasequerys.getCategorias();
-  let ejerciciosGym = await DataBasequerys.getEjerciciosGimnasio();
-  let counEjercicios = ejerciciosGym.length;
-  console.log(ejerciciosGym)
-  //HERE RENDER PAGE AND INTRO INFO
-  res.render("ejercicios", {
-    pageName: "Ejercicios",
-    ejercicios: true,
-    menu: true,
-    categorias, ejerciciosGym,counEjercicios
-  });
-};
-
-/**PROGRAMAS PAGE */
-exports.programaspage = async (req, res) => {
-  //HERE RENDER PAGE AND INTRO INFO
-  let categorias = await DataBasequerys.getCategorias();
-  let ejerciciosGym = await DataBasequerys.getEjerciciosGimnasio();
-  let ejerciciosJson = await JSON.stringify(ejerciciosGym);
-
-  res.render("programas", {
-    pageName: "Programas",
-    programas: true,
-    menu: true,
-    categorias,
-    ejerciciosJson
-  });
-};
-
-/**EVENTOS PAGE */
-exports.eventospage = async (req, res) => {
-  let gruposList = await DataBasequerys.getGruposGimnasio();
-  //HERE RENDER PAGE AND INTRO INFO
-  res.render("eventos", {
-    pageName: "Eventos",
-    eventos: true,
-    menu: true,
-    gruposList
-  });
-};
-
-/**WOD PAGE */
-exports.wodpage = async (req, res) => {
-  //HERE RENDER PAGE AND INTRO INFO
-  res.render("wod", {
-    pageName: "WOD",
-    wod: true,
-    menu: true,
-  });
-};
-
 /**FACTURAS PAGE */
 exports.facturaspage = async (req, res) => {
   //HERE RENDER PAGE AND INTRO INFO
   res.render("facturas", {
     pageName: "Facturas",
     facturas: true,
-    menu: true,
-  });
-};
-
-/**APROBACIONES PAGE */
-exports.aprobacionespage = async (req, res) => {
-  //HERE RENDER PAGE AND INTRO INFO
-  res.render("aprobaciones", {
-    pageName: "Aprobaciones",
-    aprobaciones: true,
-    menu: true,
-  });
-};
-
-/**PRODUCTOS PAGE */
-exports.productospage = async (req, res) => {
-  //HERE RENDER PAGE AND INTRO INFO
-  res.render("productos", {
-    pageName: "Productos",
-    productos: true,
-    menu: true,
-  });
-};
-
-/**REPORTES PAGE */
-exports.reportespage = async (req, res) => {
-  //HERE RENDER PAGE AND INTRO INFO
-  res.render("reportes", {
-    pageName: "Reportes",
-    reportes: true,
-    menu: true,
-  });
-};
-
-/**REPORTAR PROBLEMA PAGE */
-exports.reportproblempage = async (req, res) => {
-  //HERE RENDER PAGE AND INTRO INFO
-  res.render("reportproblem", {
-    pageName: "Reportar Problema",
-    reportproblem: true,
     menu: true,
   });
 };
@@ -179,42 +77,6 @@ exports.profileGym = async (req, res) => {
   res.render("profile-gym", {
     pageName: "Perfil Gimnasio",
     profileGym: true,
-    menu: true,
-  });
-};
-
-/**AGREGAR CLIENTE */
-exports.addCliente = async (req, res) => {
-  res.render("agregar-cliente", {
-    pageName: "Agregar Cliente",
-    addCliente: true,
-    menu: true,
-  });
-};
-
-/**AGREGAR EJERCICIO */
-exports.addEjercicio = async (req, res) => {
-  res.render("agregar-ejercicio", {
-    pageName: "Agregar Ejercicio",
-    addEjercicio: true,
-    menu: true,
-  });
-};
-
-/**AGREGAR PROGRAMA */
-exports.addPrograma = async (req, res) => {
-  res.render("agregar-programa", {
-    pageName: "Agregar Programa",
-    addPrograma: true,
-    menu: true,
-  });
-};
-
-/**AGREGAR FACTURA */
-exports.addFactura = async (req, res) => {
-  res.render("agregar-factura", {
-    pageName: "Agregar Factura",
-    addFactura: true,
     menu: true,
   });
 };
@@ -259,9 +121,14 @@ exports.createFactura = async (req, res) => {
 };
 exports.createMatricula = async (req, res) => {
   console.log(req.body);
-  const {nombreRepresentante, cedulaRepresentante,ocupacionRepresentante, nombreMadre,cedulaMadre, ocupacionMadre,nombrePadre,cedulaPadre, ocupacionPadre, correo,nombreEstudiante, cedulaEstudiante,fechaNacimiento,edadEstudiante, nacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones,  generoEstudiante, gradoEstudiante,condicionEstudiante} = req.body;
+  const {id_al,nombreRepresentante, cedulaRepresentante,ocupacionRepresentante, nombreMadre,cedulaMadre, ocupacionMadre,nombrePadre,cedulaPadre, ocupacionPadre, correo,nombreEstudiante, cedulaEstudiante,fechaNacimiento,edadEstudiante, nacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones,  generoEstudiante, gradoEstudiante,condicionEstudiante,representate} = req.body;
   let a_escolar = 1,regRepre,regAlumno,regMatricula;
-  let matricula=[]
+  let matricula=[];
+  if (id_al) {
+    regRepre = JSON.parse(await DataBasequerys.UpdRepresentantes(correo,nombreRepresentante, parseInt(cedulaRepresentante), ocupacionRepresentante,nombreMadre, parseInt(cedulaMadre),ocupacionMadre, nombrePadre, parseInt(cedulaPadre), ocupacionPadre,a_escolar,representate));
+      console.log(regRepre)
+      regAlumno = JSON.parse(await DataBasequerys.UpdAlumnos(nombreEstudiante, parseInt(cedulaEstudiante), fechaNacimiento, edadEstudiante, nacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones, generoEstudiante, gradoEstudiante, condicionEstudiante,representate,a_escolar,id_al));
+  }else{
     let verifyRepresentante = JSON.parse(await DataBasequerys.RepresentanteByCedula(cedulaRepresentante));
     console.log(verifyRepresentante)
     if (!verifyRepresentante) {
@@ -271,7 +138,12 @@ exports.createMatricula = async (req, res) => {
       console.log(regAlumno)
     } else {
       console.log(verifyRepresentante)
+      let regAlumno = JSON.parse(await DataBasequerys.RegAlumnos(nombreEstudiante, parseInt(cedulaEstudiante), fechaNacimiento, edadEstudiante, nacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones, generoEstudiante, gradoEstudiante, condicionEstudiante,verifyRepresentante['id_rep'],a_escolar));
+      console.log(regAlumno)
     }
+  }
+    
+
     matricula.push({representante:regRepre,alumno:regAlumno})
     
  return res.send({matricula});
@@ -285,27 +157,10 @@ let facturas = JSON.parse(await DataBasequerys.Facturas_A_Escolar(a_escolar));
 console.log(facturas)
 return res.send({facturas});
 };
-/**UPDATE EVENTO GIMNASIO */
-exports.updateCalendarEvent = async (req, res) => {
-  console.log(req.body);
-  const {id, title,start, end, extendedProps,url,repetir} = req.body;
-  console.log(extendedProps);
-  let newEvent;
-  let newEventGrupo;
-    newEvent = await DataBasequerys.updateEventosbyGimnasio(id, title,start, end, extendedProps.description,url,extendedProps.fkIdGimnasio,extendedProps.notificacionEnviada,extendedProps.color,extendedProps.entrenador,  extendedProps.precio, extendedProps.espacios,repetir);
-    newEventGrupo = await DataBasequerys.updateEventosGrupo(id,extendedProps.calendar);
-  
-
-  
-
- return res.send({newEvent});
-};
-/**delete EVENTO GIMNASIO */
-exports.deleteCalendarEvent = async (req, res) => {
-  console.log(req.body);
-  const {pkIdEvento} = req.body;
-  console.log(pkIdEvento)
-   let deleteEventGrupo = await DataBasequerys.deleteEventosGrupo(pkIdEvento);
-   let deleteEvent = await DataBasequerys.deleteEventosbyGimnasio(pkIdEvento);
- return res.send({deleteEvent,deleteEventGrupo});
+exports.getFacturas_alumno = async (req, res) => {
+  console.log('getFacturas_alumno')
+let id_al = req.params.id_al;
+let facturas = JSON.parse(await DataBasequerys.Facturas_A_alumno(id_al));
+console.log(facturas)
+return res.send({facturas});
 };

@@ -132,6 +132,20 @@ module.exports = {
         });
     });
   },
+  UpdRepresentantes(email,nombreRepresentante, cedulaRepresentante, ocupacionRepresentante,nombreMadre, cedulaMadre,ocupacionMadre, nombrePadre, cedulaPadre, ocupacionPadre,aEscolarId,id_rep) {
+    return new Promise((resolve, reject) => {
+      Representantes.update(
+        {email: email, nombreRepresentante: nombreRepresentante, cedulaRepresentante: cedulaRepresentante, ocupacionRepresentante: ocupacionRepresentante, nombreMadre: nombreMadre, cedulaMadre: cedulaMadre, ocupacionMadre: ocupacionMadre, nombrePadre: nombrePadre, cedulaPadre: cedulaPadre, ocupacionPadre: ocupacionPadre,aEscolarId:aEscolarId}, {where:{id_rep:id_rep}})
+        .then((data) => {
+          let data_set = JSON.stringify(data);
+          resolve(data_set);
+          //console.log(planes);
+        })
+        .catch((err) => {
+          console.log(err)
+        });
+    });
+  },
   RegRepresentantes(email,nombreRepresentante, cedulaRepresentante, ocupacionRepresentante,nombreMadre, cedulaMadre,ocupacionMadre, nombrePadre, cedulaPadre, ocupacionPadre,aEscolarId) {
     return new Promise((resolve, reject) => {
       Representantes.create(
@@ -143,6 +157,21 @@ module.exports = {
         })
         .catch((err) => {
           console.log(err)
+        });
+    });
+  },
+  UpdAlumnos(nombreEstudiante, cedulaEstudiante, fechaNacimiento, edadEstudiante, lugarnacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones, generoEstudiante, gradoEstudiante, condicionEstudiante,id_rep,aEscolarId,id_al) {
+    return new Promise((resolve, reject) => {
+      Alumnos.update(
+        {nombreEstudiante: nombreEstudiante,   cedulaEstudiante: cedulaEstudiante,   fechaNacimiento: fechaNacimiento,   edadEstudiante: edadEstudiante,   lugarnacimientoEstudiante: lugarnacimientoEstudiante,   direccionEstudiante: direccionEstudiante,   telefonosEstudiante: telefonosEstudiante,   procedenciaEstudiante: procedenciaEstudiante,   observaciones: observaciones,   generoEstudiante: generoEstudiante,   gradoEstudiante: gradoEstudiante,   condicionEstudiante: condicionEstudiante,id_rep:id_rep,aEscolarId:aEscolarId},{where:{id_al:id_al}})
+        .then((data) => {
+          let data_set = JSON.stringify(data);
+          resolve(data_set);
+          //console.log(planes);
+        })
+        .catch((err) => {
+          console.log(err)
+        //  reject(err)
         });
     });
   },
@@ -180,6 +209,19 @@ module.exports = {
 Facturas_A_Escolar(a_escolar){
   return new Promise((resolve, reject) => {
     Facturas.findAll({where: {aEscolarId:a_escolar}, include:[{association: Facturas.Alumnos},{association: Facturas.Representantes}]})
+      .then((data) => {
+        let data_p = JSON.stringify(data);
+        resolve(data_p);
+        ////console.log(id_usuario);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+},
+Facturas_A_alumno(id_al){
+  return new Promise((resolve, reject) => {
+    Facturas.findAll({where: {representanteIdRep:id_al}, include:[{association: Facturas.Alumnos},{association: Facturas.Representantes}]})
       .then((data) => {
         let data_p = JSON.stringify(data);
         resolve(data_p);

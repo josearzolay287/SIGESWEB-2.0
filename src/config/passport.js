@@ -4,7 +4,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 var OpenIDConnectStrategy = require('passport-openidconnect');
 const { encrypt, decrypt } = require('../controllers/crypto');
-
+const Usuarios = require("../models/Usuarios");
 // set up passport
 passport.use('local',
 	new LocalStrategy(
@@ -14,9 +14,7 @@ passport.use('local',
 			passReqToCallback : true
 		},
 		async (req,email, password, done) => {
-			console.log(req.body.proyect)
-// Modelo a auntenticar
-var Usuarios = "";
+
 			try {
 				const usuario = await Usuarios.findOne({
 					where: {email}

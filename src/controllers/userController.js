@@ -33,6 +33,32 @@ exports.loginUser = passport.authenticate("local", {
   failureFlash: true,
   badRequestMessage: "Ambos campos son obligatorios",
 });
+
+
+exports.sesionstart = (req, res) => {
+  let msg = false;
+  if (req.params.msg) {
+    msg = req.params.msg;
+  }
+  passport.authenticate("local", function (err, user, info) {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      
+      return res.redirect("/login");
+    }
+    req.logIn(user, async function (err) {
+      if (err) {
+          return next(err);
+      }
+
+      req.session.a_escolar = req.body.a_escolar;
+
+      return res.redirect("/dashboard");
+    });
+  })(req, res);
+};
 exports.logintemp = (req, res) => {
   console.log(req.user.tipo);
   let tipo = req.user.tipo  

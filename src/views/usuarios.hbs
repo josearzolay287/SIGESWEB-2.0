@@ -1,0 +1,206 @@
+<!-- BEGIN: Content-->
+<style>
+    .block {
+        pointer-events: none;
+        color: #ffcc9a;
+    }
+
+    @keyframes spinner {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .showName>* {
+        pointer-events: none;
+    }
+
+    .spinner:before {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        margin-top: -10px;
+        margin-left: -10px;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+        border-top-color: #333;
+        animation: spinner .6s linear infinite;
+    }
+</style>
+<div class="app-content content email-application">
+
+    <div class="content-wrapper container-xxl p-0">
+        <!-- Header Sección -->
+        <div class="row match-height">
+
+            <div class="col-lg-6 col-10">
+                <div class="card card-statistics">
+                    <div class="card-header border-bottom">
+                        <h4 class="card-title">Usuarios</h4>
+                        <button class="dt-button create-new btn btn-primary" tabindex="0" type="button"
+                            data-bs-toggle="modal" data-bs-target="#add-cliente" id="addClienteBtn"><span>
+                                <i data-feather='plus'></i>
+                                Agregar</span></button>
+                    </div>
+                    <!-- Buscadores -->
+                    <div class="card-body py-50">
+                        <div class="row align-items-end">
+                            <div class="col-md-6 mb-1">
+                                <label class="form-label" for="fp-default">Buscador</label>
+                                <input type="busqueda" class="form-control" placeholder="Buscar" id="filtroBuscador">
+                            </div>
+                            <div class="col-md-6 mb-1 d-none">
+                                <label class="form-label" for="">Roles</label>
+                                <select name="" id="filtroRoles" class="select2">
+                                    <option value="">Todos</option>
+                                    <option value="Representante">Representante</option>
+                                    <option value="Madre">Madre</option>
+                                    <option value="Padre">Padre</option>
+                                    <option value="Estudiante">Estudiante</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Revenue Card -->
+
+        </div>
+
+        <!-- Tabla -->
+
+        <div class="content-body">
+            <section class="invoice-list-wrapper">
+                <div class="card">
+                    <div class="card-datatable table-responsive">
+                        <div id="clientesTable_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+
+                            <table class="invoice-list-table table dataTable no-footer dtr-column" id="usuariosTable"
+                                role="grid" aria-describedby="clientesTable_info">
+
+                                <!-- Cabezera de la tabla -->
+                                <thead>
+                                    <tr role="row">
+                                        <th>Id</th>
+                                        <th>Nombre</th>
+                                        <th>Email</th>
+                                        <th>Tipo</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                </thead>
+                                <!-- Cabezera de la tabla -->
+</table>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="add-cliente" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+
+            <div class="modal-header bg-transparent">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-sm-5 mx-50 pb-5">
+                {{!-- <form id="formClienteInfo2">
+                    <input type="text" name="testing" id="">
+                    <button type="submit">su</button>
+                </form> --}}
+            <form class="usuariosForm" id="usuariosForm">
+                <div class="card-body py-0">
+
+                    <div class="divider divider-primary">
+                        <div class="divider-text">
+                            <h4 class="card-title mb-0">Datos</h4>
+                        </div>
+                    </div>
+                    
+                        <div class="row g-3">
+                            <div class="col-6 col-lg-4">
+                                <input type="text" name="idUsuario" class="d-none" id="idUsuario" />
+                                <label class="form-label">Nombre</label>
+                                <div class="input-group mb-2 col-sm-4">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="user"></i></span>
+                                    <input type="text" id="nombre" placeholder="Nombre" name="nombre" class="form-control" />
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Correo</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id="basic-addon-search1"><i
+                                            data-feather="at-sign"></i></span>
+                                    <input type="email" id="correo" placeholder="Correo" name="email"
+                                        class="form-control" />
+                                    <!---->
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label class="form-label">Tipo</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
+                                    <select name="tipo" id="tipo" class="form-control">
+                                        <option value="Administrador">Administrador</option>
+                                        <option value="Representante">Representante</option>
+                                        <option value="Profesor">Profesor</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-6 col-lg-4 mb-1">
+                                <div class="d-flex justify-content-between">
+                                    <label class="form-label" for="login-password">Password</label>
+                                </div>
+                                <div class="input-group input-group-merge form-password-toggle">
+                                    <input type="password" class="form-control form-control-merge" id="password"
+                                        name="password" tabindex="2"
+                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                        aria-describedby="login-password" />
+                                    <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4 mb-1">
+                                <div class="d-flex justify-content-between">
+                                    <label class="form-label" for="login-password">Confirmar Password</label>
+                                </div>
+                                <div class="input-group input-group-merge form-password-toggle">
+                                    <input type="password" class="form-control form-control-merge" id="confirmpassword"
+                                        name="confirmpassword" tabindex="2"
+                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                        aria-describedby="login-password" />
+                                    <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-50">
+                            <button type="submit" class="btn btn-primary me-1 waves-effect waves-float waves-light"
+                                id="buttonSubt">Agregar</button>
+                                <button type="reset" class="btn btn-primary me-1 waves-effect waves-float waves-light"
+                                id="buttonSubt">Limpiar</button>
+                            <button data-bs-dismiss="modal" type="button" class="btn btn-outline-secondary waves-effect"
+                                style="width: 101.77px;">Volver</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -7,6 +7,7 @@ const { encrypt, decrypt } = require("./crypto");//Encrypt / decrypt
 const io = require("./socketio.js").getIO();
 /**FUNCTION TO RENDER dashboard PAGE */
 exports.dashboard = async (req, res) => {
+  
   //HERE RENDER PAGE AND INTRO INFO
   res.render("dashboard", {
     pageName: "Dashboad",
@@ -17,7 +18,8 @@ exports.dashboard = async (req, res) => {
 
 /**ACCESSO PAGE */
 exports.estadoCuenta = async (req, res) => {
-  let a_escolar = 1
+  let user = res.locals.user
+  let a_escolar = user.a_escolar
   let id_al = req.params.cedulaEstudiante
   let alumno = JSON.parse(await DataBasequerys.Alu_A_EscolarCedula(a_escolar,id_al));
   console.log(alumno)
@@ -36,6 +38,15 @@ exports.matriculaPage = async (req, res) => {
   res.render("matricula", {
     pageName: "Matricula",
     matricula: true,
+    menu: true,
+  });
+};
+/**CLIENTES PAGE */
+exports.usuariosPage = async (req, res) => {
+  //HERE RENDER PAGE AND INTRO INFO
+  res.render("usuarios", {
+    pageName: "Usuarios",
+    usuarios: true,
     menu: true,
   });
 };
@@ -87,14 +98,16 @@ exports.profileGym = async (req, res) => {
 /**getRepresentantes_Alumnos_A_Escolar */
 exports.getRepresentantes_Alumnos_A_Escolar = async (req, res) => {
   console.log('getclientesRegular')
-let a_escolar = 1;
+  let user = res.locals.user
+  let a_escolar = user.a_escolar
 let matricula = JSON.parse(await DataBasequerys.RepsAlums_A_Escolar(a_escolar));
 console.log(matricula.representantes)
 return res.send({matricula});
 };
 exports.getRepresentantes_Alumnos_A_EscolarbyCedula = async (req, res) => {
   console.log('getclientesRegular')
-let a_escolar = 1;
+  let user = res.locals.user
+  let a_escolar = user.a_escolar
 let tipo = req.params.tipo;
 let cedula = req.params.cedula;
 
@@ -122,7 +135,8 @@ exports.createFactura = async (req, res) => {
 exports.createMatricula = async (req, res) => {
   console.log(req.body);
   const {id_al,nombreRepresentante, cedulaRepresentante,ocupacionRepresentante, nombreMadre,cedulaMadre, ocupacionMadre,nombrePadre,cedulaPadre, ocupacionPadre, correo,nombreEstudiante, cedulaEstudiante,fechaNacimiento,edadEstudiante, nacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones,  generoEstudiante, gradoEstudiante,condicionEstudiante,representate} = req.body;
-  let a_escolar = 1,regRepre,regAlumno,regMatricula;
+  let user = res.locals.user
+  let a_escolar = user.a_escolar,regRepre,regAlumno,regMatricula;
   let matricula=[];
   if (id_al) {
     regRepre = JSON.parse(await DataBasequerys.UpdRepresentantes(correo,nombreRepresentante, parseInt(cedulaRepresentante), ocupacionRepresentante,nombreMadre, parseInt(cedulaMadre),ocupacionMadre, nombrePadre, parseInt(cedulaPadre), ocupacionPadre,a_escolar,representate));
@@ -152,15 +166,33 @@ exports.createMatricula = async (req, res) => {
 
 exports.getFacturas_A_Escolar = async (req, res) => {
   console.log('getFacturas_A_Escolar')
-let a_escolar = 1;
+  let user = res.locals.user
+  let a_escolar = user.a_escolar
 let facturas = JSON.parse(await DataBasequerys.Facturas_A_Escolar(a_escolar));
 console.log(facturas)
 return res.send({facturas});
 };
+
 exports.getFacturas_alumno = async (req, res) => {
   console.log('getFacturas_alumno')
 let id_al = req.params.id_al;
 let facturas = JSON.parse(await DataBasequerys.Facturas_A_alumno(id_al));
 console.log(facturas)
 return res.send({facturas});
+};
+exports.getUsuarios = async (req, res) => {
+  console.log('getUsuarios')
+//let id_al = req.params.id_al;
+let usuarios = JSON.parse(await DataBasequerys.UsuariobyAll());
+console.log(usuarios)
+return res.send({usuarios});
+};
+
+exports.createusuarios = async (req, res) => {
+  console.log(req.body);
+  const {idUsuario, nombre, email, tipo, password } = req.body;
+  const a_escolar = 1;
+    let usuario = JSON.parse(await DataBasequerys.RegUser(tipo, nombre, email, password))
+    console.log(usuario)
+ return res.send({usuario});
 };

@@ -14,7 +14,7 @@ router.get('/', dashboardController.dashboard);
 // LOGGIN
 router.get('/login', userController.formLogin);
 router.get('/login/:token', userController.formLogin);
-router.post('/login', userController.pinTest);
+router.post('/login', userController.sesionstart);
 router.post('/changePassword', userController.changePassword);
 // CLOSE SESSION
 router.get('/close-session', userController.closeSesion);
@@ -22,6 +22,7 @@ router.get('/close-session', userController.closeSesion);
 //Enlaces principales
 router.get('/dashboard', dashboardController.dashboard);
 router.get('/matricula', dashboardController.matriculaPage);
+router.get('/usuarios', dashboardController.usuariosPage);
 router.get('/facturas', dashboardController.facturaspage);
 router.get('/profile_user/:id', dashboardController.profilePage);
 router.get('/estadoCuenta/:cedulaEstudiante', dashboardController.estadoCuenta);
@@ -31,9 +32,13 @@ router.get('/estadoCuenta/:cedulaEstudiante', dashboardController.estadoCuenta);
 router.get('/getRepresentantes_Alumnos_A_Escolar', dashboardController.getRepresentantes_Alumnos_A_Escolar);
 router.get('/getRepresentantes_Alumnos_A_Escolar/:cedula/:tipo', dashboardController.getRepresentantes_Alumnos_A_EscolarbyCedula);
 router.get('/getFacturas_A_Escolar', dashboardController.getFacturas_A_Escolar);
+router.get('/getUsuarios', dashboardController.getUsuarios);
 router.get('/getFacturas_alumno/:id_al', dashboardController.getFacturas_alumno);
+
+
 router.post('/createMatricula', dashboardController.createMatricula);
 router.post('/createFactura', dashboardController.createFactura);
+router.post('/createusuarios', dashboardController.createusuarios);
 
 
 module.exports = router;

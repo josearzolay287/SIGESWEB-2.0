@@ -9,11 +9,11 @@ const Facturas = require("../models/Facturas");
 
 module.exports = {
   //USUARIO
-  RegUser(tipo, nombre, email, password, zona) {
+  RegUser(tipo, nombre, email, password) {
     return new Promise((resolve, reject) => {
       Usuarios.create(
         {
-         name: nombre, tipo: tipo, email: email, password: password, sucursaleId:zona})
+         name: nombre, tipo: tipo, email: email, password: password})
         .then((data) => {
           let data_set = JSON.stringify(data);
           resolve(data_set);

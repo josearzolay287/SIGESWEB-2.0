@@ -85,6 +85,10 @@ app.use(async (req, res, next) => {
 	
 	res.locals.messages = req.flash();
 	res.locals.user = {...req.user} || null;	
+	if (req.user) {
+		console.log(req.session);
+		req.user.a_escolar = req.session.a_escolar
+	}
 	next();
 });
 

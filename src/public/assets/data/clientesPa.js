@@ -120,9 +120,6 @@ if (dtmatriculaTable.length) {
         title: 'Actions',
         orderable: false,
         render: function (data, type, full, meta) {
-          let iconEstado, labelEstado;
-          full.estado == 1 ? iconEstado = feather.icons['user-x'].toSvg() :iconEstado= feather.icons['user-check'].toSvg();
-          full.estado == 1 ? labelEstado = 'Deshabilitar' : labelEstado = 'Habilitar';
           return (
             ` <div class="d-flex align-items-center col-actions">
             <a class="me-1" onclick="editCliente(${data})" href="#" data-bs-toggle="tooltip"
@@ -141,11 +138,6 @@ if (dtmatriculaTable.length) {
                 data-bs-placement="top" title="" data-bs-original-title="Estado Cuenta"
                 aria-label="Estado Cuenta" >
                 ${feather.icons['file-text'].toSvg()}
-            </a>
-            <a class="" href="#" data-bs-toggle="tooltip"
-                data-bs-placement="top" title=""
-                data-bs-original-title="${labelEstado}" aria-label="${labelEstado}"  onclick="changeStatus('${full.fkIdUsuario}','${full.estado}')">
-                ${iconEstado}
             </a>
         </div>`
           );

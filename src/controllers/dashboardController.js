@@ -22,7 +22,6 @@ exports.estadoCuenta = async (req, res) => {
   let a_escolar = user.a_escolar
   let id_al = req.params.cedulaEstudiante
   let alumno = JSON.parse(await DataBasequerys.Alu_A_EscolarCedula(a_escolar,id_al));
-  console.log(alumno)
   //HERE RENDER PAGE AND INTRO INFO
   res.render("estadocuenta", {
     pageName: "Estado Cuenta",
@@ -60,6 +59,15 @@ exports.facturaspage = async (req, res) => {
     menu: true,
   });
 };
+/**REPORTES PAGE */
+exports.reportes = async (req, res) => {
+  //HERE RENDER PAGE AND INTRO INFO
+  res.render("reportes", {
+    pageName: "Reportes",
+    reportes: true,
+    menu: true,
+  });
+};
 
 /**PERFIL USER PAGE */
 exports.profilePage = async (req, res) => {
@@ -70,7 +78,6 @@ exports.profilePage = async (req, res) => {
   let ingresos = await DataBasequerys.getIngresosByfkIdUsuario(id_user);
   let categorias = await DataBasequerys.getCategorias();
   medidas = medidas.slice(0, 8);
-  console.log(profileinfo);
 //console.log(medidas)
   profileinfo = profileinfo[0];
   res.render("profile-user", {
@@ -97,15 +104,12 @@ exports.profileGym = async (req, res) => {
 
 /**getRepresentantes_Alumnos_A_Escolar */
 exports.getRepresentantes_Alumnos_A_Escolar = async (req, res) => {
-  console.log('getclientesRegular')
   let user = res.locals.user
   let a_escolar = user.a_escolar
 let matricula = JSON.parse(await DataBasequerys.RepsAlums_A_Escolar(a_escolar));
-console.log(matricula.representantes)
 return res.send({matricula});
 };
 exports.getRepresentantes_Alumnos_A_EscolarbyCedula = async (req, res) => {
-  console.log('getclientesRegular')
   let user = res.locals.user
   let a_escolar = user.a_escolar
 let tipo = req.params.tipo;
@@ -118,42 +122,40 @@ if (tipo == 'representante') {
 if (tipo == 'alumno') {
   matricula = JSON.parse(await DataBasequerys.Alu_A_EscolarCedula(a_escolar,cedula));
 }
-console.log(matricula)
 return res.send({matricula});
 };
 
 /**CREATE MATRICULA */
 exports.createFactura = async (req, res) => {
-  console.log(req.body);
+  let user = res.locals.user;
+  const a_escolar = user.a_escolar;
+  console.log("🚀 ~ file: dashboardController.js ~ line 123 ~ exports.createFactura= ~ a_escolar", a_escolar)
   const {id_a_escolar,  id_representate,  id_alumno,  tipoFactura,  concetoFactura,  mesCancelarFactura,  numeroFactura,  tipoPagoFactura,  referenciaFactura, BancoFactura, fechaTransFactura,  observaciones,  montoDFactura,  montoBFactura } = req.body;
-  const a_escolar = 1;
   let matricula=[]
     let factura = JSON.parse(await DataBasequerys.RegFacturas_A_Escolar(tipoFactura,concetoFactura,mesCancelarFactura,numeroFactura,tipoPagoFactura,referenciaFactura,BancoFactura,fechaTransFactura,observaciones,montoDFactura,montoBFactura,a_escolar,id_alumno,id_representate))
-    console.log(factura)
+    
  return res.send({factura});
 };
 exports.createMatricula = async (req, res) => {
-  console.log(req.body);
   const {id_al,nombreRepresentante, cedulaRepresentante,ocupacionRepresentante, nombreMadre,cedulaMadre, ocupacionMadre,nombrePadre,cedulaPadre, ocupacionPadre, correo,nombreEstudiante, cedulaEstudiante,fechaNacimiento,edadEstudiante, nacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones,  generoEstudiante, gradoEstudiante,condicionEstudiante,representate} = req.body;
-  let user = res.locals.user
+  let user = res.locals.user;
   let a_escolar = user.a_escolar,regRepre,regAlumno,regMatricula;
   let matricula=[];
   if (id_al) {
     regRepre = JSON.parse(await DataBasequerys.UpdRepresentantes(correo,nombreRepresentante, parseInt(cedulaRepresentante), ocupacionRepresentante,nombreMadre, parseInt(cedulaMadre),ocupacionMadre, nombrePadre, parseInt(cedulaPadre), ocupacionPadre,a_escolar,representate));
-      console.log(regRepre)
+     
       regAlumno = JSON.parse(await DataBasequerys.UpdAlumnos(nombreEstudiante, parseInt(cedulaEstudiante), fechaNacimiento, edadEstudiante, nacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones, generoEstudiante, gradoEstudiante, condicionEstudiante,representate,a_escolar,id_al));
   }else{
     let verifyRepresentante = JSON.parse(await DataBasequerys.RepresentanteByCedula(cedulaRepresentante));
-    console.log(verifyRepresentante)
+   
     if (!verifyRepresentante) {
       regRepre = JSON.parse(await DataBasequerys.RegRepresentantes(correo,nombreRepresentante, parseInt(cedulaRepresentante), ocupacionRepresentante,nombreMadre, parseInt(cedulaMadre),ocupacionMadre, nombrePadre, parseInt(cedulaPadre), ocupacionPadre,a_escolar));
-      console.log(regRepre)
+      
       let regAlumno = JSON.parse(await DataBasequerys.RegAlumnos(nombreEstudiante, parseInt(cedulaEstudiante), fechaNacimiento, edadEstudiante, nacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones, generoEstudiante, gradoEstudiante, condicionEstudiante,regRepre['id_rep'],a_escolar));
-      console.log(regAlumno)
+      
     } else {
-      console.log(verifyRepresentante)
       let regAlumno = JSON.parse(await DataBasequerys.RegAlumnos(nombreEstudiante, parseInt(cedulaEstudiante), fechaNacimiento, edadEstudiante, nacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones, generoEstudiante, gradoEstudiante, condicionEstudiante,verifyRepresentante['id_rep'],a_escolar));
-      console.log(regAlumno)
+      
     }
   }
     
@@ -165,34 +167,36 @@ exports.createMatricula = async (req, res) => {
 
 
 exports.getFacturas_A_Escolar = async (req, res) => {
-  console.log('getFacturas_A_Escolar')
   let user = res.locals.user
   let a_escolar = user.a_escolar
 let facturas = JSON.parse(await DataBasequerys.Facturas_A_Escolar(a_escolar));
-console.log(facturas)
 return res.send({facturas});
 };
 
-exports.getFacturas_alumno = async (req, res) => {
-  console.log('getFacturas_alumno')
-let id_al = req.params.id_al;
-let facturas = JSON.parse(await DataBasequerys.Facturas_A_alumno(id_al));
-console.log(facturas)
+exports.getFacturas_repre = async (req, res) => {
+let id_rep = req.params.id_rep;
+let user = res.locals.user;
+let a_escolar = user.a_escolar;
+let facturas = JSON.parse(await DataBasequerys.Facturas_A_represente(id_rep,a_escolar));
 return res.send({facturas});
 };
+exports.getAlumnosbyRepresentantes = async (req, res) => {
+let id_rep = req.params.id_rep;
+let user = res.locals.user;
+let a_escolar = user.a_escolar;
+let alumnos = JSON.parse(await DataBasequerys.alumnos_A_represente(id_rep,a_escolar));
+return res.send({alumnos});
+};
+
 exports.getUsuarios = async (req, res) => {
-  console.log('getUsuarios')
 //let id_al = req.params.id_al;
 let usuarios = JSON.parse(await DataBasequerys.UsuariobyAll());
-console.log(usuarios)
 return res.send({usuarios});
 };
 
 exports.createusuarios = async (req, res) => {
-  console.log(req.body);
   const {idUsuario, nombre, email, tipo, password } = req.body;
   const a_escolar = 1;
     let usuario = JSON.parse(await DataBasequerys.RegUser(tipo, nombre, email, password))
-    console.log(usuario)
  return res.send({usuario});
 };

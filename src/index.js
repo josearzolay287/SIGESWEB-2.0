@@ -18,7 +18,7 @@ db.sync()
 
  	})
  	.catch(err => {
- 		console.log('Error: ', err);
+        console.log("🚀 ~ file: index.js ~ line 21 ~ err", err);
  	});
 
 // Create the server express
@@ -86,7 +86,6 @@ app.use(async (req, res, next) => {
 	res.locals.messages = req.flash();
 	res.locals.user = {...req.user} || null;	
 	if (req.user) {
-		console.log(req.session);
 		req.user.a_escolar = req.session.a_escolar
 	}
 	next();
@@ -95,10 +94,5 @@ app.use(async (req, res, next) => {
 // Routes
 app.use('/', require('./routes'));
 process.on('uncaughtException', async function(e, promise) {
-	console.log(e);
-	console.log(promise);
 	process.exitCode;
   });
-// app.listen(app.get('port'), () => {
-// 	console.log(`Server in port ${app.get('port')}`);
-// });

@@ -4,7 +4,7 @@
     --------------------------------------------------------------------------------------
 
 ==========================================================================================*/
-var facturas, activematricula = 0,id_rep = $('#id_al').text();
+var facturas, alumnos,id_rep = $('#id_al').text();
 var roles;
 var dtfacturasTable = $('#facturasTable'),
   newmatriculaidebar = $('.new-user-modal'),
@@ -23,7 +23,7 @@ var assetPath = '../../../app-assets/';
 
 
 async function getFacturas (){
- facturas=await fetch("/getFacturas_alumno/"+id_rep)
+ facturas=await fetch("/getFacturas_repre/"+id_rep)
       .then((response) => response.json())
       .then((data) => {
         return data.facturas;
@@ -31,9 +31,26 @@ async function getFacturas (){
       console.log(facturas)
 
       createTable();
+      getAlumnos ();
 }
+async function getAlumnos (){
+  alumnos=await fetch("/getAlumnosbyRepresentantes/"+id_rep)
+       .then((response) => response.json())
+       .then((data) => {
+         return data.alumnos;
+       });
+  console.log("🚀 ~ file: estadocuenta.js ~ line 41 ~ getAlumnos ~ alumnos", alumnos);
+  for (let i = 0; i < alumnos.length; i++) {
+    let option = `<option value="${alumnos[i].nombreEstudiante}">${alumnos[i].nombreEstudiante}</option>`;
+    $('#alumnos').append(option);
+  }
+ }
 
 function createTable() {
+  $('#alumnos').on('change', function(){
+
+    dtfacturasTable.DataTable().column(1).search(this.value).draw();   
+  });
 // matricula List datatable
 if (dtfacturasTable.length) {
   let dataTablematricula = dtfacturasTable.DataTable({

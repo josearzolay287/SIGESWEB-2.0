@@ -26,7 +26,7 @@ passport.use('local',
 				}
 				return done(null, usuario);
 			}catch(err) {
-				console.log(err)
+                console.log("🚀 ~ file: passport.js ~ line 29 ~ err", err)
 				return done(null, false, {
 					message: 'Esa cuenta no existe'
 				});

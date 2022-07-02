@@ -1,240 +1,199 @@
 <div class="sidenav-overlay"></div>
-    <div class="drag-target"></div>
+<div class="drag-target"></div>
 
-    <!-- BEGIN: Footer-->
-    {{!-- <footer class="footer footer-static footer-light">
-        <p class="clearfix mb-0">
-            <span class="float-md-start d-block d-md-inline-block mt-25">
-                <a class="ms-25" href="https://mosquedacordova.com/" target="_blank">&copy;MC Developers
-                </a>
-                <span class="d-none d-sm-inline-block"> Todos los derechos reservados.</span>
-            </span>
-    </footer> --}}
-    <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
-    <!-- END: Footer-->
+<!-- BEGIN: Footer-->
+{{!-- <footer class="footer footer-static footer-light">
+    <p class="clearfix mb-0">
+        <span class="float-md-start d-block d-md-inline-block mt-25">
+            <a class="ms-25" href="https://mosquedacordova.com/" target="_blank">&copy;MC Developers
+            </a>
+            <span class="d-none d-sm-inline-block"> Todos los derechos reservados.</span>
+        </span>
+</footer> --}}
+<button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
+<!-- END: Footer-->
 <!-- END: Footer-->
 <!-- BEGIN: Vendor JS-->
-    <script src="../../../app-assets/vendors/js/vendors.min.js"></script>
-    <!-- BEGIN Vendor JS-->
+<script src="../../../app-assets/vendors/js/vendors.min.js"></script>
+<!-- BEGIN Vendor JS-->
 
-    <!-- BEGIN: Page Vendor JS-->
-    <script src="../../../app-assets/vendors/js/charts/apexcharts.min.js"></script>
+<!-- BEGIN: Page Vendor JS-->
+<script src="../../../app-assets/vendors/js/charts/apexcharts.min.js"></script>
 
-    <script src="../../../app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
-    <script src="../../../app-assets/vendors/js/extensions/polyfill.min.js"></script>
-    <script src="../../../app-assets/js/scripts/extensions/ext-component-sweet-alerts.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js" ></script>
-    <script src="../../../app-assets/vendors/js/extensions/toastr.min.js"></script>
-    {{#if dashboard}}
-    
-    <script src="../../../app-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
-    
-    
-    {{/if}}
+<script src="../../../app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
+<script src="../../../app-assets/vendors/js/extensions/polyfill.min.js"></script>
+<script src="../../../app-assets/js/scripts/extensions/ext-component-sweet-alerts.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js"></script>
+<script src="../../../app-assets/vendors/js/extensions/toastr.min.js"></script>
+<script src="../../../app-assets/js/core/app-menu.js"></script>
+<script src="../../../app-assets/js/core/app.js"></script>
 
-    {{#if facturas}}
-    <script src="../../../app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
-    <script src="../../../app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
-    <script src="../../../app-assets/vendors/js/forms/repeater/jquery.repeater.min.js"></script>
-    <script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
-    <script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
-    <script src="../../../app-assets/js/scripts/forms/pickers/form-pickers.js"></script>
-    <script src="../../../app-assets/js/scripts/customizer.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/responsive.bootstrap5.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
-        <script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" ></script>
-    <script src="../../../assets/data/facturas.js"></script>
-    {{/if}}
+{{#if dashboard}}
+
+<script src="../../../app-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
 
 
-  
-    
-
-    <script src="../../../app-assets/js/core/app-menu.js"></script>
-    <script src="../../../app-assets/js/core/app.js"></script>
-
-    
-    {{#if estadoCuenta}}
-    {{!-- js accesos --}}
-    <script src="../../../app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
-    <script src="../../../app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
-    <script src="../../../app-assets/vendors/js/forms/repeater/jquery.repeater.min.js"></script>
-    <script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
-    <script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
-    <script src="../../../app-assets/js/scripts/forms/pickers/form-pickers.js"></script>
-    <script src="../../../app-assets/js/scripts/customizer.min.js"></script>
-    <script src="../../../app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/responsive.bootstrap5.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
-        <script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" ></script>
-
-        <script src="../../../assets/data/estadocuenta.js"></script>
-    {{/if}}
-
-{{#if grupos}}
-        <script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
-        <script src="../../../app-assets/js/scripts/forms/form-select2.min.js"></script>
-        <script src="../../../app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/responsive.bootstrap5.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
-        <script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" ></script>
-        <script src="https://cdn.datatables.net/datetime/1.1.1/js/dataTables.dateTime.min.js" ></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone.min.js"></script>
-     <script src="../../../app-assets/vendors/js/charts/apexcharts.min.js"></script>
-     <script src="../../../app-assets/vendors/js/extensions/toastr.min.js"></script>
-     <script src="../../../app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
-        <script src="../../../assets/data/grupos.js"></script>
 {{/if}}
-    {{#if programas}}
-        <script src="../../../app-assets/vendors/js/extensions/dragula.min.js"></script>
-        <script src="../../../app-assets/js/scripts/extensions/ext-component-drag-drop.min.js"></script>-->
-        <script src="../../../app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/responsive.bootstrap5.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" ></script>
-        <script src="https://cdn.datatables.net/datetime/1.1.1/js/dataTables.dateTime.min.js" ></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone.min.js"></script>
-        <script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
-        <script src="../../../app-assets/vendors/js/pickers/pickadate/picker.js"></script>
-        <script src="../../../app-assets/vendors/js/pickers/pickadate/picker.date.js"></script>
-        <script src="../../../app-assets/vendors/js/pickers/pickadate/picker.time.js"></script>
-        <script src="../../../app-assets/vendors/js/pickers/pickadate/legacy.js"></script>
-        <script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
-        <script src="../../../app-assets/js/scripts/forms/pickers/form-pickers.min.js"></script>
-        <script src="../../../app-assets/js/scripts/pages/page-blog-edit.js"></script>
-        <script src="../../../assets/data/programas.js"></script>
-    {{/if}}
+
+{{#if facturas}}
+<script src="../../../app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
+<script src="../../../app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+<script src="../../../app-assets/vendors/js/forms/repeater/jquery.repeater.min.js"></script>
+<script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+<script src="../../../app-assets/js/scripts/forms/pickers/form-pickers.js"></script>
+<script src="../../../app-assets/js/scripts/customizer.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/responsive.bootstrap5.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+<script src="../../../assets/data/facturas.js"></script>
+{{/if}}
+
+{{#if estadoCuenta}}
+{{!-- js accesos --}}
+<script src="../../../app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
+<script src="../../../app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+<script src="../../../app-assets/vendors/js/forms/repeater/jquery.repeater.min.js"></script>
+<script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+<script src="../../../app-assets/js/scripts/forms/pickers/form-pickers.js"></script>
+<script src="../../../app-assets/js/scripts/customizer.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/responsive.bootstrap5.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+
+<script src="../../../assets/data/estadocuenta.js"></script>
+{{/if}}
 
 
-    {{#if matricula}}
-        <script src="../../../app-assets/js/scripts/pages/app-email.min.js"></script>
-        <script src="../../../app-assets/vendors/js/editors/quill/katex.min.js"></script>
-    <script src="../../../app-assets/vendors/js/editors/quill/highlight.min.js"></script>
-    <script src="../../../app-assets/vendors/js/editors/quill/quill.min.js"></script>
-    <script src="../../../app-assets/vendors/js/extensions/toastr.min.js"></script>
-        <script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
-        <script src="../../../app-assets/js/scripts/forms/form-select2.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/responsive.bootstrap5.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
-        <script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" ></script>
-        <script src="https://cdn.datatables.net/datetime/1.1.1/js/dataTables.dateTime.min.js" ></script>
-     <script src="../../../app-assets/vendors/js/charts/apexcharts.min.js"></script>
-     <script src="../../../app-assets/vendors/js/extensions/toastr.min.js"></script>
-         <script src="../../../app-assets/vendors/js/pickers/pickadate/picker.js"></script>
-    <script src="../../../app-assets/vendors/js/pickers/pickadate/picker.date.js"></script>
-    <script src="../../../app-assets/vendors/js/pickers/pickadate/picker.time.js"></script>
-    <script src="../../../app-assets/vendors/js/pickers/pickadate/legacy.js"></script>
-    
-    <script src="../../../app-assets/js/scripts/customizer.min.js"></script>
-    <script src="../../../app-assets/js/scripts/forms/pickers/form-pickers.min.js"></script>
 
-    <script src="../../../app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
-    {{!-- <script src="../../../app-assets/js/scripts/forms/form-validation.js"></script> --}}
-    <script src="../../../app-assets/js/scripts/pages/app-email.min.js"></script>
-        <script src="../../../assets/data/clientesPa.js"></script>
-    {{/if}}
-    {{#if usuarios}}
-        <script src="../../../app-assets/js/scripts/pages/app-email.min.js"></script>
-        <script src="../../../app-assets/vendors/js/editors/quill/katex.min.js"></script>
-    <script src="../../../app-assets/vendors/js/editors/quill/highlight.min.js"></script>
-    <script src="../../../app-assets/vendors/js/editors/quill/quill.min.js"></script>
-    <script src="../../../app-assets/vendors/js/extensions/toastr.min.js"></script>
-        <script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
-        <script src="../../../app-assets/js/scripts/forms/form-select2.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/responsive.bootstrap5.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
-        <script src="../../../app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
-        <script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" ></script>
-        <script src="https://cdn.datatables.net/datetime/1.1.1/js/dataTables.dateTime.min.js" ></script>
-     <script src="../../../app-assets/vendors/js/charts/apexcharts.min.js"></script>
-     <script src="../../../app-assets/vendors/js/extensions/toastr.min.js"></script>
-         <script src="../../../app-assets/vendors/js/pickers/pickadate/picker.js"></script>
-    <script src="../../../app-assets/vendors/js/pickers/pickadate/picker.date.js"></script>
-    <script src="../../../app-assets/vendors/js/pickers/pickadate/picker.time.js"></script>
-    <script src="../../../app-assets/vendors/js/pickers/pickadate/legacy.js"></script>
-    
-    <script src="../../../app-assets/js/scripts/customizer.min.js"></script>
-    <script src="../../../app-assets/js/scripts/forms/pickers/form-pickers.min.js"></script>
+{{#if matricula}}
+<script src="../../../app-assets/js/scripts/pages/app-email.min.js"></script>
+<script src="../../../app-assets/vendors/js/editors/quill/katex.min.js"></script>
+<script src="../../../app-assets/vendors/js/editors/quill/highlight.min.js"></script>
+<script src="../../../app-assets/vendors/js/editors/quill/quill.min.js"></script>
+<script src="../../../app-assets/vendors/js/extensions/toastr.min.js"></script>
+<script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
+<script src="../../../app-assets/js/scripts/forms/form-select2.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/responsive.bootstrap5.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+<script src="https://cdn.datatables.net/datetime/1.1.1/js/dataTables.dateTime.min.js"></script>
+<script src="../../../app-assets/vendors/js/charts/apexcharts.min.js"></script>
+<script src="../../../app-assets/vendors/js/extensions/toastr.min.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/pickadate/picker.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/pickadate/picker.date.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/pickadate/picker.time.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/pickadate/legacy.js"></script>
 
-    <script src="../../../app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
-    {{!-- <script src="../../../app-assets/js/scripts/forms/form-validation.js"></script> --}}
-    <script src="../../../app-assets/js/scripts/pages/app-email.min.js"></script>
-        <script src="../../../assets/data/usuarios.js"></script>
-    {{/if}}
+<script src="../../../app-assets/js/scripts/customizer.min.js"></script>
+<script src="../../../app-assets/js/scripts/forms/pickers/form-pickers.min.js"></script>
 
-    {{#if eventos}}
+<script src="../../../app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+{{!--
+<script src="../../../app-assets/js/scripts/forms/form-validation.js"></script> --}}
+<script src="../../../app-assets/js/scripts/pages/app-email.min.js"></script>
+<script src="../../../assets/data/clientesPa.js"></script>
+{{/if}}
 
-    <script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
-    <script src="../../../app-assets/js/scripts/forms/form-select2.min.js"></script>
+{{#if usuarios}}
+<script src="../../../app-assets/js/scripts/pages/app-email.min.js"></script>
+<script src="../../../app-assets/vendors/js/editors/quill/katex.min.js"></script>
+<script src="../../../app-assets/vendors/js/editors/quill/highlight.min.js"></script>
+<script src="../../../app-assets/vendors/js/editors/quill/quill.min.js"></script>
+<script src="../../../app-assets/vendors/js/extensions/toastr.min.js"></script>
+<script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
+<script src="../../../app-assets/js/scripts/forms/form-select2.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/responsive.bootstrap5.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/pdfmake.min.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+<script src="https://cdn.datatables.net/datetime/1.1.1/js/dataTables.dateTime.min.js"></script>
+<script src="../../../app-assets/vendors/js/charts/apexcharts.min.js"></script>
+<script src="../../../app-assets/vendors/js/extensions/toastr.min.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/pickadate/picker.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/pickadate/picker.date.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/pickadate/picker.time.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/pickadate/legacy.js"></script>
 
-    <script src="../../../app-assets/vendors/js/calendar/fullcalendar.min.js"></script>
-    <script src="../../../app-assets/vendors/js/extensions/moment.min.js"></script>
-    <script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
-    <script src="../../../app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
-    <script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+<script src="../../../app-assets/js/scripts/customizer.min.js"></script>
+<script src="../../../app-assets/js/scripts/forms/pickers/form-pickers.min.js"></script>
 
-    <script src="../../../app-assets/js/scripts/customizer.min.js"></script>
-    <script src="../../../app-assets/js/scripts/forms/pickers/form-pickers.js"></script>
-    <script src="../../../assets/data/app-calendar-events.js"></script>
-    <script src="../../../assets/data/app-calendar.js"></script>
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/locales-all.min.js'></script>
-    {{/if}}
+<script src="../../../app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+{{!--
+<script src="../../../app-assets/js/scripts/forms/form-validation.js"></script> --}}
+<script src="../../../app-assets/js/scripts/pages/app-email.min.js"></script>
+<script src="../../../assets/data/usuarios.js"></script>
+{{/if}}
 
-    {{#if wod}}
-    <script src="../../../app-assets/vendors/js/extensions/dragula.min.js"></script>
-    <script src="../../../app-assets/js/scripts/extensions/ext-component-drag-drop.min.js"></script>
-    <script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
-    <script src="../../../app-assets/js/scripts/forms/form-select2.min.js"></script>
-    <script src="../../../app-assets/vendors/js/extensions/moment.min.js"></script>
-    <script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
-    <script src="../../../app-assets/js/scripts/customizer.min.js"></script>
-    <script src="../../../app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
-    <script src="../../../assets/data/wood.js"></script>
-    {{/if}}
+{{#if reportes}}
+<script src="../../../app-assets/vendors/js/extensions/toastr.min.js"></script>
+<script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
+<script src="../../../app-assets/js/scripts/forms/form-select2.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/responsive.bootstrap5.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+
+<script src="../../../app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/jszip.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/pdfmake.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/vfs_fonts.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
+<script src="../../../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.2.0/js/buttons.html5.styles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.2.0/js/buttons.html5.styles.templates.min.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+<script src="https://cdn.datatables.net/datetime/1.1.1/js/dataTables.dateTime.min.js"></script>
+<script src="../../../app-assets/vendors/js/charts/apexcharts.min.js"></script>
+<script src="../../../app-assets/vendors/js/extensions/toastr.min.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/pickadate/picker.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/pickadate/picker.date.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/pickadate/picker.time.js"></script>
+<script src="../../../app-assets/vendors/js/pickers/pickadate/legacy.js"></script>
+
+<script src="../../../app-assets/js/scripts/customizer.min.js"></script>
+<script src="../../../app-assets/js/scripts/forms/pickers/form-pickers.min.js"></script>
+
+<script src="../../../app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+<script src="../../../assets/data/reportes.js"></script>
+{{/if}}
+
 <script src="../../../assets/data/notificaciones.js"></script>
 <script>
     $(window).on('load', function () {
@@ -254,4 +213,5 @@
 </script>
 </body>
 <!-- END: Body-->
+
 </html>

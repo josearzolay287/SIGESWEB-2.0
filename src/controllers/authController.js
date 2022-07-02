@@ -7,5 +7,5 @@ exports.authenticatedUser = async (req, res, next) => {
 		return next();
 	}
 	// If not authenticated return to loggin page
-	return res.redirect('/authorization-code/callback');
+	return res.redirect('/login');
 }

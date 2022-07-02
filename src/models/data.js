@@ -204,6 +204,34 @@ module.exports = {
         });
     });
   },
+  Reps_A_EscolarCedula(a_escolar,cedula){
+    return new Promise((resolve, reject) => {
+      Representantes.findOne({where: {aEscolarId:a_escolar, cedulaRepresentante: cedula}})
+        .then((data) => {
+          let data_p = JSON.stringify(data);
+          resolve(data_p);
+          ////console.log(id_usuario);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  },
+  alumnos_A_represente(id_rep,a_escolar){
+    return new Promise((resolve, reject) => {
+      Alumnos.findAll({where: {aEscolarId:a_escolar, id_rep:id_rep}, include:[{association: Representantes.Alumnos}]})
+        .then((data) => {
+          let data_p = JSON.stringify(data);
+          resolve(data_p);
+          ////console.log(id_usuario);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  },
+
+
 /**FACTURAS */
 
 Facturas_A_Escolar(a_escolar){
@@ -219,9 +247,9 @@ Facturas_A_Escolar(a_escolar){
       });
   });
 },
-Facturas_A_alumno(id_al){
+Facturas_A_represente(id_rep,a_escolar){
   return new Promise((resolve, reject) => {
-    Facturas.findAll({where: {representanteIdRep:id_al}, include:[{association: Facturas.Alumnos},{association: Facturas.Representantes}]})
+    Facturas.findAll({where: {representanteIdRep:id_rep, aEscolarId:a_escolar}, include:[{association: Facturas.Alumnos},{association: Facturas.Representantes}]})
       .then((data) => {
         let data_p = JSON.stringify(data);
         resolve(data_p);
@@ -242,7 +270,7 @@ RegFacturas_A_Escolar(tipo,concepto,mesCancelar,nFactura,tipoPago,referencia,ban
         //console.log(planes);
       })
       .catch((err) => {
-        console.log(err)
+      console.log("🚀 ~ file: data.js ~ line 245 ~ returnnewPromise ~ err", err)
       });
   });
 },

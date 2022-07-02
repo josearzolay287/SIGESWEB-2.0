@@ -9,7 +9,7 @@ const fileController = new FileController();
 const passport = require("passport");//THIS MODULE USE FOR AUTHENTICATE SESSION
 
 // Landing Page LOGGIN
-router.get('/', dashboardController.dashboard);
+router.get('/', authController.authenticatedUser, dashboardController.dashboard);
 
 // LOGGIN
 router.get('/login', userController.formLogin);
@@ -20,25 +20,27 @@ router.post('/changePassword', userController.changePassword);
 router.get('/close-session', userController.closeSesion);
 
 //Enlaces principales
-router.get('/dashboard', dashboardController.dashboard);
-router.get('/matricula', dashboardController.matriculaPage);
-router.get('/usuarios', dashboardController.usuariosPage);
-router.get('/facturas', dashboardController.facturaspage);
-router.get('/profile_user/:id', dashboardController.profilePage);
-router.get('/estadoCuenta/:cedulaEstudiante', dashboardController.estadoCuenta);
+router.get('/dashboard',authController.authenticatedUser, dashboardController.dashboard);
+router.get('/matricula',authController.authenticatedUser, dashboardController.matriculaPage);
+router.get('/usuarios',authController.authenticatedUser, dashboardController.usuariosPage);
+router.get('/facturas',authController.authenticatedUser, dashboardController.facturaspage);
+router.get('/reportes',authController.authenticatedUser, dashboardController.reportes);
+router.get('/profile_user/:id',authController.authenticatedUser, dashboardController.profilePage);
+router.get('/estadoCuenta/:cedulaEstudiante',authController.authenticatedUser, dashboardController.estadoCuenta);
 
 
 /**Gets or Post info from mysql */
-router.get('/getRepresentantes_Alumnos_A_Escolar', dashboardController.getRepresentantes_Alumnos_A_Escolar);
-router.get('/getRepresentantes_Alumnos_A_Escolar/:cedula/:tipo', dashboardController.getRepresentantes_Alumnos_A_EscolarbyCedula);
-router.get('/getFacturas_A_Escolar', dashboardController.getFacturas_A_Escolar);
-router.get('/getUsuarios', dashboardController.getUsuarios);
-router.get('/getFacturas_alumno/:id_al', dashboardController.getFacturas_alumno);
+router.get('/getRepresentantes_Alumnos_A_Escolar', authController.authenticatedUser,dashboardController.getRepresentantes_Alumnos_A_Escolar);
+router.get('/getRepresentantes_Alumnos_A_Escolar/:cedula/:tipo', authController.authenticatedUser,dashboardController.getRepresentantes_Alumnos_A_EscolarbyCedula);
+router.get('/getFacturas_A_Escolar',authController.authenticatedUser, dashboardController.getFacturas_A_Escolar);
+router.get('/getUsuarios',authController.authenticatedUser, dashboardController.getUsuarios);
+router.get('/getFacturas_repre/:id_rep', authController.authenticatedUser,dashboardController.getFacturas_repre);
+router.get('/getAlumnosbyRepresentantes/:id_rep', authController.authenticatedUser,dashboardController.getAlumnosbyRepresentantes);
 
 
-router.post('/createMatricula', dashboardController.createMatricula);
-router.post('/createFactura', dashboardController.createFactura);
-router.post('/createusuarios', dashboardController.createusuarios);
+router.post('/createMatricula',authController.authenticatedUser, dashboardController.createMatricula);
+router.post('/createFactura', authController.authenticatedUser,dashboardController.createFactura);
+router.post('/createusuarios',authController.authenticatedUser, dashboardController.createusuarios);
 
 
 module.exports = router;

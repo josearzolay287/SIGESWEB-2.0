@@ -135,77 +135,6 @@ $('#btnAddCliente').click(()=>{
 // Form Validation
 });
 
-async function changeStatus(id, estadoActual) {
-  let newStado = 0,labelEstado;
-  if (estadoActual == 0) {
-    newStado = 1;
-  }
-  estadoActual == 1 ? labelEstado = 'deshabilitar' : labelEstado = 'habilitar';
-   const data = new FormData();
-      data.append("fkIdUsuarioInfo", id);
-      data.append("estado", newStado);
-  Swal.fire({
-    title: '¿Está seguro?',
-    text: `Seguro desea ${labelEstado} a este cliente`,
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Si!'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      $.ajax({
-        url: `/deshabilitaCliente`,
-        type: 'POST',
-        data: data,
-        cache: false,
-        contentType: false,
-        processData: false,
-    success: async function (data, textStatus, jqXHR) {  
-      if (newStado == 0) {
-         swal.fire('Actualizado','Se deshabilitó con éxito al cliente','success');
-      } else {
-         swal.fire('Actualizado','Se habilitó con éxito al cliente','success');
-      }          
-     
-      matricula=await fetch("/getmatriculaRegular")
-.then((response) => response.json())
-.then((data) => {
-  return data.matricula;
-});
-paginacion = matricula[matricula.length-1];
-matricula.pop();
-let habilitados = 0, deshabilitados = 0;
-matricula.forEach(element => {
-  if (element.estado == 1) {
-    habilitados++
-  }
-  if (element.estado == 0) {
-    deshabilitados ++
-  }        
-});
-$('#count-habilitados').text(habilitados);
-$('#count-deshabilitados').text(deshabilitados);
-dtfacturasTable.DataTable().clear();
-  for (let i = 0; i < matricula.length; i++) {
-    dtfacturasTable.DataTable().row.add(matricula[i]);          
-  }
-  dtfacturasTable.DataTable().draw()
-      $('#add-cliente').modal('hide');
-      return
-    },
-    error: function (jqXHR, textStatus) {
-      console.log('error:' + jqXHR)
-    }
-  });
-
-    }
-  })
- 
- 
-  
-}
-
 // * EDITAR CLIENTE
 async function buscaRepresentante (tipo) {
   let cedula
@@ -261,10 +190,7 @@ if (facturaForm.length) {
         data: facturaForm.serialize() ,
         success: async function (data, textStatus, jqXHR) {
           console.log(data)
-          if (data.error) {
-            swal.fire('Error',data.error,'error');
-          }
-          if (data.matricula) {
+          if (data.factura) {
             swal.fire('Éxito','Factura creada con éxito','success').then(()=>{
               location.reload()
             });

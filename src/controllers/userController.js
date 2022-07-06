@@ -15,7 +15,7 @@ exports.formLogin = async (req, res) => {
   res.render("login", {
     pageName: "Login",
     layout: "page-form",
-    login: true,
+    loginPage: true,
     error,
     messages: error
   });
@@ -55,7 +55,7 @@ exports.sesionstart = (req, res) => {
 
       req.session.a_escolar = req.body.a_escolar;
 
-      return res.redirect("/dashboard");
+      return res.redirect("/matricula");
     });
   })(req, res);
 };

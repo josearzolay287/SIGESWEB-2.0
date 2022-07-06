@@ -160,10 +160,10 @@ module.exports = {
         });
     });
   },
-  UpdAlumnos(nombreEstudiante, cedulaEstudiante, fechaNacimiento, edadEstudiante, lugarnacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones, generoEstudiante, gradoEstudiante, condicionEstudiante,id_rep,aEscolarId,id_al) {
+  UpdAlumnos(nombreEstudiante, cedulaEstudiante, fechaNacimiento, edadEstudiante, lugarnacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones, generoEstudiante, gradoEstudiante, condicionEstudiante,id_rep,aEscolarId,id_al,seccionEstudiante) {
     return new Promise((resolve, reject) => {
       Alumnos.update(
-        {nombreEstudiante: nombreEstudiante,   cedulaEstudiante: cedulaEstudiante,   fechaNacimiento: fechaNacimiento,   edadEstudiante: edadEstudiante,   lugarnacimientoEstudiante: lugarnacimientoEstudiante,   direccionEstudiante: direccionEstudiante,   telefonosEstudiante: telefonosEstudiante,   procedenciaEstudiante: procedenciaEstudiante,   observaciones: observaciones,   generoEstudiante: generoEstudiante,   gradoEstudiante: gradoEstudiante,   condicionEstudiante: condicionEstudiante,id_rep:id_rep,aEscolarId:aEscolarId},{where:{id_al:id_al}})
+        {nombreEstudiante: nombreEstudiante,   cedulaEstudiante: cedulaEstudiante,   fechaNacimiento: fechaNacimiento,   edadEstudiante: edadEstudiante,   lugarnacimientoEstudiante: lugarnacimientoEstudiante,   direccionEstudiante: direccionEstudiante,   telefonosEstudiante: telefonosEstudiante,   procedenciaEstudiante: procedenciaEstudiante,   observaciones: observaciones,   generoEstudiante: generoEstudiante,   gradoEstudiante: gradoEstudiante,   condicionEstudiante: condicionEstudiante,id_rep:id_rep,aEscolarId:aEscolarId,seccionEstudiante:seccionEstudiante},{where:{id_al:id_al}})
         .then((data) => {
           let data_set = JSON.stringify(data);
           resolve(data_set);
@@ -175,10 +175,10 @@ module.exports = {
         });
     });
   },
-  RegAlumnos(nombreEstudiante, cedulaEstudiante, fechaNacimiento, edadEstudiante, lugarnacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones, generoEstudiante, gradoEstudiante, condicionEstudiante,id_rep,aEscolarId) {
+  RegAlumnos(nombreEstudiante, cedulaEstudiante, fechaNacimiento, edadEstudiante, lugarnacimientoEstudiante, direccionEstudiante, telefonosEstudiante, procedenciaEstudiante, observaciones, generoEstudiante, gradoEstudiante, condicionEstudiante,id_rep,aEscolarId,seccionEstudiante) {
     return new Promise((resolve, reject) => {
       Alumnos.create(
-        {nombreEstudiante: nombreEstudiante,   cedulaEstudiante: cedulaEstudiante,   fechaNacimiento: fechaNacimiento,   edadEstudiante: edadEstudiante,   lugarnacimientoEstudiante: lugarnacimientoEstudiante,   direccionEstudiante: direccionEstudiante,   telefonosEstudiante: telefonosEstudiante,   procedenciaEstudiante: procedenciaEstudiante,   observaciones: observaciones,   generoEstudiante: generoEstudiante,   gradoEstudiante: gradoEstudiante,   condicionEstudiante: condicionEstudiante,id_rep:id_rep,aEscolarId:aEscolarId})
+        {nombreEstudiante: nombreEstudiante,   cedulaEstudiante: cedulaEstudiante,   fechaNacimiento: fechaNacimiento,   edadEstudiante: edadEstudiante,   lugarnacimientoEstudiante: lugarnacimientoEstudiante,   direccionEstudiante: direccionEstudiante,   telefonosEstudiante: telefonosEstudiante,   procedenciaEstudiante: procedenciaEstudiante,   observaciones: observaciones,   generoEstudiante: generoEstudiante,   gradoEstudiante: gradoEstudiante,   condicionEstudiante: condicionEstudiante,id_rep:id_rep,aEscolarId:aEscolarId,seccionEstudiante:seccionEstudiante})
         .then((data) => {
           let data_set = JSON.stringify(data);
           resolve(data_set);

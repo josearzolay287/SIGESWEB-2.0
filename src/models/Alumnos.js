@@ -60,6 +60,7 @@ const Alumnos = db.define('alumnos', {
 	seccionEstudiante: {
 		type: DataTypes.STRING(20),
 		allowNull: true,
+		defaultValue: 'A'
 	},
 	condicionEstudiante: {
 		type: DataTypes.STRING(8),

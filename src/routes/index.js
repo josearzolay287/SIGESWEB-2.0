@@ -20,7 +20,7 @@ router.post('/changePassword', userController.changePassword);
 router.get('/close-session', userController.closeSesion);
 
 //Enlaces principales
-router.get('/dashboard',authController.authenticatedUser, dashboardController.dashboard);
+router.get('/dashboard',authController.authenticatedUser, dashboardController.matriculaPage);
 router.get('/matricula',authController.authenticatedUser, dashboardController.matriculaPage);
 router.get('/usuarios',authController.authenticatedUser, dashboardController.usuariosPage);
 router.get('/facturas',authController.authenticatedUser, dashboardController.facturaspage);

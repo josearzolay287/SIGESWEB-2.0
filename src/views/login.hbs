@@ -1,12 +1,75 @@
 <!-- BEGIN: Content-->
-<div class="app-content content ">
-    <div class="content-overlay"></div>
-    <div class="header-navbar-shadow"></div>
+<div class="app-content content blank-page">
     <div class="content-wrapper">
-        <div class="content-header row">
-        </div>
         <div class="content-body">
-            <div class="auth-wrapper auth-basic px-2">
+
+            <div class="auth-wrapper auth-v2">
+                <div class="row auth-inner m-0">
+                    <div class="d-none d-lg-flex align-items-center col-lg-8 p-0 vh-100 postion-relative">
+                        
+                        <img class="img-fluid auth-img mx-auto vh-100 w-100" src="../../../app-assets/images/santa.jpg" alt="">
+                        <img class="img-fluid position-absolute top-0 start-0 mt-2 ms-2" style="width: 150px; object-fit: contain;" src="../../../app-assets/images/uecsm.jpg" alt="">
+                        {{!--<img class="img-fluid auth-img mx-auto mb-3" src="../../../app-assets/images/py672/logo-3.png">--}}
+                    </div>
+                    <div class="d-flex flex-wrap align-items-start align-items-lg-center auth-bg bg-white p-lg-5 col-lg-4 p-0 auth-box vh-100 position-relative">
+                        <img class="img-fluid position-absolute d-lg-none" style="width: 150px; object-fit: contain; top: 35px; left: 50%; right: 50%; transform: translate(-50%, 0%);" src="../../../app-assets/images/uecsm.jpg" alt="">
+                        <img class="img-fluid auth-img-movil mx-auto mb-1 d-lg-none" style="height: 220px; width: 100%; object-fit: cover; object-position: center;" src="../../../app-assets/images/santa.jpg" alt="">
+
+                        <div class="px-xl-2 mx-auto col-sm-8 col-md-6 col-lg-12">
+                        <h2 class="card-title font-weight-bold mb-1">Bienvenid@!</h2>
+                        <p class="card-text mb-2">Inicia sesión y comienza tu gestión. . .</p> 
+                        <div role="alert" class="alert show alert-primary fade position-relative d-none">
+                            <div class="alert-body font-small-2"><p><small class="mr-50 text-primary">
+                                <span class="font-weight-bold d-none">Admin:</span> admin@demo.com | pass: admin@demo.com</small></p><p><small class="mr-50 text-primary"><span class="font-weight-bold">Cliente:</span> client@demo.com | pass: client@demo.com</small></p>
+                            </div>
+                            <svg class="bi flex-shrink-0 me-2 position-absolute top-0 start-100 translate-middle" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+                        </div>
+                            <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                                <symbol id="info-fill" fill="#7367f0" viewBox="0 0 16 16">
+                                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                </symbol>
+                            </svg>
+                            </span>
+
+                            <form class="auth-login-form mt-2" action="/login" method="POST">
+                            {{#if messages}}
+                                {{#showAlerts messages}}
+                                {{/showAlerts}}
+                            {{/if}}
+                                <div class="mb-1">
+                                    <label class="form-label" for="login-email">Email</label>
+                                    <input class="form-control" id="login-email" type="email" name="email" placeholder="" value="" tabindex="1" autofocus required>
+                                </div>
+                                <div class="mb-1">
+                                    <div class="d-flex justify-content-between">
+                                        <label class="form-label" for="login-password">Contraseña</label>
+                                    </div>
+                                    <div class="input-group input-group-merge form-password-toggle">
+                                        <input class="form-control form-control-merge" id="login-password" type="password" name="password" value="" placeholder="" tabindex="2" autocomplete="off" required><span class="input-group-text cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye font-small-4"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></span>
+                                    </div>
+                                </div>
+                            <div class="mb-1">
+                                <label class="form-label">Año Escolar</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
+                                    <select name="a_escolar" id="a_escolar" class="form-control">
+                                        <option value="1">2022-2023</option>
+                                        <option value="2">2023-2024</option>
+                                    </select>
+                                </div>
+                            </div>
+                                <button class="btn btn-primary w-100 waves-effect waves-float waves-light" tabindex="4">Ingresar</button>
+                            </form>
+                        </span>
+                        <p class="text-center mt-2"><a href="#"><span class="text-primary">¿Olvido su contraseña?</span></a></p>
+                        {{!<p class="text-center mt-2"><span>¿Aún no tienes cuenta?</span><a href="/registerpy672/PYT-672"><span class="text-primary">&nbsp; ¡create una ahora!</span></a></p>}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="auth-wrapper auth-basic px-2 d-none">
                 <div class="auth-inner my-2">
                     <!-- Login basic -->
                     <div class="card mb-0">
@@ -24,10 +87,10 @@
                             {{#showAlerts messages}}
                             {{/showAlerts}}
                             {{/if}}
-                            <form class="auth-login-form mt-2" action="/login" method="post">
+                            <form class="auth-login-form mt-2" action="/api/login/user" method="post">
                                 <div class="mb-1">
                                     <label for="login-email" class="form-label">Email</label>
-                                    <input type="text" class="form-control" id="email" name="email"
+                                    <input type="text" class="form-control" id="email" name="pin"
                                         placeholder="john@example.com" aria-describedby="login-email" tabindex="1"
                                         autofocus required />
                                         
@@ -42,22 +105,12 @@
                                     </div>
                                     <div class="input-group input-group-merge form-password-toggle">
                                         <input type="password" class="form-control form-control-merge" id="password"
-                                            name="password" tabindex="2"
+                                            name="gymId" tabindex="2"
                                             placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                             aria-describedby="login-password" required />
                                         <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
                                     </div>
                                 </div>
-                                <div class="col-6 col-lg-4">
-                                <label class="form-label">Año Escolar</label>
-                                <div class="input-group mb-2">
-                                    <span class="input-group-text" id=""><i data-feather="file-text"></i></span>
-                                    <select name="a_escolar" id="a_escolar" class="form-control">
-                                        <option value="1">2022-2023</option>
-                                        <option value="2">2023-2024</option>
-                                    </select>
-                                </div>
-                            </div>
 
                                 <button class="btn btn-primary w-100" tabindex="4">Sign in</button>
                             </form>

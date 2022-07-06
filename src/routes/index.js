@@ -25,7 +25,6 @@ router.get('/matricula',authController.authenticatedUser, dashboardController.ma
 router.get('/usuarios',authController.authenticatedUser, dashboardController.usuariosPage);
 router.get('/facturas',authController.authenticatedUser, dashboardController.facturaspage);
 router.get('/reportes',authController.authenticatedUser, dashboardController.reportes);
-router.get('/profile_user/:id',authController.authenticatedUser, dashboardController.profilePage);
 router.get('/estadoCuenta/:cedulaEstudiante',authController.authenticatedUser, dashboardController.estadoCuenta);
 
 

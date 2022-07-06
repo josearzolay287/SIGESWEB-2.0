@@ -24,6 +24,23 @@ module.exports = {
         });
     });
   },
+  AEscolar(id){
+    return new Promise((resolve, reject) => {
+      A_Escolar.findOne({
+        where: {
+          id: id,
+        },
+      })
+        .then((data) => {
+          let data_p = JSON.stringify(data);
+          resolve(data_p);
+          ////console.log(id_usuario);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  },
   UsuariobyId(id){
     return new Promise((resolve, reject) => {
       Usuarios.findOne({

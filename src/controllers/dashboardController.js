@@ -7,19 +7,22 @@ const { encrypt, decrypt } = require("./crypto");//Encrypt / decrypt
 const io = require("./socketio.js").getIO();
 /**FUNCTION TO RENDER dashboard PAGE */
 exports.dashboard = async (req, res) => {
-  
+  let user = res.locals.user;
+  let a_escolar = user.a_escolar;
   //HERE RENDER PAGE AND INTRO INFO
   res.render("dashboard", {
     pageName: "Dashboad",
     dashboard: true,
     menu: true,
+    user,
+    a_escolar
   });
 };
 
 /**ACCESSO PAGE */
 exports.estadoCuenta = async (req, res) => {
-  let user = res.locals.user
-  let a_escolar = user.a_escolar
+  let user = res.locals.user;
+  let a_escolar = user.a_escolar;
   let id_al = req.params.cedulaEstudiante
   let alumno = JSON.parse(await DataBasequerys.Alu_A_EscolarCedula(a_escolar,id_al));
   //HERE RENDER PAGE AND INTRO INFO
@@ -27,36 +30,51 @@ exports.estadoCuenta = async (req, res) => {
     pageName: "Estado Cuenta",
     estadoCuenta: true,
     menu: true,
-    alumno  
+    alumno,
+    user,
+a_escolar  
   });
 };
 
 /**CLIENTES PAGE */
 exports.matriculaPage = async (req, res) => {
+  let user = res.locals.user;
+  console.log("🚀 ~ file: dashboardController.js ~ line 42 ~ exports.matriculaPage= ~ user", user)
+  let a_escolar = user.a_escolar;
   //HERE RENDER PAGE AND INTRO INFO
   res.render("matricula", {
     pageName: "Matricula",
     matricula: true,
     menu: true,
+    user,
+a_escolar
   });
 };
 /**CLIENTES PAGE */
 exports.usuariosPage = async (req, res) => {
+  let user = res.locals.user;
+  let a_escolar = user.a_escolar;
   //HERE RENDER PAGE AND INTRO INFO
   res.render("usuarios", {
     pageName: "Usuarios",
     usuarios: true,
     menu: true,
+    user,
+a_escolar
   });
 };
 
 /**FACTURAS PAGE */
 exports.facturaspage = async (req, res) => {
+  let user = res.locals.user;
+  let a_escolar = user.a_escolar;
   //HERE RENDER PAGE AND INTRO INFO
   res.render("facturas", {
     pageName: "Facturas",
     facturas: true,
     menu: true,
+    user,
+a_escolar
   });
 };
 /**REPORTES PAGE */
@@ -65,36 +83,6 @@ exports.reportes = async (req, res) => {
   res.render("reportes", {
     pageName: "Reportes",
     reportes: true,
-    menu: true,
-  });
-};
-
-/**PERFIL USER PAGE */
-exports.profilePage = async (req, res) => {
-  let id_user = req.params.id;
-  let profileinfo = await DataBasequerys.getUserbyfkIdUsuario(id_user);
-  let gruposCliente = await DataBasequerys.getGruposBypkIdUsuario(id_user);
-  let medidas = await DataBasequerys.getMedidasBypkIdUsuario(id_user);
-  let ingresos = await DataBasequerys.getIngresosByfkIdUsuario(id_user);
-  let categorias = await DataBasequerys.getCategorias();
-  medidas = medidas.slice(0, 8);
-//console.log(medidas)
-  profileinfo = profileinfo[0];
-  res.render("profile-user", {
-    pageName: "Perfil",
-    profilePage: true,
-    menu: true,
-    profileinfo,
-    gruposCliente,
-    medidas,ingresos,categorias
-  });
-};
-
-/**PERFIL GYM PAGE */
-exports.profileGym = async (req, res) => {
-  res.render("profile-gym", {
-    pageName: "Perfil Gimnasio",
-    profileGym: true,
     menu: true,
   });
 };

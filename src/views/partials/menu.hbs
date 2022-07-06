@@ -99,8 +99,8 @@
                 <li class="nav-item dropdown dropdown-user">
                     <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="user-nav d-sm-flex d-none">
-                            <span class="user-name fw-bolder">Hector Perez</span>
-                            <span class="user-status">Admin</span>
+                            <span class="user-name fw-bolder">{{user.name}}</span>
+                            <span class="user-status">{{user.tipo}} ({{user.a_escolarString}})</span>
                         </div>
                         <span class="avatar">
                             <img class="round" src="../../app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40">
@@ -109,7 +109,7 @@
                     </a>
                     <!-- Menu de Usuario -->
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="/close-session">
                             <i class="me-50" data-feather="power"></i> Salir
                         </a>
                     </div>

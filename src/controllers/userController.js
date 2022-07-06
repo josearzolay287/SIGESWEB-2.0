@@ -23,9 +23,9 @@ exports.formLogin = async (req, res) => {
 
 /**FUNCTION TO CLOSE SESSION */
 exports.closeSesion =async (req, res) => {
-  const user = res.locals.user;//USER INFO
-
-  
+  req.session.destroy(() => {
+    res.redirect("/");
+  });
 };
 exports.loginUser = passport.authenticate("local", {
   successRedirect: "/dashboard",
@@ -52,9 +52,10 @@ exports.sesionstart = (req, res) => {
       if (err) {
           return next(err);
       }
-
+      let stringEscolar = JSON.parse(await DataBasequerys.AEscolar(req.body.a_escolar))
+      console.log("🚀 ~ file: userController.js ~ line 56 ~ stringEscolar", stringEscolar)
       req.session.a_escolar = req.body.a_escolar;
-
+      req.session.a_escolarString = stringEscolar['a_escolar'];
       return res.redirect("/matricula");
     });
   })(req, res);

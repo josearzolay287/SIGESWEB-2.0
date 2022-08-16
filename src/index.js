@@ -30,7 +30,7 @@ const sio = require('./controllers/socketio.js');
 //                 key:privateKey,
 //                 cert: certificate
 //         };
-var server = require("https").createServer(app);
+var server = require("http").createServer(app);
 sio.init(server);
 
     server.listen(5001, function () {

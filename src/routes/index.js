@@ -39,7 +39,36 @@ router.get('/getAlumnosbyRepresentantes/:id_rep', authController.authenticatedUs
 
 router.post('/createMatricula',authController.authenticatedUser, dashboardController.createMatricula);
 router.post('/createFactura', authController.authenticatedUser,dashboardController.createFactura);
-router.post('/createusuarios',authController.authenticatedUser, dashboardController.createusuarios);
+router.post('/createusuarios',dashboardController.createusuarios);
 
+//incio sesion con google
+router.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] }), function(req, res) {
+    console.log("aqui")
+  });
+
+  router.get('/auth/g/call', 
+  passport.authenticate('google', {failureRedirect: '/login', failureFlash: 'Invalid Google credentials.' }),
+  function(req, res) {
+    
+if (req.cookies.back_compra) {
+  console.log(req.user.dataValues.id)
+    console.log(req.cookies.back_compra.modo);
+    console.log(req.cookies.back_compra.producto);
+    console.log(req.cookies.back_compra.monto);
+    return res.redirect(
+      "/pagar_backcoins/" +
+      req.user.dataValues.id +
+        "/" +
+        req.cookies.back_compra.producto +
+        "/" +
+        req.cookies.back_compra.monto +
+        "/back_pay/" +
+        req.cookies.back_compra.modo
+    );
+}
+
+res.redirect('/validate_membership');
+  });
 
 module.exports = router;

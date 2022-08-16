@@ -184,6 +184,7 @@ return res.send({usuarios});
 
 exports.createusuarios = async (req, res) => {
   const {idUsuario, nombre, email, tipo, password } = req.body;
+  console.log("🚀 ~ file: dashboardController.js ~ line 187 ~ exports.createusuarios= ~ req.body", req.body)
   const a_escolar = 1;
     let usuario = JSON.parse(await DataBasequerys.RegUser(tipo, nombre, email, password))
  return res.send({usuario});

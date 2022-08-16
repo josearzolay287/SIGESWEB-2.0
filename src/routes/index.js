@@ -47,10 +47,7 @@ router.get('/auth/google',
     console.log("aqui")
   });
 
-  router.get('/auth/g/call', async (req, res, next) => {
-  console.log("🚀 ~ file: index.js ~ line 51 ~ router.get ~ req")
- next();
-},
+  router.get('/auth/g/call', 
   passport.authenticate('google', {failureRedirect: '/login', failureFlash: 'Invalid Google credentials.' }),
   function(req, res) {
     
@@ -73,9 +70,5 @@ if (req.cookies.back_compra) {
 
 res.redirect('/validate_membership');
   });
-  router.get('/google/call', async (req, res, next) => {
-  console.log("🚀 ~ file: index.js ~ line 51 ~ router.get ~ req")
- next();
-});
 
 module.exports = router;

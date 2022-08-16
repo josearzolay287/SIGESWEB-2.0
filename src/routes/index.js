@@ -47,7 +47,10 @@ router.get('/auth/google',
     console.log("aqui")
   });
 
-  router.get('/auth/g/call?', 
+  router.get('/auth/g/call', async (req, res, next) => {
+  console.log("🚀 ~ file: index.js ~ line 51 ~ router.get ~ req")
+ next();
+},
   passport.authenticate('google', {failureRedirect: '/login', failureFlash: 'Invalid Google credentials.' }),
   function(req, res) {
     

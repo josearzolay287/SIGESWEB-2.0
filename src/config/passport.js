@@ -42,7 +42,7 @@ passport.use('local',
  passport.use('google',new GoogleStrategy({
     clientID: '425427803550-5hcacf2hmbmj1k2nm1o1a5c6cg5kgk8j.apps.googleusercontent.com',
     clientSecret: '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',
-    callbackURL: "https://josea.mosquedacordova.com/auth/g/call"
+    callbackURL: "http://josea.mosquedacordova.com/auth/g/call"
   },
   async (token, tokenSecret, profile, done) =>{
    console.log("🚀 ~ file: passport.js ~ line 97 ~ tokenSecret", tokenSecret)
